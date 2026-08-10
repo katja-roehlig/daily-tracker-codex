@@ -57,6 +57,10 @@ export function useTrackerData() {
       counts: { ...entry.counts, [id]: (entry.counts[id] ?? 0) + 1 },
     });
   };
+  const setCount = (date: string, id: string, value: number) => {
+    const entry = getEntry(date);
+    updateEntry(date, { counts: { ...entry.counts, [id]: Math.max(0, value) } });
+  };
   const toggleMood = (date: string, id: string) => {
     const entry = getEntry(date);
     updateEntry(date, { mood: entry.mood === id ? null : id });
@@ -148,6 +152,7 @@ export function useTrackerData() {
     items,
     getEntry,
     increment,
+    setCount,
     toggleMood,
     progress,
     saveCategory,

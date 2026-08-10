@@ -1291,6 +1291,24 @@ h2 {
   .calendarEvents span { font-size: 16px; }
 }
 
+.tooltip { display: inline-flex; vertical-align: middle; margin-left: 5px; }
+.tooltip button { width: 22px; min-height: 22px; padding: 0; border: 1px solid #9ab2a0; border-radius: 50%; color: #4b7458; background: #edf6ef; font-size: 13px; font-weight: 800; }
+.categoryCardHead h3 { display: inline-flex; align-items: center; gap: 5px; }
+.categoryCardHead h3 .editMini { position: static; color: inherit; font-size: 16px; }
+.categoryActions { margin-left: auto; }
+.trackerWrap { touch-action: manipulation; }
+.countBadge { display: inline-flex !important; align-items: center; gap: 4px; margin-left: auto; padding: 3px 6px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 18%, white); color: var(--accent); font-size: 13px; white-space: nowrap; }
+.countBadge strong { font-size: 14px; }
+.countBadge small { font-size: 15px; font-weight: 900; }
+
+@media (max-width: 900px) {
+  .tooltip button { width: 24px; min-height: 24px; }
+  .categoryCardHead h3 { font-size: 17px; }
+  .categoryCard .tracker { min-height: 54px; }
+  .categoryCard .tracker b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .countBadge { flex: none; }
+}
+
 /* Dense category cards and full-height, scrollable dialogs. */
 .categoryCard { margin: 22px 0; padding: 18px; border: 1px solid #e4eae4; border-radius: 15px; background: #fff; }
 .categoryCardHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }

@@ -66,12 +66,16 @@ export function TrackerEditor({
   onSave,
   onDelete,
   onClose,
+  count,
+  onCountSave,
 }: {
   category: Category;
   value?: Tracker;
   onSave: (value: Tracker) => void;
   onDelete?: () => void;
   onClose: () => void;
+  count?: number;
+  onCountSave?: (count: number) => void;
 }) {
   const [form, setForm] = useState<Tracker>(
     value ?? {
@@ -82,6 +86,7 @@ export function TrackerEditor({
       gamification: { enabled: false, target: 1, period: "day" },
     },
   );
+  const [dailyCount, setDailyCount] = useState(count ?? 0);
   const submit = (e: FormEvent) => {
     e.preventDefault();
     if (form.name.trim())
@@ -93,6 +98,7 @@ export function TrackerEditor({
           target: Math.max(1, Number(form.gamification.target)),
         },
       });
+    if (onCountSave && count !== undefined) onCountSave(Math.max(0, Number(dailyCount)));
   };
   return (
     <Modal onClose={onClose}>
@@ -109,6 +115,7 @@ export function TrackerEditor({
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
         </label>
+        {count !== undefined && <label>Heute erfasst<input type="number" min="0" value={dailyCount} onChange={(e) => setDailyCount(Math.max(0, Number(e.target.value) || 0))} /></label>}
         <label>
           Farbe
           <input

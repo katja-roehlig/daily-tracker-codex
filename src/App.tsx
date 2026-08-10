@@ -12,7 +12,7 @@ export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [selected, setSelected] = useState(todayKey());
   const tracker = useTrackerData();
-  const { data, items, getEntry, increment, toggleMood, progress } = tracker;
+  const { data, items, getEntry, increment, setCount, toggleMood, progress } = tracker;
   const openDay = (date: string) => {
     setSelected(date);
     setPage("entry");
@@ -50,6 +50,7 @@ export default function App() {
             items={items}
             moods={data.moods}
             onIncrement={(id) => increment(selected, id)}
+            onSetCount={(id, count) => setCount(selected, id, count)}
             onMood={(id) => toggleMood(selected, id)}
             onDate={openDay}
             onSaveCategory={tracker.saveCategory}

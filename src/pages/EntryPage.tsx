@@ -3,9 +3,10 @@ import {
   CategoryEditor,
   MoodDeleteModal,
   MoodEditor,
-  TrackerManageModal,
   TrackerEditor,
 } from "../components/EditorModals";
+import { TrackerCard } from "../components/TrackerCard";
+import { Tooltip } from "../components/ui/Tooltip";
 import type {
   Category,
   DayEntry,
@@ -19,7 +20,6 @@ import styles from "../styles/App.module.css";
 type Editor =
   | { kind: "category"; value?: Category }
   | { kind: "tracker"; category: Category; value?: Tracker }
-  | { kind: "tracker-manage"; category: Category }
   | { kind: "mood" }
   | { kind: "mood-delete" }
   | null;
@@ -29,6 +29,7 @@ export function EntryPage({
   items,
   moods,
   onIncrement,
+  onSetCount,
   onMood,
   onDate,
   onSaveCategory,
@@ -43,6 +44,7 @@ export function EntryPage({
   items: TrackerWithCategory[];
   moods: Mood[];
   onIncrement: (id: string) => void;
+  onSetCount: (id: string, count: number) => void;
   onMood: (id: string) => void;
   onDate: (date: string) => void;
   onSaveCategory: (category: Category) => void;
@@ -56,6 +58,9 @@ export function EntryPage({
   const categories = [
     ...new Map(items.map((item) => [item.category.id, item.category])).values(),
   ];
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(() =>
+    categories.length ? { [categories[0].id]: true } : {},
+  );
   return (
     <>
       <header className={styles.entryHeader}>
@@ -70,7 +75,7 @@ export function EntryPage({
         <div className={styles.sectionHead}>
           <div>
             <h2>Wie geht es dir?</h2>
-            <p>Wähle eine Stimmung für diesen Tag.</p>
+            <Tooltip text="Wähle eine Stimmung für diesen Tag." />
           </div>
           <div className={styles.sectionActions}>
             <button
@@ -111,7 +116,7 @@ export function EntryPage({
         <div className={styles.sectionHead}>
           <div>
             <h2>Deine Tracker</h2>
-            <p>Tippe zum Erfassen – mehrfaches Tippen erhöht den Zähler.</p>
+            <Tooltip text="Tippe zum Erfassen. Mehrfaches Tippen erhöht den Zähler. Lange drücken öffnet die Bearbeitung." />
           </div>
           <button
             className={styles.roundAdd}
@@ -123,38 +128,23 @@ export function EntryPage({
         {categories.map((category) => (
           <div className={styles.categoryCard} key={category.id}>
             <div className={styles.categoryCardHead} style={{ color: category.color }}>
-              <h3>{category.name}</h3>
-              <div className={styles.categoryActions}>
-                <button className={styles.editMini} aria-label={`${category.name} bearbeiten`} onClick={() => setEditor({ kind: "category", value: category })}>✎</button>
-                <button className={styles.editTrackerCatalog} aria-label={`Unterpunkte von ${category.name} bearbeiten`} onClick={() => setEditor({ kind: "tracker-manage", category })}>✎</button>
-                <button className={styles.addInline} aria-label="Unterpunkt hinzufügen" onClick={() => setEditor({ kind: "tracker", category })}>＋</button>
-              </div>
+              <button className={styles.accordionTrigger} onClick={() => setOpenCategories(current => ({ ...current, [category.id]: !current[category.id] }))} aria-expanded={Boolean(openCategories[category.id])}>
+                <span className={styles.accordionChevron}>{openCategories[category.id] ? '⌄' : '›'}</span>
+                <h3>{category.name}</h3>
+              </button>
+              <button className={styles.editMini} aria-label={`${category.name} bearbeiten`} onClick={() => setEditor({ kind: "category", value: category })}>✎</button>
             </div>
-            <div className={styles.trackerGrid}>
+            {openCategories[category.id] && <div className={styles.trackerGrid}>
               {items
                 .filter((item) => item.category.id === category.id)
                 .map((item) => {
                   const count = entry.counts[item.id] ?? 0;
                   return (
-                    <div className={styles.trackerWrap} key={item.id}>
-                      <button
-                        className={styles.tracker}
-                        onClick={() => onIncrement(item.id)}
-                        style={
-                          {
-                            "--accent": item.color,
-                            "--soft": tint(item.color),
-                          } as React.CSSProperties
-                        }
-                      >
-                        <span>{item.icon}</span>
-                        <b style={{ color: item.color }}>{item.name}</b>
-                        {count > 0 && <mark>× {count}</mark>}
-                      </button>
-                    </div>
+                    <TrackerCard item={item} count={count} onIncrement={() => onIncrement(item.id)} onEdit={() => setEditor({ kind: "tracker", category, value: item })} />
                   );
                 })}
-            </div>
+              <button className={styles.newTrackerButton} onClick={() => setEditor({ kind: "tracker", category })}>＋ neuer Unterpunkt</button>
+            </div>}
           </div>
         ))}
       </section>
@@ -185,6 +175,8 @@ export function EntryPage({
             onSaveTracker(editor.category.id, tracker);
             setEditor(null);
           }}
+          count={editor.value ? entry.counts[editor.value.id] ?? 0 : undefined}
+          onCountSave={editor.value ? (count) => onSetCount(editor.value!.id, count) : undefined}
           onDelete={
             editor.value
               ? () => {
@@ -195,16 +187,6 @@ export function EntryPage({
           }
         />
       )}{" "}
-      {editor?.kind === "tracker-manage" && (
-        <TrackerManageModal
-          category={editor.category}
-          onClose={() => setEditor(null)}
-          onDelete={onDeleteTracker}
-          onEdit={(tracker) =>
-            setEditor({ kind: "tracker", category: editor.category, value: tracker })
-          }
-        />
-      )}
       {editor?.kind === "mood" && (
         <MoodEditor
           onClose={() => setEditor(null)}
