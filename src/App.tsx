@@ -4,10 +4,10 @@ import { CalendarPage } from "./pages/CalendarPage";
 import { EntryPage } from "./pages/EntryPage";
 import { HomePage } from "./pages/HomePage";
 import { EvaluationPage } from "./pages/EvaluationPage";
-import { Navigation, type Page } from "./components/Navigation";
+import { AppShell } from "./components/layout/AppShell";
+import type { Page } from "./components/Navigation";
 import { useTrackerData } from "./hooks/useTrackerData";
 import { addDays, todayKey } from "./utils/date";
-import styles from "./styles/App.module.css";
 export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [selected, setSelected] = useState(todayKey());
@@ -32,14 +32,7 @@ export default function App() {
   };
   const quote = quotes[new Date().getDate() % quotes.length];
   return (
-    <div className={styles.app}>
-      <aside className={styles.side}>
-        <div className={styles.brand}>
-          <span>◒</span> Mein Tag
-        </div>
-        <Navigation page={page} setPage={changePage} />
-      </aside>
-      <main className={styles.main}>
+    <AppShell page={page} onPageChange={changePage}>
         {page === "home" && (
           <HomePage
             quote={quote}
@@ -76,10 +69,6 @@ export default function App() {
           />
         )}{" "}
         {page === "evaluation" && <EvaluationPage data={data} items={items} />}
-      </main>
-      <div className={styles.mobileNav}>
-        <Navigation page={page} setPage={changePage} />
-      </div>
-    </div>
+    </AppShell>
   );
 }

@@ -90,6 +90,7 @@ export function CalendarPage({
               key={day.key}
               onClick={() => onOpenDay(day.key)}
               className={`${styles.day} ${!day.current ? styles.muted : ""} ${day.key === selected ? styles.daySelected : ""}`}
+              style={dayMood ? { background: tint(dayMood.color, 0.76) } : undefined}
             >
               <b>{day.day}</b>
               {dayMood && (
@@ -101,7 +102,7 @@ export function CalendarPage({
                 </span>
               )}
               <div className={styles.calendarEvents}>
-                {events.slice(0, 4).map((item) => (
+                {events.slice(0, 8).map((item) => (
                   <span
                     key={item.id}
                     style={{ background: tint(item.color), color: item.color }}
@@ -112,6 +113,11 @@ export function CalendarPage({
                       <b>×{entry?.counts[item.id]}</b>
                     )}
                   </span>
+                ))}
+              </div>
+              <div className={styles.calendarDots} aria-label={`${events.length} Aktivitäten`}>
+                {events.slice(0, 4).map((item) => (
+                  <i key={item.id} style={{ background: item.color }} />
                 ))}
               </div>
               {events.length > 4 && (

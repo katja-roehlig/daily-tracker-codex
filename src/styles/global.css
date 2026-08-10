@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
+html { min-width: 320px; }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
+  min-width: 320px;
+  font-size: 16px;
+  line-height: 1.5;
   background: linear-gradient(135deg, #fff9ed 0%, #f4fbff 52%, #fff4fa 100%);
   color: #29384b;
   font-family: Nunito, system-ui, sans-serif;
@@ -12,6 +16,7 @@ button,
 input,
 select {
   font: inherit;
+  min-height: 36px;
 }
 button {
   cursor: pointer;

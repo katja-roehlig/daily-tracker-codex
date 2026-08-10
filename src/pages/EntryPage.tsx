@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {
   CategoryEditor,
+  MoodDeleteModal,
   MoodEditor,
+  TrackerManageModal,
   TrackerEditor,
 } from "../components/EditorModals";
 import type {
@@ -17,7 +19,9 @@ import styles from "../styles/App.module.css";
 type Editor =
   | { kind: "category"; value?: Category }
   | { kind: "tracker"; category: Category; value?: Tracker }
-  | { kind: "mood"; value?: Mood }
+  | { kind: "tracker-manage"; category: Category }
+  | { kind: "mood" }
+  | { kind: "mood-delete" }
   | null;
 export function EntryPage({
   date,
@@ -68,32 +72,38 @@ export function EntryPage({
             <h2>Wie geht es dir?</h2>
             <p>Wähle eine Stimmung für diesen Tag.</p>
           </div>
-          <button
-            className={styles.roundAdd}
-            onClick={() => setEditor({ kind: "mood" })}
-          >
-            ＋
-          </button>
+          <div className={styles.sectionActions}>
+            <button
+              className={styles.editMoodCatalog}
+              aria-label="Stimmungen löschen"
+              onClick={() => setEditor({ kind: "mood-delete" })}
+            >
+              ✎
+            </button>
+            <button
+              className={styles.roundAdd}
+              onClick={() => setEditor({ kind: "mood" })}
+            >
+              ＋
+            </button>
+          </div>
         </div>
         <div className={styles.moods}>
           {moods.map((mood) => (
-            <div className={styles.moodWrap} key={mood.id}>
-              <button
-                className={entry.mood === mood.id ? styles.moodSelected : ""}
-                style={{ "--mood": mood.color } as React.CSSProperties}
-                onClick={() => onMood(mood.id)}
-              >
-                <span>{mood.icon}</span>
-                {mood.label}
-              </button>
-              <button
-                className={styles.editMini}
-                aria-label={`${mood.label} bearbeiten`}
-                onClick={() => setEditor({ kind: "mood", value: mood })}
-              >
-                ⋯
-              </button>
-            </div>
+            <button
+              key={mood.id}
+              className={entry.mood === mood.id ? styles.moodSelected : ""}
+              style={
+                {
+                  "--mood": mood.color,
+                  background: tint(mood.color),
+                } as React.CSSProperties
+              }
+              onClick={() => onMood(mood.id)}
+            >
+              <span>{mood.icon}</span>
+              {mood.label}
+            </button>
           ))}
         </div>
       </section>
@@ -111,24 +121,15 @@ export function EntryPage({
           </button>
         </div>
         {categories.map((category) => (
-          <div className={styles.category} key={category.id}>
-            <h3 style={{ color: category.color }}>
-              <i style={{ background: category.color }} />
-              {category.name}
-              <button
-                className={styles.editMini}
-                aria-label={`${category.name} bearbeiten`}
-                onClick={() => setEditor({ kind: "category", value: category })}
-              >
-                ⋯
-              </button>
-              <button
-                className={styles.addInline}
-                onClick={() => setEditor({ kind: "tracker", category })}
-              >
-                ＋ Unterpunkt
-              </button>
-            </h3>
+          <div className={styles.categoryCard} key={category.id}>
+            <div className={styles.categoryCardHead} style={{ color: category.color }}>
+              <h3>{category.name}</h3>
+              <div className={styles.categoryActions}>
+                <button className={styles.editMini} aria-label={`${category.name} bearbeiten`} onClick={() => setEditor({ kind: "category", value: category })}>✎</button>
+                <button className={styles.editTrackerCatalog} aria-label={`Unterpunkte von ${category.name} bearbeiten`} onClick={() => setEditor({ kind: "tracker-manage", category })}>✎</button>
+                <button className={styles.addInline} aria-label="Unterpunkt hinzufügen" onClick={() => setEditor({ kind: "tracker", category })}>＋</button>
+              </div>
+            </div>
             <div className={styles.trackerGrid}>
               {items
                 .filter((item) => item.category.id === category.id)
@@ -149,15 +150,6 @@ export function EntryPage({
                         <span>{item.icon}</span>
                         <b style={{ color: item.color }}>{item.name}</b>
                         {count > 0 && <mark>× {count}</mark>}
-                      </button>
-                      <button
-                        className={styles.editTracker}
-                        aria-label={`${item.name} bearbeiten`}
-                        onClick={() =>
-                          setEditor({ kind: "tracker", category, value: item })
-                        }
-                      >
-                        ⋯
                       </button>
                     </div>
                   );
@@ -203,22 +195,30 @@ export function EntryPage({
           }
         />
       )}{" "}
+      {editor?.kind === "tracker-manage" && (
+        <TrackerManageModal
+          category={editor.category}
+          onClose={() => setEditor(null)}
+          onDelete={onDeleteTracker}
+          onEdit={(tracker) =>
+            setEditor({ kind: "tracker", category: editor.category, value: tracker })
+          }
+        />
+      )}
       {editor?.kind === "mood" && (
         <MoodEditor
-          value={editor.value}
           onClose={() => setEditor(null)}
           onSave={(mood) => {
             onSaveMood(mood);
             setEditor(null);
           }}
-          onDelete={
-            editor.value
-              ? () => {
-                  onDeleteMood(editor.value!.id);
-                  setEditor(null);
-                }
-              : undefined
-          }
+        />
+      )}
+      {editor?.kind === "mood-delete" && (
+        <MoodDeleteModal
+          moods={moods}
+          onClose={() => setEditor(null)}
+          onDelete={onDeleteMood}
         />
       )}
     </>

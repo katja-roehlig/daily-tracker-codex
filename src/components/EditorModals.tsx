@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { IconPicker } from "./ui/IconPicker";
 import { Modal } from "./ui/Modal";
 import type { Category, Mood, Period, Tracker } from "../types";
+import { tint } from "../utils/color";
 import styles from "../styles/App.module.css";
 export function CategoryEditor({
   value,
@@ -45,6 +46,9 @@ export function CategoryEditor({
           />
         </label>
         <div className={styles.modalActions}>
+          <button type="button" className={styles.cancel} onClick={onClose}>
+            ← Abbrechen
+          </button>
           {onDelete && (
             <button type="button" className={styles.danger} onClick={onDelete}>
               Löschen
@@ -176,6 +180,9 @@ export function TrackerEditor({
           </div>
         )}
         <div className={styles.modalActions}>
+          <button type="button" className={styles.cancel} onClick={onClose}>
+            ← Abbrechen
+          </button>
           {onDelete && (
             <button type="button" className={styles.danger} onClick={onDelete}>
               Löschen
@@ -241,6 +248,9 @@ export function MoodEditor({
           />
         </label>
         <div className={styles.modalActions}>
+          <button type="button" className={styles.cancel} onClick={onClose}>
+            ← Abbrechen
+          </button>
           {onDelete && (
             <button type="button" className={styles.danger} onClick={onDelete}>
               Löschen
@@ -249,6 +259,87 @@ export function MoodEditor({
           <button className={styles.primary}>Speichern</button>
         </div>
       </form>
+    </Modal>
+  );
+}
+
+export function MoodDeleteModal({
+  moods,
+  onDelete,
+  onClose,
+}: {
+  moods: Mood[];
+  onDelete: (id: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <Modal onClose={onClose}>
+      <p className={styles.eyebrow}>Stimmungskatalog</p>
+      <h2>Stimmungen löschen</h2>
+      <p className={styles.modalHint}>
+        Entferne Stimmungen, die du nicht mehr verwendest.
+      </p>
+      <div className={styles.moodDeleteList}>
+        {moods.map((mood) => (
+          <div
+            key={mood.id}
+            className={styles.moodDeleteItem}
+            style={{ background: tint(mood.color) }}
+          >
+            <span>{mood.icon}</span>
+            <b>{mood.label}</b>
+            <button type="button" onClick={() => onDelete(mood.id)}>
+              Löschen
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className={styles.modalActions}>
+        <button type="button" className={styles.cancel} onClick={onClose}>
+          ← Abbrechen
+        </button>
+      </div>
+    </Modal>
+  );
+}
+
+export function TrackerManageModal({
+  category,
+  onEdit,
+  onDelete,
+  onClose,
+}: {
+  category: Category;
+  onEdit: (tracker: Tracker) => void;
+  onDelete: (id: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <Modal onClose={onClose}>
+      <p className={styles.eyebrow}>Kategorie</p>
+      <h2>{category.name}</h2>
+      <p className={styles.modalHint}>Unterpunkte bearbeiten oder löschen.</p>
+      <div className={styles.moodDeleteList}>
+        {category.items.map((tracker) => (
+          <div
+            key={tracker.id}
+            className={styles.moodDeleteItem}
+            style={{ background: tint(tracker.color) }}
+          >
+            <span>{tracker.icon}</span>
+            <b>{tracker.name}</b>
+            <div className={styles.rowActions}>
+              <button type="button" onClick={() => onEdit(tracker)} aria-label={`${tracker.name} bearbeiten`}>✎</button>
+              <button type="button" onClick={() => onDelete(tracker.id)}>Löschen</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className={styles.modalActions}>
+        <button type="button" className={styles.cancel} onClick={onClose}>
+          ← Abbrechen
+        </button>
+      </div>
     </Modal>
   );
 }
