@@ -1,5 +1,92 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
-html { min-width: 320px; }
+:root {
+  --bg-main: #fff9ed;
+  --bg-main-mid: #f4fbff;
+  --bg-main-end: #fff4fa;
+  --text-primary: #29384b;
+  --sidebar-bg: #244436;
+  --sidebar-text: #eaf3df;
+  --brand-accent: #d6b870;
+  --nav-text: #bdcec0;
+  --nav-active-bg: #3b5e4e;
+  --text-muted: #79847b;
+  --avatar-bg: #d8b464;
+  --hero-bg: #e9e1ca;
+  --hero-cite: #6f6756;
+  --text-secondary: #788178;
+  --link-accent: #356b54;
+  --card-bg: #fff;
+  --border-subtle: #eceee9;
+  --text-small: #6e786e;
+  --track-bg: #edf0ec;
+  --success: #5b9368;
+  --text-tertiary: #7c827c;
+  --border-divider: #e0e4de;
+  --border-card: #e4e8e2;
+  --shadow-soft: #263c2b08;
+  --accent-green: #4b8e69;
+  --text-caption: #7b837d;
+  --border-control: #e3e7e0;
+  --border-light: #e7eae5;
+  --calendar-border: #e1e5df;
+  --calendar-cell-border: #e8ebe6;
+  --calendar-muted-bg: #fafbf9;
+  --calendar-muted-text: #b0b7ae;
+  --text-detail: #7d867e;
+  --panel-border: #e3e7e1;
+  --category-meta: #698274;
+  --action-green: #3a775d;
+  --input-border: #dce2da;
+  --primary-bg: #346a52;
+  --modal-overlay: #182e2388;
+  --input-border-dark: #d9dfd8;
+  --close-text: #7c857d;
+  --empty-text: #737d74;
+  --mobile-shadow: #17312444;
+  --mobile-header-border: #e4eae4;
+  --mobile-menu-bg: #edf5ee;
+  --mobile-panel-border: #dce7de;
+  --mobile-shadow-soft: #1e362522;
+  --tooltip-border: #9ab2a0;
+  --tooltip-text: #4b7458;
+  --tooltip-bg: #edf6ef;
+  --category-bg: #e8f3e9;
+  --danger: #ba4d5a;
+  --insight-start: #ffe2ad;
+  --insight-mid: #fbd1dc;
+  --insight-end: #ccecf3;
+  --relation-bg: #f8faf7;
+  --icon-picker-border: #dce4dc;
+  --icon-picker-bg: #fbfcfa;
+  --icon-selected-bg: #ffe4ac;
+  --danger-strong: #c74e59;
+  --add-start: #ffba58;
+  --add-end: #ef6d9a;
+  --add-shadow: #e88c7655;
+  --focus-green: #52896c;
+  --text-dark-green: #385144;
+  --accent-blue: #456c55;
+  --action-dark: #426551;
+  --action-muted: #50685a;
+  --text-faint: #768078;
+  --text-dim: #778177;
+  --text-soft: #788279;
+  --text-calendar: #7f8880;
+  --tooltip-active: #4b7458;
+  --mobile-brand: #db9b45;
+  --category-action: #497e62;
+  --count-bg: color-mix(in srgb, var(--accent) 18%, white);
+  --shadow-control: #273d2b18;
+  --switch-bg: #e9ede7;
+  --header-bg: rgba(255, 255, 255, 0.94);
+  --text-edit: #718078;
+  --text-modal: #68766d;
+  --text-result: #7a847d;
+  --mood-action-bg: #eaf3ec;
+}
+html {
+  min-width: 320px;
+}
 * {
   box-sizing: border-box;
 }
@@ -8,8 +95,13 @@ body {
   min-width: 320px;
   font-size: 16px;
   line-height: 1.5;
-  background: linear-gradient(135deg, #fff9ed 0%, #f4fbff 52%, #fff4fa 100%);
-  color: #29384b;
+  background: linear-gradient(
+    135deg,
+    var(--bg-main) 0%,
+    var(--bg-main-mid) 52%,
+    var(--bg-main-end) 100%
+  );
+  color: var(--text-primary);
   font-family: Nunito, system-ui, sans-serif;
 }
 button,
