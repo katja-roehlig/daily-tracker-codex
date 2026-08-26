@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Navigation, type Page } from "../Navigation";
+import { Navigation, type Page } from "../navigation/Navigation";
 import styles from "./AppShell.module.css";
 
 interface AppShellProps {

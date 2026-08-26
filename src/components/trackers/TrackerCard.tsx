@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import type { TrackerWithCategory } from "../types";
-import { tint } from "../utils/color";
+import type { TrackerWithCategory } from "../../types";
+import { tint } from "../../utils/color";
 import styles from "./TrackerCard.module.css";
 
 export function TrackerCard({

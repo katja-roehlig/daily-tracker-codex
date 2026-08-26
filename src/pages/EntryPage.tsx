@@ -4,8 +4,8 @@ import {
   MoodDeleteModal,
   MoodEditor,
   TrackerEditor,
-} from "../components/EditorModals";
-import { TrackerCard } from "../components/TrackerCard";
+} from "../components/editors/EditorModals";
+import { TrackerCard } from "../components/trackers/TrackerCard";
 import { Tooltip } from "../components/ui/Tooltip";
 import type {
   Category,

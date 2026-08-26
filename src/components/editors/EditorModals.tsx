@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
-import { IconPicker } from "./ui/IconPicker";
-import { Modal } from "./ui/Modal";
-import type { Category, Mood, Period, Tracker } from "../types";
-import { tint } from "../utils/color";
+import { IconPicker } from "../ui/IconPicker";
+import { Modal } from "../ui/Modal";
+import type { Category, Mood, Period, Tracker } from "../../types";
+import { tint } from "../../utils/color";
 import styles from "./EditorModals.module.css";
 export function CategoryEditor({
   value,
