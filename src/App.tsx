@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { quotes } from "../data/defaults";
-import { CalendarPage } from "../pages/CalendarPage";
-import { EntryPage } from "../pages/EntryPage";
-import { HomePage } from "../pages/HomePage";
-import { EvaluationPage } from "../pages/EvaluationPage";
-import { AppShell } from "../components/layout/AppShell";
-import type { Page } from "../components/navigation/Navigation";
-import { useTrackerData } from "../hooks/useTrackerData";
-import { addDays, todayKey } from "../utils/date";
+import { quotes } from "./data/defaults";
+import { CalendarPage } from "./pages/CalendarPage";
+import { EntryPage } from "./pages/EntryPage";
+import { HomePage } from "./pages/HomePage";
+import { EvaluationPage } from "./pages/EvaluationPage";
+import { AppShell } from "./components/layout/AppShell";
+import type { Page } from "./components/navigation/Navigation";
+import { useTrackerData } from "./hooks/useTrackerData";
+import { addDays, todayKey } from "./utils/date";
 export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [selected, setSelected] = useState(todayKey());
