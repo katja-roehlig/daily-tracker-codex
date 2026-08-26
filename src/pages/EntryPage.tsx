@@ -16,7 +16,7 @@ import type {
 } from "../types";
 import { addDays, formatDate } from "../utils/date";
 import { tint } from "../utils/color";
-import styles from "../styles/App.module.css";
+import styles from "./EntryPage.module.css";
 type Editor =
   | { kind: "category"; value?: Category }
   | { kind: "tracker"; category: Category; value?: Tracker }
@@ -58,8 +58,8 @@ export function EntryPage({
   const categories = [
     ...new Map(items.map((item) => [item.category.id, item.category])).values(),
   ];
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(() =>
-    categories.length ? { [categories[0].id]: true } : {},
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(
+    () => (categories.length ? { [categories[0].id]: true } : {}),
   );
   return (
     <>
@@ -127,24 +127,58 @@ export function EntryPage({
         </div>
         {categories.map((category) => (
           <div className={styles.categoryCard} key={category.id}>
-            <div className={styles.categoryCardHead} style={{ color: category.color }}>
-              <button className={styles.accordionTrigger} onClick={() => setOpenCategories(current => ({ ...current, [category.id]: !current[category.id] }))} aria-expanded={Boolean(openCategories[category.id])}>
-                <span className={styles.accordionChevron}>{openCategories[category.id] ? '⌄' : '›'}</span>
+            <div
+              className={styles.categoryCardHead}
+              style={{ color: category.color }}
+            >
+              <button
+                className={styles.accordionTrigger}
+                onClick={() =>
+                  setOpenCategories((current) => ({
+                    ...current,
+                    [category.id]: !current[category.id],
+                  }))
+                }
+                aria-expanded={Boolean(openCategories[category.id])}
+              >
+                <span className={styles.accordionChevron}>
+                  {openCategories[category.id] ? "⌄" : "›"}
+                </span>
                 <h3>{category.name}</h3>
               </button>
-              <button className={styles.editMini} aria-label={`${category.name} bearbeiten`} onClick={() => setEditor({ kind: "category", value: category })}>✎</button>
+              <button
+                className={styles.editMini}
+                aria-label={`${category.name} bearbeiten`}
+                onClick={() => setEditor({ kind: "category", value: category })}
+              >
+                ✎
+              </button>
             </div>
-            {openCategories[category.id] && <div className={styles.trackerGrid}>
-              {items
-                .filter((item) => item.category.id === category.id)
-                .map((item) => {
-                  const count = entry.counts[item.id] ?? 0;
-                  return (
-                    <TrackerCard item={item} count={count} onIncrement={() => onIncrement(item.id)} onEdit={() => setEditor({ kind: "tracker", category, value: item })} />
-                  );
-                })}
-              <button className={styles.newTrackerButton} onClick={() => setEditor({ kind: "tracker", category })}>＋ neuer Unterpunkt</button>
-            </div>}
+            {openCategories[category.id] && (
+              <div className={styles.trackerGrid}>
+                {items
+                  .filter((item) => item.category.id === category.id)
+                  .map((item) => {
+                    const count = entry.counts[item.id] ?? 0;
+                    return (
+                      <TrackerCard
+                        item={item}
+                        count={count}
+                        onIncrement={() => onIncrement(item.id)}
+                        onEdit={() =>
+                          setEditor({ kind: "tracker", category, value: item })
+                        }
+                      />
+                    );
+                  })}
+                <button
+                  className={styles.newTrackerButton}
+                  onClick={() => setEditor({ kind: "tracker", category })}
+                >
+                  ＋ neuer Unterpunkt
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </section>
@@ -175,8 +209,14 @@ export function EntryPage({
             onSaveTracker(editor.category.id, tracker);
             setEditor(null);
           }}
-          count={editor.value ? entry.counts[editor.value.id] ?? 0 : undefined}
-          onCountSave={editor.value ? (count) => onSetCount(editor.value!.id, count) : undefined}
+          count={
+            editor.value ? (entry.counts[editor.value.id] ?? 0) : undefined
+          }
+          onCountSave={
+            editor.value
+              ? (count) => onSetCount(editor.value!.id, count)
+              : undefined
+          }
           onDelete={
             editor.value
               ? () => {

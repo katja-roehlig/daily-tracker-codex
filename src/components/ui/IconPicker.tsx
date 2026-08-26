@@ -1,5 +1,5 @@
 import { iconCatalog } from "../../icons/catalog";
-import styles from "../../styles/App.module.css";
+import styles from "./IconPicker.module.css";
 export function IconPicker({
   value,
   onChange,

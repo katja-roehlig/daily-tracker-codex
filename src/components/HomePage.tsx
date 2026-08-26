@@ -1,6 +1,6 @@
 import type { Progress, TrackerWithCategory } from "../types";
 import { tint } from "../utils/color";
-import styles from "../styles/App.module.css";
+import styles from "./HomePage.module.css";
 export function HomePage({
   quote,
   items,

@@ -1,4 +1,4 @@
-import styles from "../styles/App.module.css";
+import styles from "./Navigation.module.css";
 export type Page = "home" | "entry" | "calendar" | "evaluation";
 const links: Array<[Page, string, string]> = [
   ["home", "Übersicht", "⌂"],

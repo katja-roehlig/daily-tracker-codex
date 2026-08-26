@@ -9,7 +9,7 @@ import {
   weekStart,
 } from "../utils/date";
 import { tint } from "../utils/color";
-import styles from "../styles/App.module.css";
+import styles from "./EvaluationPage.module.css";
 type Period = "week" | "month";
 export function EvaluationPage({
   data,

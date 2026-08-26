@@ -1,6 +1,6 @@
-import { useState, type ReactNode } from 'react';
-import { Navigation, type Page } from '../Navigation';
-import styles from '../../styles/App.module.css';
+import { useState, type ReactNode } from "react";
+import { Navigation, type Page } from "../Navigation";
+import styles from "./AppShell.module.css";
 
 interface AppShellProps {
   page: Page;
@@ -24,7 +24,7 @@ export function AppShell({ page, onPageChange, children }: AppShellProps) {
         <button
           className={styles.menuButton}
           type="button"
-          aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+          aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
@@ -43,7 +43,9 @@ export function AppShell({ page, onPageChange, children }: AppShellProps) {
 
       <main className={styles.main}>{children}</main>
 
-      <div className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ''}`}>
+      <div
+        className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ""}`}
+      >
         <Navigation page={page} setPage={navigate} />
       </div>
     </div>

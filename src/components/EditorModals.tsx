@@ -3,7 +3,7 @@ import { IconPicker } from "./ui/IconPicker";
 import { Modal } from "./ui/Modal";
 import type { Category, Mood, Period, Tracker } from "../types";
 import { tint } from "../utils/color";
-import styles from "../styles/App.module.css";
+import styles from "./EditorModals.module.css";
 export function CategoryEditor({
   value,
   onSave,
@@ -98,7 +98,8 @@ export function TrackerEditor({
           target: Math.max(1, Number(form.gamification.target)),
         },
       });
-    if (onCountSave && count !== undefined) onCountSave(Math.max(0, Number(dailyCount)));
+    if (onCountSave && count !== undefined)
+      onCountSave(Math.max(0, Number(dailyCount)));
   };
   return (
     <Modal onClose={onClose}>
@@ -115,7 +116,19 @@ export function TrackerEditor({
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
         </label>
-        {count !== undefined && <label>Heute erfasst<input type="number" min="0" value={dailyCount} onChange={(e) => setDailyCount(Math.max(0, Number(e.target.value) || 0))} /></label>}
+        {count !== undefined && (
+          <label>
+            Heute erfasst
+            <input
+              type="number"
+              min="0"
+              value={dailyCount}
+              onChange={(e) =>
+                setDailyCount(Math.max(0, Number(e.target.value) || 0))
+              }
+            />
+          </label>
+        )}
         <label>
           Farbe
           <input
@@ -336,8 +349,16 @@ export function TrackerManageModal({
             <span>{tracker.icon}</span>
             <b>{tracker.name}</b>
             <div className={styles.rowActions}>
-              <button type="button" onClick={() => onEdit(tracker)} aria-label={`${tracker.name} bearbeiten`}>✎</button>
-              <button type="button" onClick={() => onDelete(tracker.id)}>Löschen</button>
+              <button
+                type="button"
+                onClick={() => onEdit(tracker)}
+                aria-label={`${tracker.name} bearbeiten`}
+              >
+                ✎
+              </button>
+              <button type="button" onClick={() => onDelete(tracker.id)}>
+                Löschen
+              </button>
             </div>
           </div>
         ))}
