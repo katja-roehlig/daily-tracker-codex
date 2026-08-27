@@ -20,7 +20,7 @@ export function HomePage({
       <header className={styles.top}>
         <div>
           <p className={styles.eyebrow}>Dein täglicher Begleiter</p>
-          <h1>Übersicht</h1>
+          <h2>Übersicht</h2>
         </div>
         <button className={styles.avatar}>M</button>
       </header>
@@ -34,7 +34,7 @@ export function HomePage({
       </section>
       <section className={styles.sectionHead}>
         <div>
-          <h2>Deine Ziele</h2>
+          <h3>Deine Ziele</h3>
           <p>Ein kleiner Schritt jeden Tag.</p>
         </div>
         <button className={styles.linkBtn} onClick={onEntry}>
@@ -80,7 +80,7 @@ export function HomePage({
       )}
       <section className={styles.quick}>
         <div>
-          <h2>Direkt loslegen</h2>
+          <h3>Direkt loslegen</h3>
           <p>Was möchtest du heute festhalten?</p>
         </div>
         <div className={styles.quickActions}>

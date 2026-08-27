@@ -54,7 +54,7 @@
   margin: 4px 0 18px;
 }
 
-.monthControl h2 {
+.monthControl h3 {
   text-transform: capitalize;
   font-size: 19px;
   text-align: center;
@@ -98,7 +98,12 @@
 
 .insight {
   padding: 18px;
-  background: linear-gradient(115deg, var(--insight-start), var(--insight-mid) 60%, var(--insight-end));
+  background: linear-gradient(
+    115deg,
+    var(--insight-start),
+    var(--insight-mid) 60%,
+    var(--insight-end)
+  );
   border-radius: 16px;
   display: flex;
   gap: 16px;
@@ -110,7 +115,7 @@
   font-size: 29px;
 }
 
-.insight h2 {
+.insight h3 {
   font-size: 18px;
 }
 
@@ -211,7 +216,7 @@
   font-size: 14px;
 }
 
-.calendarHeader h1 {
+.calendarHeader h2 {
   font-size: clamp(28px, 8vw, 34px);
 }
 
@@ -230,90 +235,87 @@
   font-size: 16px;
 }
 
-.evalCard h2 {
+.evalCard h3 {
   font-size: 21px;
 }
 
-@media (width >= 761px) {
+@media (width >= 768px) {
   .insight > span {
     font-size: 35px;
   }
-}
-
-@media (width >= 768px) {
   .calendarHeader {
     gap: 24px;
   }
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .calendarHeader {
     margin-bottom: 30px;
   }
-  
+
   .monthControl > button {
     width: 39px;
     height: 39px;
   }
-  
+
   .monthControl {
     justify-content: center;
     gap: 30px;
     margin: 10px 0 23px;
   }
-  
-  .monthControl h2 {
+
+  .monthControl h3 {
     font-size: 24px;
   }
-  
+
   .insight {
     padding: 23px;
     align-items: center;
     margin: 25px 0;
   }
-  
-  .insight h2 {
+
+  .insight h3 {
     font-size: 20px;
   }
-  
+
   .evalGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
+
   .evalCard {
     padding: 22px;
   }
-  
+
   .evalCard > p {
     font-size: 13px;
   }
-  
+
   .evalRow b {
     font-size: 14px;
   }
-  
+
   .evalRow small {
     font-size: 12px;
   }
-  
+
   .moodResult small {
     font-size: 12px;
   }
-  
+
   .relation {
     padding: 12px;
   }
-  
+
   .relation em {
     font-size: 12px;
   }
-  
+
   .relation small {
     font-size: 12px;
   }
 }
 
-@media (width >= 1081px) {
+@media (width >= 1080px) {
   .evalGrid {
     grid-template-columns: 1fr 1fr;
   }

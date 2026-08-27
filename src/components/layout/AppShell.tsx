@@ -35,8 +35,8 @@ export function AppShell({ children }: AppShellProps) {
       </header>
 
       <aside className={styles.side}>
-        <div className={styles.brand}>
-          <span>◒</span> Mein Tag
+        <div className={styles.logo}>
+          <span>◒</span> <h1>Mein Tag</h1>
         </div>
         <Navigation />
       </aside>

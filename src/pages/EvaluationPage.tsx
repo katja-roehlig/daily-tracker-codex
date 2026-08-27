@@ -61,7 +61,7 @@ export function EvaluationPage() {
       <header className={styles.calendarHeader}>
         <div>
           <p className={styles.eyebrow}>Erkennen & verstehen</p>
-          <h1>Auswertungen</h1>
+          <h2>Auswertungen</h2>
           <p className={styles.intro}>
             Deine Aktivitäten und Stimmung im Zusammenhang.
           </p>
@@ -83,26 +83,26 @@ export function EvaluationPage() {
       </header>
       <div className={styles.monthControl}>
         <button onClick={() => move(-1)}>←</button>
-        <h2>
+        <h3>
           {period === "week"
             ? `Woche ab ${fromKey(days[0]).toLocaleDateString("de-DE", { day: "numeric", month: "short" })}`
             : fromKey(anchor).toLocaleDateString("de-DE", {
                 month: "long",
                 year: "numeric",
               })}
-        </h2>
+        </h3>
         <button onClick={() => move(1)}>→</button>
       </div>
       <section className={styles.insight}>
         <span>💡</span>
         <div>
           <p className={styles.eyebrow}>Dein Muster</p>
-          <h2>{insight}</h2>
+          <h3>{insight}</h3>
         </div>
       </section>
       <div className={styles.evalGrid}>
         <section className={styles.evalCard}>
-          <h2>Aktivitäten</h2>
+          <h3>Aktivitäten</h3>
           <p>{activeDays.length} aktive Tage im gewählten Zeitraum</p>
           {byTracker.length ? (
             byTracker.map((item) => (
@@ -134,7 +134,7 @@ export function EvaluationPage() {
           )}
         </section>
         <section className={styles.evalCard}>
-          <h2>Stimmung</h2>
+          <h3>Stimmung</h3>
           <p>So hast du dich im Zeitraum gefühlt</p>
           {moodCounts.length ? (
             moodCounts.map(({ mood, count }) => (
@@ -154,7 +154,7 @@ export function EvaluationPage() {
         </section>
       </div>
       <section className={styles.evalCard}>
-        <h2>Aktivität & Stimmung</h2>
+        <h3>Aktivität & Stimmung</h3>
         <p>Welche Stimmung wurde an Tagen mit deinen Trackern erfasst?</p>
         <div className={styles.relations}>
           {byTracker.map((item) => {

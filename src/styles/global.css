@@ -113,23 +113,24 @@ select {
 button {
   cursor: pointer;
 }
+
+p {
+  margin: 0;
+}
+h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.08;
+}
+h3 {
+  font-size: 20px;
+}
 h1,
 h2,
 h3,
-p {
-  margin: 0;
-  h1 {
-    font-size: clamp(30px, 4vw, 43px);
-    line-height: 1.08;
-  }
-  h2 {
-    font-size: 25px;
-  }
-}
-h1,
-h2 {
+h4 {
   font-family: Nunito, system-ui, sans-serif;
   font-weight: 800;
+  margin: 0;
 }
 
 button {

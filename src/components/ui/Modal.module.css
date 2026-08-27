@@ -38,7 +38,7 @@
   margin: auto;
 }
 
-.modal h2 {
+.modal h3 {
   font-size: 24px;
   margin-bottom: 4px;
 }
@@ -79,21 +79,21 @@
   min-height: 40px;
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .modalWrap {
     padding: 20px;
   }
-  
+
   .modal {
     border-radius: 16px;
     padding: 30px;
     width: min(480px, 100%);
   }
-  
-  .modal h2 {
+
+  .modal h3 {
     font-size: 27px;
   }
-  
+
   .modal label {
     font-size: 13px;
   }

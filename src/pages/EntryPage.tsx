@@ -25,6 +25,7 @@ export function EntryPage({
   date: string;
   onDate: (date: string) => void;
 }) {
+  const [isEdithMode, setIsEdithMode] = useState(false);
   const {
     data,
     items,
@@ -53,33 +54,51 @@ export function EntryPage({
   return (
     <>
       <header className={styles.entryHeader}>
-        <button onClick={() => onDate(addDays(date, -1))}>←</button>
-        <div>
-          <p className={styles.eyebrow}>Tagesansicht</p>
-          <h1>{formatDate(date)}</h1>
+        <p className={styles.eyebrow}>Tagesansicht</p>
+
+        <div className={styles.dateClicker}>
+          <button onClick={() => onDate(addDays(date, -1))}>←</button>
+          <h2>{formatDate(date)}</h2>
+          <button onClick={() => onDate(addDays(date, 1))}>→</button>
         </div>
-        <button onClick={() => onDate(addDays(date, 1))}>→</button>
+        <button
+          className={styles.editModeToggle}
+          type="button"
+          aria-label={
+            isEdithMode
+              ? "Bearbeiten-Modus schließen"
+              : "Bearbeiten-Modus öffnen"
+          }
+          aria-pressed={isEdithMode}
+          onClick={() => setIsEdithMode((open) => !open)}
+        >
+          {isEdithMode ? "×" : "✎"}
+        </button>
       </header>
       <section>
         <div className={styles.sectionHead}>
           <div>
-            <h2>Wie geht es dir?</h2>
+            <h3>Wie geht es dir?</h3>
             <Tooltip text="Wähle eine Stimmung für diesen Tag." />
           </div>
           <div className={styles.sectionActions}>
-            <button
-              className={styles.editMoodCatalog}
-              aria-label="Stimmungen löschen"
-              onClick={() => setEditor({ kind: "mood-delete" })}
-            >
-              ✎
-            </button>
-            <button
-              className={styles.roundAdd}
-              onClick={() => setEditor({ kind: "mood" })}
-            >
-              ＋
-            </button>
+            {isEdithMode && (
+              <>
+                <button
+                  className={styles.editMoodCatalog}
+                  aria-label="Stimmungen löschen"
+                  onClick={() => setEditor({ kind: "mood-delete" })}
+                >
+                  ✎
+                </button>
+                <button
+                  className={styles.roundAdd}
+                  onClick={() => setEditor({ kind: "mood" })}
+                >
+                  ＋
+                </button>
+              </>
+            )}
           </div>
         </div>
         <div className={styles.moods}>
@@ -93,7 +112,9 @@ export function EntryPage({
                   background: tint(mood.color),
                 } as React.CSSProperties
               }
-              onClick={() => toggleMood(date, mood.id)}
+              onClick={() => {
+                if (!isEdithMode) toggleMood(date, mood.id);
+              }}
             >
               <span>{mood.icon}</span>
               {mood.label}
@@ -104,15 +125,17 @@ export function EntryPage({
       <section className={styles.trackSection}>
         <div className={styles.sectionHead}>
           <div>
-            <h2>Deine Tracker</h2>
+            <h3>Deine Tracker</h3>
             <Tooltip text="Tippe zum Erfassen. Mehrfaches Tippen erhöht den Zähler. Lange drücken öffnet die Bearbeitung." />
           </div>
-          <button
-            className={styles.roundAdd}
-            onClick={() => setEditor({ kind: "category" })}
-          >
-            ＋
-          </button>
+          {isEdithMode && (
+            <button
+              className={styles.roundAdd}
+              onClick={() => setEditor({ kind: "category" })}
+            >
+              ＋
+            </button>
+          )}
         </div>
         {categories.map((category) => (
           <div className={styles.categoryCard} key={category.id}>
@@ -133,17 +156,19 @@ export function EntryPage({
                 <span className={styles.accordionChevron}>
                   {openCategories[category.id] ? "⌄" : "›"}
                 </span>
-                <h3>{category.name}</h3>
+                <h4>{category.name}</h4>
               </button>
-              <button
-                className={styles.editMini}
-                aria-label={`${category.name} bearbeiten`}
-                onClick={() =>
-                  setEditor({ kind: "category", edithData: category })
-                }
-              >
-                ✎
-              </button>
+              {isEdithMode && (
+                <button
+                  className={styles.editMini}
+                  aria-label={`${category.name} bearbeiten`}
+                  onClick={() =>
+                    setEditor({ kind: "category", edithData: category })
+                  }
+                >
+                  ✎
+                </button>
+              )}
             </div>
             {openCategories[category.id] && (
               <div className={styles.trackerGrid}>
@@ -153,6 +178,7 @@ export function EntryPage({
                     const count = entry.counts[item.id] ?? 0;
                     return (
                       <TrackerCard
+                        key={item.id}
                         item={item}
                         count={count}
                         onIncrement={() => increment(date, item.id)}
@@ -163,15 +189,18 @@ export function EntryPage({
                             edithData: item,
                           })
                         }
+                        isEdithMode={isEdithMode}
                       />
                     );
                   })}
-                <button
-                  className={styles.newTrackerButton}
-                  onClick={() => setEditor({ kind: "tracker", category })}
-                >
-                  ＋ neuer Unterpunkt
-                </button>
+                {isEdithMode && (
+                  <button
+                    className={styles.newTrackerButton}
+                    onClick={() => setEditor({ kind: "tracker", category })}
+                  >
+                    ＋ neuer Unterpunkt
+                  </button>
+                )}
               </div>
             )}
           </div>

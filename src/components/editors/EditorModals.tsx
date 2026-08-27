@@ -28,7 +28,7 @@ export function CategoryEditor({
         <p className={styles.eyebrow}>
           {value ? "Kategorie bearbeiten" : "Neue Kategorie"}
         </p>
-        <h2>Deine Kategorie</h2>
+        <h3>Deine Kategorie</h3>
         <label>
           Name
           <input
@@ -107,7 +107,7 @@ export function TrackerEditor({
         <p className={styles.eyebrow}>
           {value ? "Tracker bearbeiten" : "Neuer Unterpunkt"}
         </p>
-        <h2>Was möchtest du tracken?</h2>
+        <h3>Was möchtest du tracken?</h3>
         <label>
           Name
           <input
@@ -243,7 +243,7 @@ export function MoodEditor({
         <p className={styles.eyebrow}>
           {value ? "Stimmung bearbeiten" : "Neue Stimmung"}
         </p>
-        <h2>Wie fühlt es sich an?</h2>
+        <h3>Wie fühlt es sich an?</h3>
         <label>
           Bezeichnung
           <input
@@ -295,7 +295,7 @@ export function MoodDeleteModal({
   return (
     <Modal onClose={onClose}>
       <p className={styles.eyebrow}>Stimmungskatalog</p>
-      <h2>Stimmungen löschen</h2>
+      <h3>Stimmungen löschen</h3>
       <p className={styles.modalHint}>
         Entferne Stimmungen, die du nicht mehr verwendest.
       </p>
@@ -337,7 +337,7 @@ export function TrackerManageModal({
   return (
     <Modal onClose={onClose}>
       <p className={styles.eyebrow}>Kategorie</p>
-      <h2>{category.name}</h2>
+      <h3>{category.name}</h3>
       <p className={styles.modalHint}>Unterpunkte bearbeiten oder löschen.</p>
       <div className={styles.moodDeleteList}>
         {category.items.map((tracker) => (

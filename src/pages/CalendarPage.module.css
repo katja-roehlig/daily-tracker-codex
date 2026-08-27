@@ -54,7 +54,7 @@
   margin: 4px 0 18px;
 }
 
-.monthControl h2 {
+.monthControl h3 {
   text-transform: capitalize;
   font-size: 19px;
   text-align: center;
@@ -237,7 +237,7 @@
   max-height: none;
 }
 
-.calendarHeader h1 {
+.calendarHeader h2 {
   font-size: clamp(28px, 8vw, 34px);
 }
 
@@ -269,7 +269,7 @@
   padding: 4px 2px;
 }
 
-.detail h2 {
+.detail h3 {
   font-size: 21px;
 }
 
@@ -295,172 +295,167 @@
   display: none;
 }
 
-@media (width >= 381px) {
+@media (width >= 390px) {
   .calendarEvents span {
     font-size: 18px;
   }
-  
+
   .calendarEvents small {
     font-size: 12px;
   }
-  
+
   .calendar .day {
     min-height: 70px;
     padding: 4px 2px;
   }
-  
+
   .calendar .day:nth-child(2n) {
     min-height: 70px;
   }
-  
+
   .calendarDots {
     grid-template-columns: repeat(4, 7px);
     gap: 3px;
     margin-top: 9px;
   }
-  
+
   .calendarDots i {
     width: 7px;
     height: 7px;
   }
-}
 
-@media (width >= 391px) {
   .day {
     min-height: 92px;
   }
-  
+
   .dayMood {
     display: grid;
   }
 }
 
-@media (width >= 761px) {
+@media (width >= 768px) {
   .weekdays span {
     padding-bottom: 8px;
   }
-  
+
   .day {
     min-height: 112px;
     padding: 6px;
   }
-  
+
   .dayMood {
     right: 7px;
     top: 7px;
   }
-  
+
   .calendarEvents b {
     margin-left: 0;
   }
-}
-
-@media (width >= 768px) {
   .calendarHeader {
     gap: 24px;
   }
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .calendarHeader {
     margin-bottom: 30px;
   }
-  
+
   .monthControl > button {
     width: 39px;
     height: 39px;
   }
-  
+
   .monthControl {
     justify-content: center;
     gap: 30px;
     margin: 10px 0 23px;
   }
-  
-  .monthControl h2 {
+
+  .monthControl h3 {
     font-size: 24px;
   }
-  
+
   .weekdays {
     grid-template-columns: repeat(7, 1fr);
   }
-  
+
   .calendar {
     grid-template-columns: repeat(7, 1fr);
     border-radius: 12px;
   }
-  
+
   .weekdays span {
     font-size: 12px;
   }
-  
+
   .weekCalendar {
     grid-template-columns: repeat(7, 1fr);
   }
-  
+
   .dayMood {
     width: 25px;
     height: 25px;
     font-size: 14px;
   }
-  
+
   .weekCalendar .day {
     min-height: 150px;
   }
-  
+
   .detail {
     margin-top: 26px;
     padding: 23px;
   }
-  
+
   .eventList {
     display: flex;
   }
-  
+
   .eventList span {
     font-size: 13px;
   }
-  
+
   .calendarEvents {
     display: grid;
     gap: 3px;
     margin-top: 7px;
   }
-  
+
   .calendarEvents span {
     padding: 3px 4px;
     font-size: 14px;
     justify-content: center;
   }
-  
+
   .calendarEvents small {
     font-size: 10px;
     display: none;
   }
-  
+
   .calendarEvents b {
     font-size: 10px;
   }
-  
+
   .moreEvents {
     font-size: 10px;
   }
-  
+
   .calendarDots {
     display: none;
   }
-  
+
   .calendar .day {
     min-height: 132px;
   }
 }
 
-@media (width >= 1081px) {
+@media (width >= 1080px) {
   .day {
     min-height: 126px;
     padding: 8px;
   }
-  
+
   .calendarEvents b {
     margin-left: auto;
   }
@@ -470,7 +465,7 @@
   .day {
     min-height: 142px;
   }
-  
+
   .calendarEvents small {
     font-size: 11px;
   }

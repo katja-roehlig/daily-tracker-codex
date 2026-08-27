@@ -43,7 +43,7 @@ export function CalendarPage({
       <header className={styles.calendarHeader}>
         <div>
           <p className={styles.eyebrow}>Rückblick</p>
-          <h1>Kalender</h1>
+          <h2>Kalender</h2>
         </div>
         <div className={styles.switch}>
           <button
@@ -62,12 +62,12 @@ export function CalendarPage({
       </header>
       <div className={styles.monthControl}>
         <button onClick={() => move(-1)}>←</button>
-        <h2>
+        <h3>
           {fromKey(month).toLocaleDateString("de-DE", {
             month: "long",
             year: "numeric",
           })}
-        </h2>
+        </h3>
         <button onClick={() => move(1)}>→</button>
       </div>
       {view === "month" && (
@@ -134,7 +134,7 @@ export function CalendarPage({
       <section className={styles.detail}>
         <div>
           <p className={styles.eyebrow}>Details</p>
-          <h2>{formatDate(selected)}</h2>
+          <h3>{formatDate(selected)}</h3>
         </div>
         {selectedMood && (
           <div

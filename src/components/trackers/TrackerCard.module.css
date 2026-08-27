@@ -104,14 +104,14 @@
   display: none;
 }
 
-@media (width >= 761px) {
+@media (width >= 768px) {
   .tracker mark {
     right: 10px;
     top: 10px;
   }
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .tracker {
     min-height: 100px;
     padding: 14px;

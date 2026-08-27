@@ -8,11 +8,13 @@ export function TrackerCard({
   count,
   onIncrement,
   onEdit,
+  isEdithMode,
 }: {
   item: TrackerWithCategory;
   count: number;
   onIncrement: () => void;
   onEdit: () => void;
+  isEdithMode: boolean;
 }) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const longPressed = useRef(false);
@@ -25,10 +27,12 @@ export function TrackerCard({
   const startPress = () => {
     longPressed.current = false;
     clearTimer();
-    timer.current = setTimeout(() => {
-      longPressed.current = true;
-      onEdit();
-    }, 550);
+    if (isEdithMode) {
+      timer.current = setTimeout(() => {
+        longPressed.current = true;
+        onEdit();
+      }, 550);
+    }
   };
   const endPress = () => clearTimer();
   return (
@@ -39,13 +43,14 @@ export function TrackerCard({
       onPointerLeave={endPress}
       onContextMenu={(event) => {
         event.preventDefault();
-        onEdit();
+        if (isEdithMode) onEdit();
       }}
     >
       <button
         className={styles.tracker}
         onClick={() => {
-          if (!longPressed.current) onIncrement();
+          if (isEdithMode) onEdit();
+          else if (!longPressed.current) onIncrement();
         }}
         style={
           {
@@ -53,7 +58,9 @@ export function TrackerCard({
             "--soft": tint(item.color),
           } as React.CSSProperties
         }
-        title="Tippen: Anzahl erhöhen · lange drücken: bearbeiten"
+        title={
+          isEdithMode ? "Lange drücken: bearbeiten" : "Tippen: Anzahl erhöhen"
+        }
       >
         <span>{item.icon}</span>
         <b style={{ color: item.color }}>{item.name}</b>

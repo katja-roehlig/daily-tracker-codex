@@ -81,7 +81,8 @@
 }
 
 .hero blockquote {
-  font: 600 25px/1.32 Fraunces,
+  font:
+    600 25px/1.32 Fraunces,
     serif;
   max-width: none;
   margin: 0 0 13px;
@@ -201,11 +202,7 @@
   margin-top: 2px;
 }
 
-.sectionHead h2 {
-  font-size: 22px;
-}
-
-.top h1 {
+.top h2 {
   font-size: clamp(28px, 8vw, 34px);
 }
 
@@ -213,132 +210,127 @@
   min-width: 0;
 }
 
-@media (width >= 381px) {
+@media (width >= 390px) {
   .hero {
     padding: 24px 20px;
   }
-  
+
   .hero blockquote {
     font-size: 21px;
   }
-}
 
-@media (width >= 391px) {
   .heroIcon {
     font-size: 60px;
   }
 }
 
-@media (width >= 761px) {
+@media (width >= 768px) {
   .hero {
     border-radius: 18px;
   }
-  
+
   .heroIcon {
     font-size: 76px;
     align-self: center;
     margin-right: 0;
   }
-  
+
   .goalCard:last-child:nth-child(odd) {
     grid-column: span 2;
   }
-}
-
-@media (width >= 768px) {
   .quick {
     align-items: flex-start;
     gap: 24px;
   }
-  
+
   .top {
     gap: 24px;
   }
-  
+
   .quickActions {
     flex: 1;
   }
-  
+
   .quickActions button {
     flex: 1;
   }
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .sectionHead {
     align-items: end;
     margin: 42px 0 18px;
   }
-  
+
   .top {
     margin-bottom: 30px;
   }
-  
+
   .avatar {
     width: 39px;
     height: 39px;
   }
-  
+
   .hero {
     padding: 30px 34px;
     display: flex;
     min-height: 180px;
   }
-  
+
   .hero blockquote {
     max-width: 675px;
   }
-  
+
   .goals {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
+
   .goalBody small {
     font-size: 12px;
   }
-  
+
   .goalBody em {
     font-size: 12px;
   }
-  
+
   .goalBody span {
     font-size: 12px;
   }
-  
+
   .quick {
     margin-top: 48px;
     padding-top: 34px;
     display: flex;
   }
-  
+
   .quickActions {
     display: flex;
     gap: 12px;
   }
-  
+
   .quickActions button {
     padding: 14px 20px;
   }
 }
 
-@media (width >= 1081px) {
+@media (width >= 1080px) {
   .hero {
     padding: 32px 38px;
   }
-  
+
   .heroIcon {
     font-size: 100px;
     margin-right: 28px;
   }
-  
+
   .goals {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .quick {
     align-items: center;
   }
-  
+
   .quickActions button {
     min-height: 64px;
   }
