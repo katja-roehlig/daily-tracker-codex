@@ -118,13 +118,13 @@ h2,
 h3,
 p {
   margin: 0;
-h1 {
-  font-size: clamp(30px, 4vw, 43px);
-  line-height: 1.08;
-}
-h2 {
-  font-size: 25px;
-}
+  h1 {
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.08;
+  }
+  h2 {
+    font-size: 25px;
+  }
 }
 h1,
 h2 {
