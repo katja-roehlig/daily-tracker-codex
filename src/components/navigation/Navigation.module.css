@@ -66,7 +66,7 @@
   }
 }
 
-@media (width >= 768px) {
+@media (width >= 900px) {
   .nav {
     gap: 7px;
   }

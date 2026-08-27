@@ -7,12 +7,14 @@ export function TrackerCard({
   item,
   count,
   onIncrement,
+  onDecrement,
   onEdit,
   isEdithMode,
 }: {
   item: TrackerWithCategory;
   count: number;
   onIncrement: () => void;
+  onDecrement: () => void;
   onEdit: () => void;
   isEdithMode: boolean;
 }) {
@@ -46,11 +48,20 @@ export function TrackerCard({
         if (isEdithMode) onEdit();
       }}
     >
-      <button
+      <div
         className={styles.tracker}
+        role="button"
+        tabIndex={0}
         onClick={() => {
           if (isEdithMode) onEdit();
           else if (!longPressed.current) onIncrement();
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            if (isEdithMode) onEdit();
+            else onIncrement();
+          }
         }}
         style={
           {
@@ -66,9 +77,32 @@ export function TrackerCard({
         <b style={{ color: item.color }}>{item.name}</b>
         <span className={styles.countBadge}>
           <strong>{count}</strong>
-          <small>＋</small>
         </span>
-      </button>
+        {!isEdithMode && (
+          <div className={styles.countControls}>
+            <button
+              type="button"
+              aria-label={`${item.name} verringern`}
+              onClick={(event) => {
+                event.stopPropagation();
+                onDecrement();
+              }}
+            >
+              −
+            </button>
+            <button
+              type="button"
+              aria-label={`${item.name} erhöhen`}
+              onClick={(event) => {
+                event.stopPropagation();
+                onIncrement();
+              }}
+            >
+              ＋
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

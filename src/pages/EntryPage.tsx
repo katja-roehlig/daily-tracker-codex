@@ -31,7 +31,9 @@ export function EntryPage({
     items,
     getEntry,
     increment,
+    decrement,
     setCount,
+    setNote,
     toggleMood,
     createCategory,
     updateCategory,
@@ -77,7 +79,7 @@ export function EntryPage({
       </header>
       <section>
         <div className={styles.sectionHead}>
-          <div>
+          <div className={styles.tip}>
             <h3>Wie geht es dir?</h3>
             <Tooltip text="Wähle eine Stimmung für diesen Tag." />
           </div>
@@ -122,12 +124,23 @@ export function EntryPage({
           ))}
         </div>
       </section>
+      <section className={`${styles.sectionHead} ${styles.noteField}`}>
+        <label id="note" className="visually-hidden">
+          Platz für Notizen
+        </label>
+        <h3>Was war heute wichtig?</h3>
+        <textarea
+          value={entry.note ?? ""}
+          onChange={(event) => setNote(date, event.target.value)}
+          placeholder="Schreib etwas."
+          id="note"
+          rows={3}
+        />
+      </section>
       <section className={styles.trackSection}>
         <div className={styles.sectionHead}>
-          <div>
-            <h3>Deine Tracker</h3>
-            <Tooltip text="Tippe zum Erfassen. Mehrfaches Tippen erhöht den Zähler. Lange drücken öffnet die Bearbeitung." />
-          </div>
+          <h3>Deine Aktivitäten</h3>
+
           {isEdithMode && (
             <button
               className={styles.roundAdd}
@@ -153,10 +166,10 @@ export function EntryPage({
                 }
                 aria-expanded={Boolean(openCategories[category.id])}
               >
+                <h4>{category.name}</h4>
                 <span className={styles.accordionChevron}>
                   {openCategories[category.id] ? "⌄" : "›"}
                 </span>
-                <h4>{category.name}</h4>
               </button>
               {isEdithMode && (
                 <button
@@ -182,6 +195,7 @@ export function EntryPage({
                         item={item}
                         count={count}
                         onIncrement={() => increment(date, item.id)}
+                        onDecrement={() => decrement(date, item.id)}
                         onEdit={() =>
                           setEditor({
                             kind: "tracker",

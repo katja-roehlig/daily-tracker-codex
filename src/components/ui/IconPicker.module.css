@@ -25,12 +25,12 @@
   background: var(--icon-selected-bg);
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .iconPicker {
     grid-template-columns: repeat(10, 1fr);
     max-height: 195px;
   }
-  
+
   .iconPicker button {
     font-size: 20px;
   }

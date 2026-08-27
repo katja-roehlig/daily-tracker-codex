@@ -20,7 +20,6 @@
 .logo span {
   font-size: 30px;
   color: var(--brand-accent);
-  border: 2px solid coral;
 }
 
 .main {
@@ -147,11 +146,9 @@
   }
 }
 
-@media (width >= 768px) {
+@media (width >= 900px) {
   .side {
     display: block;
-    width: 240px;
-    padding: 34px 18px;
   }
 
   .brand {
@@ -161,9 +158,7 @@
   .main {
     margin-left: 240px;
   }
-}
 
-@media (width >= 900px) {
   .main {
     padding: 40px clamp(28px, 5vw, 52px) 60px;
   }

@@ -59,11 +59,25 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const decrement = (date: string, id: string) => {
+    const entry = getEntry(date);
+    updateEntry(date, {
+      counts: {
+        ...entry.counts,
+        [id]: Math.max(0, (entry.counts[id] ?? 0) - 1),
+      },
+    });
+  };
+
   const setCount = (date: string, id: string, value: number) => {
     const entry = getEntry(date);
     updateEntry(date, {
       counts: { ...entry.counts, [id]: Math.max(0, value) },
     });
+  };
+
+  const setNote = (date: string, note: string) => {
+    updateEntry(date, { note });
   };
 
   const toggleMood = (date: string, id: string) => {
@@ -211,7 +225,9 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
       items,
       getEntry,
       increment,
+      decrement,
       setCount,
+      setNote,
       toggleMood,
       createCategory,
       updateCategory,

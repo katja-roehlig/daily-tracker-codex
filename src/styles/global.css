@@ -117,13 +117,7 @@ button {
 p {
   margin: 0;
 }
-h2 {
-  font-size: clamp(30px, 4vw, 43px);
-  line-height: 1.08;
-}
-h3 {
-  font-size: 20px;
-}
+
 h1,
 h2,
 h3,
@@ -132,9 +126,29 @@ h4 {
   font-weight: 800;
   margin: 0;
 }
-
+h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.08;
+}
+h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
 button {
   border: 0;
   background: none;
   color: inherit;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+@media (width >= 900px) {
+  h3 {
+    font-size: 22px;
+  }
 }

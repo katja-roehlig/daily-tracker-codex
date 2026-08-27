@@ -22,7 +22,9 @@ export interface TrackerContextValue {
   items: TrackerWithCategory[];
   getEntry: (date: DateKey) => DayEntry;
   increment: (date: DateKey, id: TrackerId) => void;
+  decrement: (date: DateKey, id: TrackerId) => void;
   setCount: (date: DateKey, id: TrackerId, value: number) => void;
+  setNote: (date: DateKey, note: string) => void;
   toggleMood: (date: DateKey, id: MoodId) => void;
   createCategory: (category: Category) => void;
   updateCategory: (category: Category) => void;

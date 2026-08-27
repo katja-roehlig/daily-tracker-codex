@@ -158,6 +158,9 @@ export function CalendarPage({
             <p>Noch keine Einträge an diesem Tag.</p>
           )}
         </div>
+        {selectedEntry.note && (
+          <p className={styles.dayNote}>{selectedEntry.note}</p>
+        )}
       </section>
     </>
   );

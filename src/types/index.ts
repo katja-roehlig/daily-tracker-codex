@@ -26,6 +26,7 @@ export interface Mood {
 export interface DayEntry {
   counts: Record<string, number>;
   mood: string | null;
+  note?: string;
 }
 export interface TrackerData {
   categories: Category[];
