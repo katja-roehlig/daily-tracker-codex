@@ -7,53 +7,42 @@ import {
 } from "../components/editors/EditorModals";
 import { TrackerCard } from "../components/trackers/TrackerCard";
 import { Tooltip } from "../components/ui/Tooltip";
-import type {
-  Category,
-  DayEntry,
-  Mood,
-  Tracker,
-  TrackerWithCategory,
-} from "../types";
+import type { Category, Tracker } from "../types";
 import { addDays, formatDate } from "../utils/date";
 import { tint } from "../utils/color";
+import { useTracker } from "../app/TrackerProvider";
 import styles from "./EntryPage.module.css";
 type Editor =
-  | { kind: "category"; value?: Category }
-  | { kind: "tracker"; category: Category; value?: Tracker }
+  | { kind: "category"; edithData?: Category }
+  | { kind: "tracker"; category: Category; edithData?: Tracker }
   | { kind: "mood" }
   | { kind: "mood-delete" }
   | null;
 export function EntryPage({
   date,
-  entry,
-  items,
-  moods,
-  onIncrement,
-  onSetCount,
-  onMood,
   onDate,
-  onSaveCategory,
-  onDeleteCategory,
-  onSaveTracker,
-  onDeleteTracker,
-  onSaveMood,
-  onDeleteMood,
 }: {
   date: string;
-  entry: DayEntry;
-  items: TrackerWithCategory[];
-  moods: Mood[];
-  onIncrement: (id: string) => void;
-  onSetCount: (id: string, count: number) => void;
-  onMood: (id: string) => void;
   onDate: (date: string) => void;
-  onSaveCategory: (category: Category) => void;
-  onDeleteCategory: (id: string) => void;
-  onSaveTracker: (categoryId: string, tracker: Tracker) => void;
-  onDeleteTracker: (id: string) => void;
-  onSaveMood: (mood: Mood) => void;
-  onDeleteMood: (id: string) => void;
 }) {
+  const {
+    data,
+    items,
+    getEntry,
+    increment,
+    setCount,
+    toggleMood,
+    createCategory,
+    updateCategory,
+    deleteCategory,
+    createTracker,
+    updateTracker,
+    deleteTracker,
+    createMood,
+    deleteMood,
+  } = useTracker();
+  const entry = getEntry(date);
+  const moods = data.moods;
   const [editor, setEditor] = useState<Editor>(null);
   const categories = [
     ...new Map(items.map((item) => [item.category.id, item.category])).values(),
@@ -104,7 +93,7 @@ export function EntryPage({
                   background: tint(mood.color),
                 } as React.CSSProperties
               }
-              onClick={() => onMood(mood.id)}
+              onClick={() => toggleMood(date, mood.id)}
             >
               <span>{mood.icon}</span>
               {mood.label}
@@ -134,9 +123,9 @@ export function EntryPage({
               <button
                 className={styles.accordionTrigger}
                 onClick={() =>
-                  setOpenCategories((current) => ({
-                    ...current,
-                    [category.id]: !current[category.id],
+                  setOpenCategories((prev) => ({
+                    ...prev,
+                    [category.id]: !prev[category.id],
                   }))
                 }
                 aria-expanded={Boolean(openCategories[category.id])}
@@ -149,7 +138,9 @@ export function EntryPage({
               <button
                 className={styles.editMini}
                 aria-label={`${category.name} bearbeiten`}
-                onClick={() => setEditor({ kind: "category", value: category })}
+                onClick={() =>
+                  setEditor({ kind: "category", edithData: category })
+                }
               >
                 ✎
               </button>
@@ -164,9 +155,13 @@ export function EntryPage({
                       <TrackerCard
                         item={item}
                         count={count}
-                        onIncrement={() => onIncrement(item.id)}
+                        onIncrement={() => increment(date, item.id)}
                         onEdit={() =>
-                          setEditor({ kind: "tracker", category, value: item })
+                          setEditor({
+                            kind: "tracker",
+                            category,
+                            edithData: item,
+                          })
                         }
                       />
                     );
@@ -184,16 +179,20 @@ export function EntryPage({
       </section>
       {editor?.kind === "category" && (
         <CategoryEditor
-          value={editor.value}
+          value={editor.edithData}
           onClose={() => setEditor(null)}
           onSave={(category) => {
-            onSaveCategory(category);
+            if (editor.edithData) {
+              updateCategory(category);
+            } else {
+              createCategory(category);
+            }
             setEditor(null);
           }}
           onDelete={
-            editor.value
+            editor.edithData
               ? () => {
-                  onDeleteCategory(editor.value!.id);
+                  deleteCategory(editor.edithData!.id);
                   setEditor(null);
                 }
               : undefined
@@ -203,24 +202,30 @@ export function EntryPage({
       {editor?.kind === "tracker" && (
         <TrackerEditor
           category={editor.category}
-          value={editor.value}
+          value={editor.edithData}
           onClose={() => setEditor(null)}
           onSave={(tracker) => {
-            onSaveTracker(editor.category.id, tracker);
+            if (editor.edithData) {
+              updateTracker(editor.category.id, tracker);
+            } else {
+              createTracker(editor.category.id, tracker);
+            }
             setEditor(null);
           }}
           count={
-            editor.value ? (entry.counts[editor.value.id] ?? 0) : undefined
+            editor.edithData
+              ? (entry.counts[editor.edithData.id] ?? 0)
+              : undefined
           }
           onCountSave={
-            editor.value
-              ? (count) => onSetCount(editor.value!.id, count)
+            editor.edithData
+              ? (count) => setCount(date, editor.edithData!.id, count)
               : undefined
           }
           onDelete={
-            editor.value
+            editor.edithData
               ? () => {
-                  onDeleteTracker(editor.value!.id);
+                  deleteTracker(editor.edithData!.id);
                   setEditor(null);
                 }
               : undefined
@@ -231,7 +236,7 @@ export function EntryPage({
         <MoodEditor
           onClose={() => setEditor(null)}
           onSave={(mood) => {
-            onSaveMood(mood);
+            createMood(mood);
             setEditor(null);
           }}
         />
@@ -240,7 +245,7 @@ export function EntryPage({
         <MoodDeleteModal
           moods={moods}
           onClose={() => setEditor(null)}
-          onDelete={onDeleteMood}
+          onDelete={deleteMood}
         />
       )}
     </>

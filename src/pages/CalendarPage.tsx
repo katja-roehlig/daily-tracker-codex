@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { TrackerData, TrackerWithCategory } from "../types";
+import { useTracker } from "../app/TrackerProvider";
 import {
   daysOfWeek,
   formatDate,
@@ -11,16 +11,13 @@ import { tint } from "../utils/color";
 import styles from "./CalendarPage.module.css";
 type View = "week" | "month";
 export function CalendarPage({
-  data,
-  items,
   selected,
   onOpenDay,
 }: {
-  data: TrackerData;
-  items: TrackerWithCategory[];
   selected: string;
   onOpenDay: (day: string) => void;
 }) {
+  const { data, items } = useTracker();
   const [month, setMonth] = useState(selected);
   const [view, setView] = useState<View>("month");
   const days =

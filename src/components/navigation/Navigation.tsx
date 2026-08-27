@@ -1,25 +1,26 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Navigation.module.css";
-export type Page = "home" | "entry" | "calendar" | "evaluation";
-const links: Array<[Page, string, string]> = [
-  ["home", "Übersicht", "⌂"],
-  ["entry", "Heute", "＋"],
-  ["calendar", "Kalender", "▦"],
-  ["evaluation", "Auswertung", "◔"],
+const links: Array<[string, string, string]> = [
+  ["/", "Übersicht", "⌂"],
+  ["/eintrag", "Heute", "＋"],
+  ["/kalender", "Kalender", "▦"],
+  ["/auswertung", "Auswertung", "◔"],
 ];
-export function Navigation({
-  page,
-  setPage,
-}: {
-  page: Page;
-  setPage: (page: Page) => void;
-}) {
+export function Navigation() {
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <nav className={styles.nav}>
-      {links.map(([id, label, icon]) => (
+      {links.map(([path, label, icon]) => (
         <button
-          key={id}
-          className={page === id ? styles.active : ""}
-          onClick={() => setPage(id)}
+          key={path}
+          className={
+            location.pathname === path ||
+            (path === "/eintrag" && location.pathname.startsWith("/eintrag/"))
+              ? styles.active
+              : ""
+          }
+          onClick={() => navigate(path)}
         >
           <span>{icon}</span>
           {label}

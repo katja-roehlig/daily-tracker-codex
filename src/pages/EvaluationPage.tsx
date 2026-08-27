@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { Mood, TrackerData, TrackerWithCategory } from "../types";
+import { useTracker } from "../app/TrackerProvider";
 import {
   addDays,
   fromKey,
@@ -11,13 +11,8 @@ import {
 import { tint } from "../utils/color";
 import styles from "./EvaluationPage.module.css";
 type Period = "week" | "month";
-export function EvaluationPage({
-  data,
-  items,
-}: {
-  data: TrackerData;
-  items: TrackerWithCategory[];
-}) {
+export function EvaluationPage() {
+  const { data, items } = useTracker();
   const [period, setPeriod] = useState<Period>("week");
   const [anchor, setAnchor] = useState(todayKey());
   const days = useMemo(

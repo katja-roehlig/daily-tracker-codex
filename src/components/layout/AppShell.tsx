@@ -1,19 +1,19 @@
-import { useState, type ReactNode } from "react";
-import { Navigation, type Page } from "../navigation/Navigation";
+import { useEffect, useState, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
+import { Navigation } from "../navigation/Navigation";
 import styles from "./AppShell.module.css";
 
 interface AppShellProps {
-  page: Page;
-  onPageChange: (page: Page) => void;
   children: ReactNode;
 }
 
-export function AppShell({ page, onPageChange, children }: AppShellProps) {
+export function AppShell({ children }: AppShellProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = (nextPage: Page) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
     setMenuOpen(false);
-    onPageChange(nextPage);
-  };
+  }, [pathname]);
 
   return (
     <div className={styles.app}>
@@ -38,7 +38,7 @@ export function AppShell({ page, onPageChange, children }: AppShellProps) {
         <div className={styles.brand}>
           <span>◒</span> Mein Tag
         </div>
-        <Navigation page={page} setPage={navigate} />
+        <Navigation />
       </aside>
 
       <main className={styles.main}>{children}</main>
@@ -46,7 +46,7 @@ export function AppShell({ page, onPageChange, children }: AppShellProps) {
       <div
         className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ""}`}
       >
-        <Navigation page={page} setPage={navigate} />
+        <Navigation />
       </div>
     </div>
   );

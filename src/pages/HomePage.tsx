@@ -1,22 +1,19 @@
-import type { Progress, TrackerWithCategory } from "../types";
+import { useTracker } from "../app/TrackerProvider";
+import { useTrackerProgress } from "../hooks/useTrackerProgress";
 import { tint } from "../utils/color";
 import styles from "./HomePage.module.css";
 
 export function HomePage({
   quote,
-  items,
-  progress,
-  streak,
   onEntry,
   onCalendar,
 }: {
   quote: readonly string[];
-  items: TrackerWithCategory[];
-  progress: (item: TrackerWithCategory) => Progress | null;
-  streak: (item: TrackerWithCategory) => number;
   onEntry: () => void;
   onCalendar: () => void;
 }) {
+  const { items } = useTracker();
+  const progress = useTrackerProgress();
   const active = items.filter((item) => item.gamification.enabled);
   return (
     <>
