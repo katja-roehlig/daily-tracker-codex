@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import type { TrackerWithCategory } from "../../types";
-import { tint } from "../../utils/color";
 import styles from "./TrackerCard.module.css";
 
 export function TrackerCard({
@@ -66,7 +65,7 @@ export function TrackerCard({
         style={
           {
             "--accent": item.color,
-            "--soft": tint(item.color),
+            "--soft": `color-mix(in srgb, ${item.color} 16%, white)`,
           } as React.CSSProperties
         }
         title={

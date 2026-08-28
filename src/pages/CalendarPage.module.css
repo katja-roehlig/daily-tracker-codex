@@ -1,3 +1,7 @@
+.calendarContainer {
+  padding-inline: 12px;
+  margin-top: 26px;
+}
 .eyebrow {
   font-size: 12px;
   text-transform: uppercase;

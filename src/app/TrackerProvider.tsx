@@ -85,16 +85,6 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
     updateEntry(date, { mood: entry.mood === id ? null : id });
   };
 
-  //   const saveCategory = (newCategory: Category) =>
-  //     setData((prev) => ({
-  //       ...prev,
-  //       categories: prev.categories.some((oldCategory) => oldCategory.id === newCategory.id)
-  //         ? prev.categories.map((oldCategory) =>
-  //             oldCategory.id === newCategory.id ? newCategory : oldCategory,
-  //           )
-  //         : [...prev.categories, newCategory],
-  //     }));
-
   const createCategory = (newCategory: Category) => {
     setData((prev) => {
       const alreadyExists = prev.categories.some(
@@ -126,23 +116,6 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
         (category) => category.id !== deleteId,
       ),
     }));
-
-  //   const saveTracker = (categoryId: string, tracker: Tracker) =>
-  //     setData((prev) => ({
-  //       ...prev,
-  //       categories: prev.categories.map((category) =>
-  //         category.id !== categoryId
-  //           ? category
-  //           : {
-  //               ...category,
-  //               items: category.items.some((value) => value.id === tracker.id)
-  //                 ? category.items.map((value) =>
-  //                     value.id === tracker.id ? tracker : value,
-  //                   )
-  //                 : [...category.items, tracker],
-  //             },
-  //       ),
-  //     }));
 
   const createTracker = (categoryId: string, newTracker: Tracker) => {
     setData((prev) => {
@@ -219,7 +192,7 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
       moods: prev.moods.filter((mood) => mood.id !== id),
     }));
 
-  const value = useMemo<TrackerContextValue>(
+  const infoContainer = useMemo<TrackerContextValue>(
     () => ({
       data,
       items,
@@ -242,7 +215,9 @@ export function TrackerProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <TrackerContext.Provider value={value}>{children}</TrackerContext.Provider>
+    <TrackerContext.Provider value={infoContainer}>
+      {children}
+    </TrackerContext.Provider>
   );
 }
 

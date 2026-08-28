@@ -8,7 +8,6 @@ import {
   todayKey,
   weekStart,
 } from "../utils/date";
-import { tint } from "../utils/color";
 import styles from "./EvaluationPage.module.css";
 type Period = "week" | "month";
 export function EvaluationPage() {
@@ -109,7 +108,9 @@ export function EvaluationPage() {
               <div className={styles.evalRow} key={item.id}>
                 <span
                   className={styles.itemIcon}
-                  style={{ background: tint(item.color) }}
+                  style={{
+                    background: `color-mix(in srgb, ${item.color} 16%, white)`,
+                  }}
                 >
                   {item.icon}
                 </span>
@@ -139,7 +140,11 @@ export function EvaluationPage() {
           {moodCounts.length ? (
             moodCounts.map(({ mood, count }) => (
               <div className={styles.moodResult} key={mood.id}>
-                <span style={{ background: tint(mood.color) }}>
+                <span
+                  style={{
+                    background: `color-mix(in srgb, ${mood.color} 16%, white)`,
+                  }}
+                >
                   {mood.icon}
                 </span>
                 <b>{mood.label}</b>
@@ -176,7 +181,9 @@ export function EvaluationPage() {
                     {linked.map(({ mood, count }) => (
                       <em
                         key={mood.id}
-                        style={{ background: tint(mood.color) }}
+                        style={{
+                          background: `color-mix(in srgb, ${mood.color} 16%, white)`,
+                        }}
                       >
                         {mood.icon} {mood.label} · {count}×
                       </em>

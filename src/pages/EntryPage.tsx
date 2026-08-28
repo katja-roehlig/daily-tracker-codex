@@ -9,7 +9,6 @@ import { TrackerCard } from "../components/trackers/TrackerCard";
 import { Tooltip } from "../components/ui/Tooltip";
 import type { Category, Tracker } from "../types";
 import { addDays, formatDate } from "../utils/date";
-import { tint } from "../utils/color";
 import { useTracker } from "../app/TrackerProvider";
 import styles from "./EntryPage.module.css";
 type Editor =
@@ -111,7 +110,7 @@ export function EntryPage({
               style={
                 {
                   "--mood": mood.color,
-                  background: tint(mood.color),
+                  background: `color-mix(in srgb, ${mood.color} 16%, white)`,
                 } as React.CSSProperties
               }
               onClick={() => {

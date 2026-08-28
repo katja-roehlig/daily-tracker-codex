@@ -2,7 +2,6 @@ import { FormEvent, useState } from "react";
 import { IconPicker } from "../ui/IconPicker";
 import { Modal } from "../ui/Modal";
 import type { Category, Mood, Period, Tracker } from "../../types";
-import { tint } from "../../utils/color";
 import styles from "./EditorModals.module.css";
 export function CategoryEditor({
   value,
@@ -304,7 +303,9 @@ export function MoodDeleteModal({
           <div
             key={mood.id}
             className={styles.moodDeleteItem}
-            style={{ background: tint(mood.color) }}
+            style={{
+              background: `color-mix(in srgb, ${mood.color} 16%, white)`,
+            }}
           >
             <span>{mood.icon}</span>
             <b>{mood.label}</b>
@@ -344,7 +345,9 @@ export function TrackerManageModal({
           <div
             key={tracker.id}
             className={styles.moodDeleteItem}
-            style={{ background: tint(tracker.color) }}
+            style={{
+              background: `color-mix(in srgb, ${tracker.color} 16%, white)`,
+            }}
           >
             <span>{tracker.icon}</span>
             <b>{tracker.name}</b>

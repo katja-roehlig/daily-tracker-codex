@@ -7,7 +7,7 @@ import {
   keyOf,
   monthDays,
 } from "../utils/date";
-import { tint } from "../utils/color";
+
 import styles from "./CalendarPage.module.css";
 type View = "week" | "month";
 export function CalendarPage({
@@ -28,18 +28,21 @@ export function CalendarPage({
           current: true,
           day: fromKey(key).getDate(),
         }));
+
   const move = (amount: number) => {
     const date = fromKey(month);
     date.setMonth(date.getMonth() + amount);
     setMonth(keyOf(date));
   };
+
   const mood = (id: string | null | undefined) =>
     data.moods.find((value) => value.id === id);
+
   const selectedEntry = data.entries[selected] ?? { counts: {}, mood: null };
   const selectedMood = mood(selectedEntry.mood);
   const recorded = items.filter((item) => selectedEntry.counts[item.id]);
   return (
-    <>
+    <div className={styles.calendarContainer}>
       <header className={styles.calendarHeader}>
         <div>
           <p className={styles.eyebrow}>Rückblick</p>
@@ -88,7 +91,11 @@ export function CalendarPage({
               onClick={() => onOpenDay(day.key)}
               className={`${styles.day} ${!day.current ? styles.muted : ""} ${day.key === selected ? styles.daySelected : ""}`}
               style={
-                dayMood ? { background: tint(dayMood.color, 0.76) } : undefined
+                dayMood
+                  ? {
+                      background: `color-mix(in srgb, ${dayMood.color} 24%, white)`,
+                    }
+                  : undefined
               }
             >
               <b>{day.day}</b>
@@ -104,7 +111,10 @@ export function CalendarPage({
                 {events.slice(0, 8).map((item) => (
                   <span
                     key={item.id}
-                    style={{ background: tint(item.color), color: item.color }}
+                    style={{
+                      background: `color-mix(in srgb, ${item.color} 16%, white)`,
+                      color: item.color,
+                    }}
                   >
                     {item.icon}
                     <small> {item.name}</small>
@@ -139,7 +149,9 @@ export function CalendarPage({
         {selectedMood && (
           <div
             className={styles.detailMood}
-            style={{ background: tint(selectedMood.color) }}
+            style={{
+              background: `color-mix(in srgb, ${selectedMood.color} 16%, white)`,
+            }}
           >
             {selectedMood.icon} {selectedMood.label}
           </div>
@@ -149,7 +161,10 @@ export function CalendarPage({
             recorded.map((item) => (
               <span
                 key={item.id}
-                style={{ background: tint(item.color), color: item.color }}
+                style={{
+                  background: `color-mix(in srgb, ${item.color} 16%, white)`,
+                  color: item.color,
+                }}
               >
                 {item.icon} {item.name} <b>× {selectedEntry.counts[item.id]}</b>
               </span>
@@ -162,6 +177,6 @@ export function CalendarPage({
           <p className={styles.dayNote}>{selectedEntry.note}</p>
         )}
       </section>
-    </>
+    </div>
   );
 }

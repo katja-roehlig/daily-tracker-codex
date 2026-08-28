@@ -1,6 +1,5 @@
 import { useTracker } from "../app/TrackerProvider";
 import { useTrackerProgress } from "../hooks/useTrackerProgress";
-import { tint } from "../utils/color";
 import styles from "./HomePage.module.css";
 
 export function HomePage({
@@ -48,7 +47,9 @@ export function HomePage({
             <div className={styles.goalCard} key={item.id}>
               <div
                 className={styles.itemIcon}
-                style={{ background: tint(item.color) }}
+                style={{
+                  background: `color-mix(in srgb, ${item.color} 16%, white)`,
+                }}
               >
                 {item.icon}
               </div>
