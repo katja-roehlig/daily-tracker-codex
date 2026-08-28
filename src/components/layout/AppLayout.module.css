@@ -1,0 +1,208 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+.mobileHeader {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 64px;
+  padding: 10px 12px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--mobile-header-border);
+  backdrop-filter: blur(14px);
+  flex: none;
+}
+
+.mobileBrand {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 0;
+}
+
+.mobileBrand span {
+  color: var(--mobile-brand);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.menuButton {
+  width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  border-radius: 10px;
+  background: var(--mobile-menu-bg);
+  flex: none;
+}
+
+.menuButton i {
+  display: block;
+  width: 21px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sidebar-bg);
+}
+
+.sidebar {
+  display: none;
+  position: static;
+  /* inset: 0 auto 0 0; */
+  width: 240px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 34px 18px;
+  overflow-y: auto;
+  z-index: 10;
+  flex-shrink: 0;
+  /* flex: none; */
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 11px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Fraunces, serif;
+}
+
+.brand span {
+  font-size: 30px;
+  color: var(--brand-accent);
+}
+
+.mobileNav {
+  display: block;
+  position: fixed;
+  bottom: auto;
+  left: 12px;
+  right: 12px;
+  background: var(--card-bg);
+  z-index: 19;
+  padding: 10px;
+  box-shadow: 0 14px 32px var(--mobile-shadow-soft);
+  padding-bottom: calc(6px + env(safe-area-inset-bottom));
+  top: 74px;
+  border: 1px solid var(--mobile-panel-border);
+  border-radius: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s;
+  flex: none;
+}
+
+.mobileNav .nav {
+  display: grid;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.mobileNav .nav button {
+  padding: 10px 12px;
+  font-size: 16px;
+  display: flex;
+  gap: 13px;
+  min-width: 0;
+  min-height: 48px;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--text-dark-green);
+  text-align: left;
+}
+
+.mobileNav .nav button span {
+  font-size: 20px;
+  width: 24px;
+  flex: none;
+}
+
+.mobileNavOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobileNav .nav button.active {
+  color: var(--card-bg);
+}
+
+.main {
+  padding: 26px 12px 44px;
+  flex: 1;
+  overflow: visible;
+}
+
+/* Responsive Breakpoints */
+
+@media (width >= 390px) {
+  .mobileNav .nav button {
+    min-width: 66px;
+  }
+}
+
+@media (width >= 768px) {
+  .mobileNav .nav button {
+    min-width: 66px;
+  }
+}
+
+@media (width >= 900px) {
+  .app {
+    flex-direction: row;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+
+  .mobileNav {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    flex: 1;
+    padding: 40px clamp(28px, 5vw, 52px) 60px;
+    margin-left: 0;
+  }
+}
+
+@media (width >= 1080px) {
+  .main {
+    max-width: 1250px;
+    padding: 48px clamp(25px, 5vw, 78px) 70px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+  }
+}
+
+@media (width >= 1400px) {
+  .main {
+    max-width: 1380px;
+    padding-left: 88px;
+    padding-right: 88px;
+  }
+}

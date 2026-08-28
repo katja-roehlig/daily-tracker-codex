@@ -156,11 +156,9 @@
   }
 
   .main {
-    margin-left: 240px;
-  }
-
-  .main {
     padding: 40px clamp(28px, 5vw, 52px) 60px;
+    margin-left: 240px;
+    width: calc(100% - 240px);
   }
 
   .mobileNav {
@@ -186,7 +184,6 @@
     margin-left: 240px;
     max-width: 1250px;
     padding: 48px clamp(25px, 5vw, 78px) 70px;
-    width: calc(100% - 240px);
   }
 }
 

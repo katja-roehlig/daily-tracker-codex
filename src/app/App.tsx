@@ -10,7 +10,7 @@ import { CalendarPage } from "../pages/CalendarPage";
 import { EntryPage } from "../pages/EntryPage";
 import { HomePage } from "../pages/HomePage";
 import { EvaluationPage } from "../pages/EvaluationPage";
-import { AppShell } from "../components/layout/AppShell";
+import { AppLayout } from "../components/layout/AppLayout";
 import { todayKey } from "../utils/date";
 
 function EntryRoute() {
@@ -38,8 +38,8 @@ export default function App() {
   const navigate = useNavigate();
   const quote = quotes[new Date().getDate() % quotes.length];
   return (
-    <AppShell>
-      <Routes>
+    <Routes>
+      <Route element={<AppLayout />}>
         <Route
           path="/"
           element={
@@ -55,7 +55,7 @@ export default function App() {
         <Route path="/kalender" element={<CalendarRoute />} />
         <Route path="/auswertung" element={<EvaluationPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AppShell>
+      </Route>
+    </Routes>
   );
 }
