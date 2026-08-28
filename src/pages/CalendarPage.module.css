@@ -347,6 +347,10 @@
 }
 
 @media (width >= 768px) {
+  .calendarContainer {
+    padding-inline: 24px;
+  }
+
   .weekdays span {
     padding-bottom: 8px;
   }
@@ -370,6 +374,9 @@
 }
 
 @media (width >= 900px) {
+  .calendarContainer {
+    padding: 0;
+  }
   .calendarHeader {
     margin-bottom: 30px;
   }

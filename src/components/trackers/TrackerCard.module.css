@@ -1,174 +1,140 @@
-.tracker {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 50px;
-  text-align: left;
-  border-radius: 13px;
-  background: var(--soft);
-  padding: 14px;
-  transition: 0.15s;
-  width: 100%;
-  min-width: 0;
-}
-
-.tracker:hover {
-  transform: translateY(-2px);
-}
-
-.tracker b {
-  font-size: 14px;
-  padding-right: 14px;
-}
-
-.tracker mark {
-  position: absolute;
-  right: 7px;
-  top: 7px;
-  background: var(--accent);
-  color: var(--card-bg);
-  border-radius: 20px;
-  padding: 3px 8px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 .trackerWrap {
   position: relative;
   touch-action: manipulation;
   min-width: 0;
+  width: 100%;
 }
 
-.trackerWrap .editTracker {
-  position: absolute;
-  right: 10px;
-  bottom: 9px;
-  color: var(--accent);
-  font-weight: 800;
-  font-size: 16px;
-  padding: 2px 5px;
-  min-width: 36px;
-}
-
-.countBadge {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 4px;
-  margin-left: auto;
-  padding: 3px 6px;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--accent) 18%, var(--card-bg));
-  color: var(--accent);
-  font-size: 13px;
-  white-space: nowrap;
-  flex: none;
-}
-
-.countControls {
+.tracker {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-left: auto;
-  flex: none;
-}
-
-.countControls button {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  min-height: 30px;
-  padding: 0;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--accent) 14%, var(--card-bg));
-  color: var(--accent);
-  font-size: 19px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.countBadge strong {
-  font-size: 14px;
-}
-
-.countBadge small {
-  font-size: 15px;
-  font-weight: 900;
-}
-
-.categoryCard .tracker {
+  justify-content: space-between;
   min-height: 52px;
+  text-align: left;
+  border-radius: 12px;
+  background: var(--soft);
+  padding: 8px clamp(12px, 3vw, 32px) 8px 12px;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+  width: 100%;
+  min-width: 290px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--card-bg));
+}
+
+.trackerEditClickable:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  cursor: pointer;
+}
+
+.metaBlock {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px;
+  gap: 8px;
+  flex: 1;
+  min-width: 55%;
 }
 
-.categoryCard .tracker span {
-  display: inline;
-  margin: 0;
-  font-size: 21px;
+.trackerIcon {
+  flex: none;
+  background-color: #ffffffa7;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
-.categoryCard .tracker b {
+.trackerName {
   font-size: 13px;
-  line-height: 1.25;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 2.2;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.categoryCard .tracker mark {
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-  display: none;
+.countNumber {
+  font-size: 16px;
+  font-weight: 800;
+  text-align: right;
+  width: 30px;
+  display: inline-block;
+  flex: none;
+  padding-right: 4px;
+  color: color-mix(in srgb, var(--accent) 95%, black);
+}
+.iconEditTracker {
+  color: var(--action-dark);
+}
+.controlsBlock {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: clamp(8px, 2.5vw, 24px);
+  flex: 1;
 }
 
-@media (width >= 768px) {
-  .tracker mark {
-    right: 10px;
-    top: 10px;
-  }
+/* Die runden Buttons bekommen die kräftige Tracker-Farbe als Hintergrund */
+.buttonDec,
+.buttonInc {
+  width: 35px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: color-mix(in srgb, var(--accent) 40%, white);
+  color: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease;
+  padding: 0;
+}
+.buttonDec svg,
+.buttonInc svg {
+  stroke: var(--accent);
+  stroke-width: 12px;
+}
+.buttonDec:active,
+.buttonInc:active {
+  transform: scale(0.92);
+  opacity: 0.8;
 }
 
 @media (width >= 900px) {
   .tracker {
-    min-height: 100px;
-    padding: 14px;
+    min-height: 64px;
+    padding: 12px 18px;
   }
 
-  .tracker span {
-    font-size: 25px;
-    margin-bottom: 9px;
+  .metaBlock {
+    width: 45%;
+    gap: 12px;
   }
 
-  .tracker b {
-    font-size: 14px;
-  }
-
-  .trackerWrap .editTracker {
-    right: 6px;
-    bottom: 5px;
-  }
-
-  .categoryCard .tracker {
-    min-height: 54px;
-    gap: 10px;
-    padding: 10px 12px;
-  }
-
-  .categoryCard .tracker span {
+  .trackerIcon {
     font-size: 24px;
   }
 
-  .categoryCard .tracker b {
+  .trackerName {
     font-size: 14px;
   }
 
-  .countControls button {
-    width: 32px;
-    min-height: 32px;
+  .countNumber {
+    font-size: 19px;
+    width: 45px;
+  }
+
+  .controlsBlock {
+    gap: 10px;
+  }
+
+  .buttonDec,
+  .buttonInc {
+    width: 36px;
+    height: 36px;
   }
 }

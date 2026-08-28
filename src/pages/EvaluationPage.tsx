@@ -56,7 +56,7 @@ export function EvaluationPage() {
     setAnchor(keyOf(date));
   };
   return (
-    <>
+    <div className={styles.evaluationContainer}>
       <header className={styles.calendarHeader}>
         <div>
           <p className={styles.eyebrow}>Erkennen & verstehen</p>
@@ -205,6 +205,6 @@ export function EvaluationPage() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

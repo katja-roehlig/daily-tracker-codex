@@ -11,6 +11,16 @@ import type { Category, Tracker } from "../types";
 import { addDays, formatDate } from "../utils/date";
 import { useTracker } from "../app/TrackerProvider";
 import styles from "./EntryPage.module.css";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CaretDownIcon,
+  CaretUpIcon,
+  PencilIcon,
+  PencilLineIcon,
+  PlusIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 type Editor =
   | { kind: "category"; edithData?: Category }
   | { kind: "tracker"; category: Category; edithData?: Tracker }
@@ -58,9 +68,19 @@ export function EntryPage({
         <p className={styles.eyebrow}>Tagesansicht</p>
 
         <div className={styles.dateClicker}>
-          <button onClick={() => onDate(addDays(date, -1))}>←</button>
+          <button
+            onClick={() => onDate(addDays(date, -1))}
+            className="centerElement"
+          >
+            <ArrowLeftIcon size={22} />
+          </button>
           <h2>{formatDate(date)}</h2>
-          <button onClick={() => onDate(addDays(date, 1))}>→</button>
+          <button
+            onClick={() => onDate(addDays(date, 1))}
+            className="centerElement"
+          >
+            <ArrowRightIcon size={22} />
+          </button>
         </div>
         <button
           className={styles.editModeToggle}
@@ -73,30 +93,36 @@ export function EntryPage({
           aria-pressed={isEdithMode}
           onClick={() => setIsEdithMode((open) => !open)}
         >
-          {isEdithMode ? "×" : "✎"}
+          {isEdithMode ? (
+            <XIcon size={22} weight="bold" className={styles.iconX} />
+          ) : (
+            <PencilLineIcon size={22} weight="bold" />
+          )}
         </button>
       </header>
-      <section>
+      <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <div className={styles.tip}>
-            <h3>Wie geht es dir?</h3>
-            <Tooltip text="Wähle eine Stimmung für diesen Tag." />
-          </div>
+          <h3 className={styles.sectionHeading}>Wie geht es dir?</h3>
+
           <div className={styles.sectionActions}>
             {isEdithMode && (
               <>
                 <button
-                  className={styles.editMoodCatalog}
+                  className={styles.actionButton}
                   aria-label="Stimmungen löschen"
                   onClick={() => setEditor({ kind: "mood-delete" })}
                 >
-                  ✎
+                  <PencilLineIcon size={22} />
                 </button>
                 <button
-                  className={styles.roundAdd}
+                  className={styles.actionButton}
                   onClick={() => setEditor({ kind: "mood" })}
                 >
-                  ＋
+                  <PlusIcon
+                    size={18}
+                    weight="bold"
+                    className={styles.iconPlus}
+                  />
                 </button>
               </>
             )}
@@ -117,17 +143,17 @@ export function EntryPage({
                 if (!isEdithMode) toggleMood(date, mood.id);
               }}
             >
-              <span>{mood.icon}</span>
+              <span className={styles.iconMood}>{mood.icon}</span>
               {mood.label}
             </button>
           ))}
         </div>
       </section>
-      <section className={`${styles.sectionHead} ${styles.noteField}`}>
+      <section className={`${styles.noteField} ${styles.section}`}>
         <label id="note" className="visually-hidden">
           Platz für Notizen
         </label>
-        <h3>Was war heute wichtig?</h3>
+        <h3 className={styles.sectionHeading}>Was war heute wichtig?</h3>
         <textarea
           value={entry.note ?? ""}
           onChange={(event) => setNote(date, event.target.value)}
@@ -136,16 +162,16 @@ export function EntryPage({
           rows={3}
         />
       </section>
-      <section className={styles.trackSection}>
+      <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <h3>Deine Aktivitäten</h3>
+          <h3 className={styles.sectionHeading}>Deine Aktivitäten</h3>
 
           {isEdithMode && (
             <button
-              className={styles.roundAdd}
+              className={styles.actionButton}
               onClick={() => setEditor({ kind: "category" })}
             >
-              ＋
+              <PlusIcon size={18} weight="bold" className={styles.iconPlus} />
             </button>
           )}
         </div>
@@ -156,7 +182,7 @@ export function EntryPage({
               style={{ color: category.color }}
             >
               <button
-                className={styles.accordionTrigger}
+                className={styles.accordionButton}
                 onClick={() =>
                   setOpenCategories((prev) => ({
                     ...prev,
@@ -166,19 +192,21 @@ export function EntryPage({
                 aria-expanded={Boolean(openCategories[category.id])}
               >
                 <h4>{category.name}</h4>
-                <span className={styles.accordionChevron}>
-                  {openCategories[category.id] ? "⌄" : "›"}
-                </span>
+
+                {openCategories[category.id] ? (
+                  <CaretDownIcon size={22} weight="fill" />
+                ) : (
+                  <CaretUpIcon size={22} weight="fill" />
+                )}
               </button>
               {isEdithMode && (
                 <button
-                  className={styles.editMini}
                   aria-label={`${category.name} bearbeiten`}
                   onClick={() =>
                     setEditor({ kind: "category", edithData: category })
                   }
                 >
-                  ✎
+                  <PencilLineIcon size={22} />
                 </button>
               )}
             </div>
@@ -240,7 +268,7 @@ export function EntryPage({
               : undefined
           }
         />
-      )}{" "}
+      )}
       {editor?.kind === "tracker" && (
         <TrackerEditor
           category={editor.category}

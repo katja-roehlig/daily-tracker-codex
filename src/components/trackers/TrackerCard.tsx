@@ -1,6 +1,6 @@
-import { useRef } from "react";
 import type { TrackerWithCategory } from "../../types";
 import styles from "./TrackerCard.module.css";
+import { MinusIcon, PencilLineIcon, PlusIcon } from "@phosphor-icons/react";
 
 export function TrackerCard({
   item,
@@ -17,49 +17,19 @@ export function TrackerCard({
   onEdit: () => void;
   isEdithMode: boolean;
 }) {
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const longPressed = useRef(false);
-  const clearTimer = () => {
-    if (timer.current) {
-      clearTimeout(timer.current);
-      timer.current = null;
-    }
-  };
-  const startPress = () => {
-    longPressed.current = false;
-    clearTimer();
-    if (isEdithMode) {
-      timer.current = setTimeout(() => {
-        longPressed.current = true;
-        onEdit();
-      }, 550);
-    }
-  };
-  const endPress = () => clearTimer();
   return (
-    <div
-      className={styles.trackerWrap}
-      onPointerDown={startPress}
-      onPointerUp={endPress}
-      onPointerLeave={endPress}
-      onContextMenu={(event) => {
-        event.preventDefault();
-        if (isEdithMode) onEdit();
-      }}
-    >
+    <div className={styles.trackerWrap}>
       <div
-        className={styles.tracker}
-        role="button"
-        tabIndex={0}
+        className={`${styles.tracker} ${isEdithMode ? styles.trackerEditClickable : ""}`}
+        role={isEdithMode ? "button" : undefined}
+        tabIndex={isEdithMode ? 0 : undefined}
         onClick={() => {
           if (isEdithMode) onEdit();
-          else if (!longPressed.current) onIncrement();
         }}
         onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
+          if (isEdithMode && (event.key === "Enter" || event.key === " ")) {
             event.preventDefault();
-            if (isEdithMode) onEdit();
-            else onIncrement();
+            onEdit();
           }
         }}
         style={
@@ -68,36 +38,45 @@ export function TrackerCard({
             "--soft": `color-mix(in srgb, ${item.color} 16%, white)`,
           } as React.CSSProperties
         }
-        title={
-          isEdithMode ? "Lange drücken: bearbeiten" : "Tippen: Anzahl erhöhen"
-        }
       >
-        <span>{item.icon}</span>
-        <b style={{ color: item.color }}>{item.name}</b>
-        <span className={styles.countBadge}>
-          <strong>{count}</strong>
-        </span>
-        {!isEdithMode && (
-          <div className={styles.countControls}>
+        <div className={styles.metaBlock}>
+          <span className={`centerElement ${styles.trackerIcon}`}>
+            {item.icon}
+          </span>
+
+          <span className={styles.trackerName}>{item.name}</span>
+        </div>
+
+        <span className={styles.countNumber}>{count}</span>
+
+        {isEdithMode ? (
+          <div className={styles.controlsBlock}>
+            <PencilLineIcon size={18} className={styles.iconEditTracker} />
+          </div>
+        ) : (
+          <div className={styles.controlsBlock}>
             <button
               type="button"
+              className={styles.buttonDec}
               aria-label={`${item.name} verringern`}
               onClick={(event) => {
                 event.stopPropagation();
                 onDecrement();
               }}
             >
-              −
+              <MinusIcon size={18} weight="bold" />
             </button>
+
             <button
               type="button"
+              className={styles.buttonInc}
               aria-label={`${item.name} erhöhen`}
               onClick={(event) => {
                 event.stopPropagation();
                 onIncrement();
               }}
             >
-              ＋
+              <PlusIcon size={18} weight="bold" />
             </button>
           </div>
         )}

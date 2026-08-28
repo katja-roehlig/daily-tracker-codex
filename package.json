@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
+    "emojibase-data": "^17.0.0",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^7.18.2",

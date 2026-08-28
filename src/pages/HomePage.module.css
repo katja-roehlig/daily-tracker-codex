@@ -1,3 +1,6 @@
+.homeContainer {
+  padding: 26px 12px;
+}
 .eyebrow {
   font-size: 12px;
   text-transform: uppercase;
@@ -81,9 +84,11 @@
 }
 
 .hero blockquote {
-  font:
+  /* font:
     600 25px/1.32 Fraunces,
-    serif;
+    serif; */
+  font-family: cursive;
+  font-weight: 800;
   max-width: none;
   margin: 0 0 13px;
   font-size: 19px;
@@ -234,6 +239,9 @@
     align-self: center;
     margin-right: 0;
   }
+  .homeContainer {
+    padding-inline: 24px;
+  }
 
   .goalCard:last-child:nth-child(odd) {
     grid-column: span 2;
@@ -257,6 +265,9 @@
 }
 
 @media (width >= 900px) {
+  .homeContainer {
+    padding: 0;
+  }
   .sectionHead {
     align-items: end;
     margin: 42px 0 18px;

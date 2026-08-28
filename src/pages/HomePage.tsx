@@ -15,11 +15,11 @@ export function HomePage({
   const progress = useTrackerProgress();
   const active = items.filter((item) => item.gamification.enabled);
   return (
-    <>
+    <div className={styles.homeContainer}>
       <header className={styles.top}>
         <div>
           <p className={styles.eyebrow}>Dein täglicher Begleiter</p>
-          <h2>Übersicht</h2>
+          <h2>Schön, dich zu sehen!</h2>
         </div>
         <button className={styles.avatar}>M</button>
       </header>
@@ -99,6 +99,6 @@ export function HomePage({
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }

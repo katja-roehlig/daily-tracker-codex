@@ -36,6 +36,7 @@
   max-width: 680px;
   min-height: calc(100dvh - 24px);
   margin: auto;
+  z-index: 10000;
 }
 
 .modal h3 {

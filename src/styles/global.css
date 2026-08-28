@@ -1,17 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
 :root {
-  --bg-main: #fff9ed;
-  --bg-main-mid: #f4fbff;
-  --bg-main-end: #fff4fa;
+  --bg-main: #fef7e6;
+  --bg-main-mid: #e8f3f9;
+  --bg-main-end: #fcebf4;
   --text-primary: #29384b;
-  --sidebar-bg: #244436;
+  /* --sidebar-bg: #244436; */
+  --sidebar-bg: #02585e;
   --sidebar-text: #eaf3df;
   --brand-accent: #d6b870;
   --nav-text: #bdcec0;
-  --nav-active-bg: #3b5e4e;
+  /* --nav-active-bg: #3b5e4e; */
+  --nav-active-bg: #02868f;
   --text-muted: #79847b;
   --avatar-bg: #d8b464;
   --hero-bg: #e9e1ca;
+
   --hero-cite: #6f6756;
   --text-secondary: #788178;
   --link-accent: #356b54;
@@ -91,6 +94,7 @@ html {
   box-sizing: border-box;
 }
 body {
+  width: 100vw;
   margin: 0;
   min-width: 320px;
   font-size: 16px;
@@ -101,6 +105,7 @@ body {
     var(--bg-main-mid) 52%,
     var(--bg-main-end) 100%
   );
+  background-repeat: no-repeat;
   color: var(--text-primary);
   font-family: Nunito, system-ui, sans-serif;
 }
@@ -127,13 +132,16 @@ h4 {
   margin: 0;
 }
 h2 {
-  font-size: clamp(30px, 4vw, 43px);
+  font-size: clamp(16px, 6vw, 25px);
   line-height: 1.08;
 }
 h3 {
   font-size: 18px;
   margin-bottom: 12px;
   font-weight: 700;
+}
+h4 {
+  font-size: 17px;
 }
 button {
   border: 0;
@@ -148,7 +156,18 @@ button {
   clip: rect(0 0 0 0);
 }
 @media (width >= 900px) {
+  h2 {
+    font-size: clamp(20px, 6vw, 30px);
+  }
   h3 {
     font-size: 22px;
   }
+  h4 {
+    font-size: 20px;
+  }
+}
+.centerElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

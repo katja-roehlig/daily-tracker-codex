@@ -7,10 +7,11 @@
 
 .mobileHeader {
   display: flex;
-  position: sticky;
+
   top: 0;
   z-index: 20;
-  min-height: 64px;
+  height: 64px;
+
   padding: 10px 12px;
   align-items: center;
   justify-content: space-between;
@@ -66,7 +67,6 @@
   overflow-y: auto;
   z-index: 10;
   flex-shrink: 0;
-  /* flex: none; */
 }
 
 .brand {
@@ -76,7 +76,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Fraunces, serif;
 }
 
 .brand span {
@@ -145,7 +144,7 @@
 }
 
 .main {
-  padding: 26px 12px 44px;
+  padding-bottom: 44px;
   flex: 1;
   overflow: visible;
 }

@@ -7,36 +7,8 @@
   margin-bottom: 7px;
   text-align: center;
 }
-h3 {
+.sectionHeading {
   padding-left: 5px;
-}
-.categoryCard .tracker {
-  min-height: 52px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px;
-}
-
-.categoryCard .tracker span {
-  display: inline;
-  margin: 0;
-  font-size: 21px;
-}
-
-.categoryCard .tracker b {
-  font-size: 13px;
-  line-height: 1.25;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.categoryCard .tracker mark {
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-  display: none;
 }
 
 .entryHeader {
@@ -55,31 +27,43 @@ h3 {
   max-width: 900px;
   padding-inline: 5px;
 }
-section {
+.section {
   padding-inline: 12px;
   margin-top: 30px;
 }
 
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
 .dateClicker > button {
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background: var(--card-bg);
   font-size: 20px;
-  min-width: 40px;
-  min-height: 44px;
   border: 1px solid var(--input-border);
 }
 
 .editModeToggle {
   color: var(--action-dark);
-  background: var(--mood-action-bg) !important;
-  padding: 10px 15px;
+  background: var(--card-bg);
+  padding: 10px 12px 5px;
   position: absolute;
   right: 0;
   top: 0;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
   z-index: 1;
+  border-left: 1px solid var(--input-border);
+  border-bottom: 1px solid var(--input-border);
 }
 
 .moods {
@@ -87,7 +71,6 @@ section {
   flex-wrap: wrap;
   gap: 8px;
   padding: 2px 2px 0px;
-  grid-template-columns: 1fr;
 }
 
 .moods button {
@@ -97,6 +80,7 @@ section {
   padding: 7px 9px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-weight: 600;
   font-size: 13px;
@@ -104,14 +88,13 @@ section {
   width: auto;
 }
 
-.moods button span {
+.iconMood {
   font-size: 20px;
 }
 
 .moods .moodSelected {
   border-color: var(--mood);
   box-shadow: inset 0 0 0 1px var(--mood);
-  background: color-mix(in srgb, var(--mood) 13%, var(--card-bg));
 }
 
 .noteField {
@@ -129,61 +112,40 @@ section {
   color: var(--text-primary);
   font: inherit;
 }
-
-.tip {
+.accordionButton {
   display: flex;
-  justify-content: start;
-  align-items: start;
-  width: 100%;
-  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  color: var(--accent);
 }
 
 .trackerGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  margin-top: 11px;
+  margin-top: 12px;
 }
 
-.roundAdd {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--add-start), var(--add-end));
-  color: var(--card-bg);
+.actionButton {
+  width: 35px;
+  height: 35px;
+  padding: 5px 5px 1px 5px;
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  color: var(--action-dark);
   font-size: 25px;
   line-height: 1;
-  box-shadow: 0 5px 14px var(--add-shadow);
+  border: 1px solid var(--mobile-header-border);
   flex: none;
-  min-width: 42px;
-  min-height: 42px;
 }
-
-.moodWrap .editMini {
-  position: absolute;
-  right: 6px;
-  top: 8px;
-  min-width: 34px;
+.newTrackerButton {
+  width: 100%;
+  grid-column: 1 / -1;
+  text-align: end;
 }
-
-.editMini {
-  font-size: 17px;
-  color: var(--text-edit);
-  padding: 2px 5px;
-  line-height: 1;
-}
-
-.categoryCardHead h4 {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 17px;
-}
-
-.categoryCardHead h4 .editMini {
-  position: static;
-  color: inherit;
-  font-size: 16px;
+.iconPlus {
+  stroke-width: 12px;
 }
 
 .categoryCard {
@@ -191,6 +153,7 @@ section {
   border: 1px solid var(--mobile-header-border);
   border-radius: 15px;
   background: var(--card-bg);
+  margin-bottom: 8px;
 }
 
 .categoryCardHead {
@@ -198,53 +161,12 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
-}
-
-.categoryActions .editMini {
-  width: 34px;
-  min-height: 34px;
-  margin: 0;
-  padding: 0;
-  border-radius: 8px;
-  text-align: center;
-  color: inherit;
-  background: color-mix(in srgb, currentColor 12%, var(--card-bg));
-}
-
-.categoryCard .trackerGrid {
-  margin-top: 0;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-.sectionActions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: none;
-}
-
-.editMoodCatalog {
-  width: 38px;
-  min-height: 42px;
-  border-radius: 50%;
-  color: var(--action-dark);
-  background: var(--mood-action-bg);
-  font-size: 19px;
-  font-weight: 800;
-  min-width: 42px;
 }
 
 .entryHeader h2 {
-  font-size: clamp(14px, 5vw, 20px);
+  font-size: clamp(16px, 6vw, 25px);
   line-height: 1.15;
   padding-inline: 15px;
-}
-
-.entryHeader > div {
-  min-width: 0;
-  text-align: center;
 }
 
 @media (width >= 390px) {
@@ -252,37 +174,34 @@ section {
     padding: 8px 11px;
     font-size: 14px;
   }
-
-  .categoryCard {
-    padding: 14px;
-  }
 }
 
 @media (width >= 768px) {
   .trackerGrid {
-    gap: 11px;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .round {
+    width: 40px;
+    height: 40px;
+    padding: 8px 8px 5px 8px;
+  }
+  .section {
+    padding-inline: 24px;
   }
 }
 
 @media (width >= 900px) {
-  section {
-    margin-top: 60px;
+  .section {
+    margin-top: 50px;
+    padding-inline: 0;
+  }
+  .editModeToggle {
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
   }
   .noteField textarea {
     min-height: 120px;
-  }
-  .categoryCard .tracker {
-    min-height: 54px;
-    gap: 10px;
-    padding: 10px 12px;
-  }
-
-  .categoryCard .tracker span {
-    font-size: 24px;
-  }
-
-  .categoryCard .tracker b {
-    font-size: 14px;
   }
 
   .entryHeader {
@@ -290,16 +209,14 @@ section {
     flex-direction: column;
     margin-bottom: 30px;
   }
-  .entryHeader > .eyebrow {
-    text-align: center;
-  }
+
   .entryHeader h2 {
     font-size: clamp(20px, 6vw, 30px);
   }
 
   .dateClicker > button {
-    width: 39px;
-    height: 39px;
+    width: 40px;
+    height: 40px;
   }
 
   .moods {
@@ -307,43 +224,15 @@ section {
   }
 
   .moods button {
-    border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 11px 14px;
   }
 
-  .moods button span {
+  .iconMood {
     font-size: 22px;
-  }
-
-  .trackerGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .moodWrap .editMini {
-    right: -5px;
-    top: -8px;
-  }
-
-  .categoryCardHead h4 {
-    font-size: 18px;
   }
 
   .categoryCard {
     padding: 18px;
-  }
-
-  .categoryCard .trackerGrid {
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-  }
-
-  .editMoodCatalog {
-    min-height: 38px;
-  }
-}
-
-@media (width >= 1080px) {
-  .trackerGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

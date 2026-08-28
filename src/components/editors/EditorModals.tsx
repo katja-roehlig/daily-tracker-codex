@@ -3,6 +3,7 @@ import { IconPicker } from "../ui/IconPicker";
 import { Modal } from "../ui/Modal";
 import type { Category, Mood, Period, Tracker } from "../../types";
 import styles from "./EditorModals.module.css";
+import { TrashIcon } from "@phosphor-icons/react";
 export function CategoryEditor({
   value,
   onSave,
@@ -50,7 +51,7 @@ export function CategoryEditor({
           </button>
           {onDelete && (
             <button type="button" className={styles.danger} onClick={onDelete}>
-              Löschen
+              <TrashIcon size={22} />
             </button>
           )}
           <button className={styles.primary}>Speichern</button>

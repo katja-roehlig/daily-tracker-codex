@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import styles from "./Modal.module.css";
+import { XIcon } from "@phosphor-icons/react";
 export function Modal({
   children,
   onClose,
@@ -16,7 +17,7 @@ export function Modal({
           className={styles.close}
           onClick={onClose}
         >
-          ×
+          <XIcon size={22} weight="bold" />
         </button>
         {children}
       </div>

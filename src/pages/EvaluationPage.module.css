@@ -1,3 +1,6 @@
+.evaluationContainer {
+  padding: 26px 12px;
+}
 .eyebrow {
   font-size: 12px;
   text-transform: uppercase;
@@ -247,8 +250,14 @@
     gap: 24px;
   }
 }
+.evaluationContainer {
+  padding-inline: 24px;
+}
 
 @media (width >= 900px) {
+  .evaluationContainer {
+    padding: 0;
+  }
   .calendarHeader {
     margin-bottom: 30px;
   }
