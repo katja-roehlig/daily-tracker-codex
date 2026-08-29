@@ -1,3 +1,8 @@
+export type Quote = {
+  text: string;
+  author: string;
+};
+
 export type Period = "day" | "week";
 export interface Goal {
   enabled: boolean;

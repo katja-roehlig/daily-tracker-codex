@@ -64,18 +64,3 @@ export const demoCategories: Category[] = [
     ],
   },
 ];
-export const quotes = [
-  [
-    "„Auch aus Steinen, die dir in den Weg gelegt werden, kannst du etwas Schönes bauen.“",
-    "Erich Kästner",
-  ],
-  [
-    "„Es gibt nur zwei Tage im Jahr, an denen man nichts tun kann: der eine heißt gestern, der andere morgen.“",
-    "Dalai Lama",
-  ],
-  ["„Der Weg ist das Ziel.“", "Konfuzius"],
-  [
-    "„Was du heute kannst besorgen, das verschiebe nicht auf morgen.“",
-    "Benjamin Franklin",
-  ],
-] as const;

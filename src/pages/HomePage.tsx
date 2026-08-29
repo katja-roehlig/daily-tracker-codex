@@ -1,13 +1,14 @@
 import { useTracker } from "../app/TrackerProvider";
 import { useTrackerProgress } from "../hooks/useTrackerProgress";
 import styles from "./HomePage.module.css";
+import type { Quote } from "../types";
 
 export function HomePage({
   quote,
   onEntry,
   onCalendar,
 }: {
-  quote: readonly string[];
+  quote: Quote;
   onEntry: () => void;
   onCalendar: () => void;
 }) {
@@ -17,22 +18,21 @@ export function HomePage({
   return (
     <div className={styles.homeContainer}>
       <header className={styles.top}>
-        <div>
+        <div className={styles.heading}>
           <p className={styles.eyebrow}>Dein täglicher Begleiter</p>
           <h2>Schön, dich zu sehen!</h2>
         </div>
-        <button className={styles.avatar}>M</button>
+        <span className={styles.avatar}>☀️</span>
       </header>
       <section className={styles.hero}>
-        <div>
+        <div className={styles.quoteContainer}>
           <p className={styles.eyebrow}>Zitat des Tages</p>
-          <blockquote>{quote[0]}</blockquote>
-          <cite>{quote[1]}</cite>
+          <blockquote>{quote.text}</blockquote>
+          <cite>{quote.author}</cite>
         </div>
-        <span className={styles.heroIcon}>☀️</span>
       </section>
       <section className={styles.sectionHead}>
-        <div>
+        <div className={styles.heading}>
           <h3>Deine Ziele</h3>
           <p>Ein kleiner Schritt jeden Tag.</p>
         </div>
@@ -44,31 +44,30 @@ export function HomePage({
         {active.map((item) => {
           const value = progress(item);
           return (
-            <div className={styles.goalCard} key={item.id}>
-              <div
-                className={styles.itemIcon}
-                style={{
-                  background: `color-mix(in srgb, ${item.color} 16%, white)`,
-                }}
-              >
+            <div
+              className={styles.goalCard}
+              key={item.id}
+              style={{ "--accent": item.color } as React.CSSProperties}
+            >
+              <div className={`centerElement ${styles.itemIcon}`}>
                 {item.icon}
               </div>
               <div className={styles.goalBody}>
-                <p>{item.name}</p>
+                <p className={styles.goalName}>{item.name}</p>
                 {value && (
                   <>
-                    <strong>
+                    <strong className={styles.goalProgressNumber}>
                       {value.value} / {value.target}
                     </strong>
                     <div className={styles.progress}>
                       <i
+                        className={styles.progressBar}
                         style={{
                           width: `${Math.min(100, (value.value / value.target) * 100)}%`,
-                          background: item.color,
                         }}
                       />
                     </div>
-                    <small>{value.label}</small>
+                    <small className={styles.goalPeriod}>{value.label}</small>
                   </>
                 )}
               </div>
@@ -80,7 +79,7 @@ export function HomePage({
         <p className={styles.empty}>Noch keine Ziele angelegt.</p>
       )}
       <section className={styles.quick}>
-        <div>
+        <div className={styles.heading}>
           <h3>Direkt loslegen</h3>
           <p>Was möchtest du heute festhalten?</p>
         </div>

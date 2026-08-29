@@ -20,8 +20,7 @@ export function useTrackerProgress() {
         value,
         target: item.gamification.target,
         done: value >= item.gamification.target,
-        label:
-          item.gamification.period === "week" ? "Tage diese Woche" : "heute",
+        label: item.gamification.period === "week" ? "diese Woche" : "heute",
       };
     },
     [data.entries],

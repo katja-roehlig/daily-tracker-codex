@@ -6,7 +6,6 @@ import {
   TrackerEditor,
 } from "../components/editors/EditorModals";
 import { TrackerCard } from "../components/trackers/TrackerCard";
-import { Tooltip } from "../components/ui/Tooltip";
 import type { Category, Tracker } from "../types";
 import { addDays, formatDate } from "../utils/date";
 import { useTracker } from "../app/TrackerProvider";
@@ -16,7 +15,6 @@ import {
   ArrowRightIcon,
   CaretDownIcon,
   CaretUpIcon,
-  PencilIcon,
   PencilLineIcon,
   PlusIcon,
   XIcon,

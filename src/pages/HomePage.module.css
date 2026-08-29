@@ -1,5 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+
+.hero blockquote {
+  font-family: "Bubblegum Sans";
+  font-weight: 500;
+  max-width: 90ch;
+  box-sizing: border-box;
+  margin: 0 0 6px;
+  font-size: 19px;
+}
+.quoteContainer {
+  width: fit-content;
+}
+
 .homeContainer {
   padding: 26px 12px;
+}
+.heading {
+  padding-left: 5px;
 }
 .eyebrow {
   font-size: 12px;
@@ -21,29 +38,30 @@
 
 .sectionHead p {
   color: var(--text-secondary);
-  margin-top: 5px;
-  font-size: 15px;
+  margin-top: -8px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
 .itemIcon {
   width: 42px;
   height: 42px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
+  padding: 2px 5px 0px;
+  border-radius: 8px;
   font-size: 22px;
+  background-color: color-mix(in srgb, var(--accent) 16%, var(--card-bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--card-bg));
 }
 
 .progress {
   height: 6px;
-  background: var(--track-bg);
+  background: var(--mobile-header-border);
   border-radius: 99px;
   margin: 9px 0 7px;
   overflow: hidden;
 }
 
-.progress i {
+.progressBar {
   display: block;
   height: 100%;
   background: var(--accent);
@@ -56,18 +74,16 @@
 
 .top {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  gap: 40px;
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--avatar-bg);
-  font-weight: 700;
+  font-size: 50px;
+  align-self: flex-end;
+  transform: rotate(9deg);
   flex: none;
 }
 
@@ -75,7 +91,7 @@
   background: var(--hero-bg);
   border-radius: 16px;
   padding: 20px 16px;
-  display: block;
+  display: flex;
   justify-content: space-between;
   min-height: auto;
   overflow: hidden;
@@ -83,33 +99,20 @@
   gap: 8px;
 }
 
-.hero blockquote {
-  /* font:
-    600 25px/1.32 Fraunces,
-    serif; */
-  font-family: cursive;
-  font-weight: 800;
-  max-width: none;
-  margin: 0 0 13px;
-  font-size: 19px;
-  line-height: 1.28;
-}
-
 .hero cite {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--hero-cite);
   font-style: normal;
 }
 
-.heroIcon {
+/* .heroIcon {
   font-size: 43px;
   align-self: flex-end;
   transform: rotate(9deg);
   margin-right: 28px;
   margin: 0;
   flex: none;
-  display: none;
-}
+} */
 
 .linkBtn {
   color: var(--link-accent);
@@ -126,30 +129,37 @@
 
 .goalCard {
   background: var(--card-bg);
-  border: 1px solid var(--border-subtle);
-  border-radius: 13px;
+  border: 1px solid var(--mobile-header-border);
+  border-radius: 12px;
   padding: 17px;
   display: flex;
   gap: 13px;
   min-height: 106px;
+  box-shadow: var(--shadow-s);
 }
 
 .goalBody {
   flex: 1;
 }
 
-.goalBody p {
-  font-size: 14px;
+.goalName {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+  font-weight: 700;
   margin-bottom: 7px;
 }
 
-.goalBody strong {
+.goalProgressNumber {
   font-size: 22px;
+  /* color: var(--accent); */
+  color: var(--text-secondary);
 }
 
-.goalBody small {
+.goalPeriod {
   font-size: 14px;
-  color: var(--text-small);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -181,6 +191,13 @@
   grid-template-columns: 1fr;
 }
 
+.quick p {
+  color: var(--text-secondary);
+  margin-top: -8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 .quickActions button {
   background: var(--card-bg);
   border: 1px solid var(--border-card);
@@ -207,10 +224,6 @@
   margin-top: 2px;
 }
 
-.top h2 {
-  font-size: clamp(28px, 8vw, 34px);
-}
-
 .sectionHead > div {
   min-width: 0;
 }
@@ -219,28 +232,20 @@
   .hero {
     padding: 24px 20px;
   }
-
-  .hero blockquote {
-    font-size: 21px;
-  }
-
-  .heroIcon {
-    font-size: 60px;
-  }
 }
 
 @media (width >= 768px) {
   .hero {
-    border-radius: 18px;
+    border-radius: 14px;
   }
 
-  .heroIcon {
-    font-size: 76px;
-    align-self: center;
-    margin-right: 0;
+  .avatar {
+    font-size: 70px;
   }
+
   .homeContainer {
     padding-inline: 24px;
+    padding-top: 0;
   }
 
   .goalCard:last-child:nth-child(odd) {
@@ -248,10 +253,6 @@
   }
   .quick {
     align-items: flex-start;
-    gap: 24px;
-  }
-
-  .top {
     gap: 24px;
   }
 
@@ -273,23 +274,8 @@
     margin: 42px 0 18px;
   }
 
-  .top {
-    margin-bottom: 30px;
-  }
-
-  .avatar {
-    width: 39px;
-    height: 39px;
-  }
-
   .hero {
     padding: 30px 34px;
-    display: flex;
-    min-height: 180px;
-  }
-
-  .hero blockquote {
-    max-width: 675px;
   }
 
   .goals {
@@ -329,11 +315,13 @@
     padding: 32px 38px;
   }
 
-  .heroIcon {
-    font-size: 100px;
-    margin-right: 28px;
+  .avatar {
+    font-size: 90px;
   }
 
+  .homeContainer {
+    margin-top: -10px;
+  }
   .goals {
     grid-template-columns: repeat(3, 1fr);
   }

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
+
 :root {
   --bg-main: #fef7e6;
   --bg-main-mid: #e8f3f9;
@@ -86,6 +87,9 @@
   --text-modal: #68766d;
   --text-result: #7a847d;
   --mood-action-bg: #eaf3ec;
+
+  /* Shadows */
+  --shadow-s: 0px 2px 6px #7a847d70;
 }
 html {
   min-width: 320px;
@@ -102,8 +106,8 @@ body {
   background: linear-gradient(
     135deg,
     var(--bg-main) 0%,
-    var(--bg-main-mid) 52%,
-    var(--bg-main-end) 100%
+    var(--bg-main-mid) 62%,
+    var(--bg-main-end) 90%
   );
   background-repeat: no-repeat;
   color: var(--text-primary);
