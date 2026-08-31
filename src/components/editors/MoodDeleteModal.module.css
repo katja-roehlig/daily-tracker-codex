@@ -7,33 +7,6 @@
   margin-bottom: 7px;
 }
 
-.primary {
-  background: var(--primary-bg) !important;
-  color: var(--card-bg);
-  border-radius: 8px;
-  padding: 9px 12px;
-  margin-left: auto;
-  min-height: 44px;
-  font-size: 16px;
-}
-
-.modal .check {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.check input {
-  width: 16px;
-  height: 16px;
-}
-
-.goalFields {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
 .modalActions {
   display: flex;
   justify-content: space-between;
@@ -45,29 +18,11 @@
   padding: 14px 0 2px;
 }
 
-.danger {
-  color: var(--danger-strong);
-  font-weight: 800;
-  padding: 9px 0;
-  min-height: 44px;
-  font-size: 16px;
-}
-
 .modal .cancel {
   min-height: 40px;
   padding: 8px 0;
   color: var(--action-muted);
   font-weight: 800;
-}
-
-.rowActions {
-  display: flex;
-  gap: 5px;
-}
-
-.rowActions button:first-child {
-  width: 34px;
-  padding: 0;
 }
 
 .modalHint {
@@ -114,10 +69,6 @@
 }
 
 @media (width >= 901px) {
-  .goalFields {
-    grid-template-columns: 1fr 2fr;
-  }
-  
   .moodDeleteList {
     max-height: 48vh;
   }

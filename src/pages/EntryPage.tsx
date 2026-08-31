@@ -1,10 +1,9 @@
 import { useState } from "react";
-import {
-  CategoryEditor,
-  MoodDeleteModal,
-  MoodEditor,
-  TrackerEditor,
-} from "../components/editors/EditorModals";
+import { CategoryEditor } from "../components/editors/CategoryEditor";
+import { TrackerEditor } from "../components/editors/TrackerEditor";
+import { MoodEditor } from "../components/editors/MoodEditor";
+import { MoodDeleteModal } from "../components/editors/MoodDeleteModal";
+
 import { TrackerCard } from "../components/trackers/TrackerCard";
 import type { Category, Tracker } from "../types";
 import { addDays, formatDate } from "../utils/date";
