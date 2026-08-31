@@ -8,7 +8,7 @@ export const moods: Mood[] = [
 ];
 export const demoCategories: Category[] = [
   {
-    id: "health",
+    id: "fitness",
     name: "Wohlbefinden",
     color: "#78a95e",
     items: [
@@ -16,7 +16,7 @@ export const demoCategories: Category[] = [
         id: "water",
         name: "Wasser getrunken",
         icon: "💧",
-        color: "#4a9dd8",
+        color: "#2d8b08",
         gamification: { enabled: true, target: 3, period: "day" },
       },
       {
@@ -26,39 +26,32 @@ export const demoCategories: Category[] = [
         color: "#5d9f68",
         gamification: { enabled: true, target: 1, period: "day" },
       },
+    ],
+  },
+  {
+    id: "health",
+    name: "Gesundheit",
+    color: "#1da1ca",
+    items: [
       {
         id: "fitness",
         name: "Fitnessübungen",
         icon: "🏃",
-        color: "#d86d64",
+        color: "#597e08",
         gamification: { enabled: true, target: 5, period: "week" },
       },
-    ],
-  },
-  {
-    id: "cat",
-    name: "Katze 1",
-    color: "#d78862",
-    items: [
       {
-        id: "eats",
-        name: "Frisst gut",
-        icon: "🥣",
-        color: "#d78862",
+        id: "mag",
+        name: "Magnesium",
+        icon: "💊",
+        color: "rgb(98, 168, 215)",
         gamification: { enabled: false, target: 1, period: "day" },
       },
       {
-        id: "hairball",
-        name: "Kotzt Fell",
-        icon: "🐈",
-        color: "#b777bc",
-        gamification: { enabled: false, target: 1, period: "day" },
-      },
-      {
-        id: "food-vomit",
-        name: "Kotzt Futter",
-        icon: "🤢",
-        color: "#de7871",
+        id: "eat",
+        name: "Gesundes Essen",
+        icon: "🍎",
+        color: "rgb(57, 57, 243)",
         gamification: { enabled: false, target: 1, period: "day" },
       },
     ],

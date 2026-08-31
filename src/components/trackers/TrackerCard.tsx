@@ -64,7 +64,7 @@ export function TrackerCard({
                 onDecrement();
               }}
             >
-              <MinusIcon size={18} weight="bold" />
+              <MinusIcon size={12} weight="bold" />
             </button>
 
             <button
@@ -76,7 +76,7 @@ export function TrackerCard({
                 onIncrement();
               }}
             >
-              <PlusIcon size={18} weight="bold" />
+              <PlusIcon size={12} weight="bold" />
             </button>
           </div>
         )}

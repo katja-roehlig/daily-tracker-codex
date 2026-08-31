@@ -2,7 +2,6 @@
   position: relative;
   touch-action: manipulation;
   min-width: 0;
-  width: 100%;
 }
 
 .tracker {
@@ -18,8 +17,6 @@
   transition:
     transform 0.15s ease,
     border-color 0.15s ease;
-  width: 100%;
-  min-width: 290px;
   border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--card-bg));
 }
 
@@ -47,8 +44,8 @@
 
 .trackerName {
   font-size: 13px;
-  font-weight: 800;
-  color: var(--accent);
+  font-weight: 600;
+  color: inherit;
   line-height: 2.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,17 +73,15 @@
   flex: 1;
 }
 
-/* Die runden Buttons bekommen die kräftige Tracker-Farbe als Hintergrund */
-.buttonDec,
 .buttonInc {
   width: 35px;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: color-mix(in srgb, var(--accent) 40%, white);
+  background-color: color-mix(in srgb, var(--accent) 30%, white);
   color: var(--accent);
-  border-radius: 50%;
+  border-radius: 10px;
   cursor: pointer;
   transition:
     opacity 0.1s ease,
@@ -95,9 +90,15 @@
 }
 .buttonDec svg,
 .buttonInc svg {
-  stroke: var(--accent);
-  stroke-width: 12px;
+  stroke: var(--text-primary);
+  stroke-width: 16px;
 }
+.buttonDec:hover,
+.buttonInc:hover {
+  background: color-mix(in srgb, var(--accent) 50%, white);
+  transform: scale(1.1);
+}
+
 .buttonDec:active,
 .buttonInc:active {
   transform: scale(0.92);

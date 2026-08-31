@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 :root {
   --bg-main: #fef7e6;
   --bg-main-mid: #e8f3f9;
@@ -82,7 +82,7 @@
   --count-bg: color-mix(in srgb, var(--accent) 18%, white);
   --shadow-control: #273d2b18;
   --switch-bg: #e9ede7;
-  --header-bg: rgba(255, 255, 255, 0.94);
+  --header-bg: rgba(255, 255, 255);
   --text-edit: #718078;
   --text-modal: #68766d;
   --text-result: #7a847d;
@@ -135,6 +135,15 @@ h4 {
   font-weight: 800;
   margin: 0;
 }
+h1 {
+  font-family: "Bubblegum Sans";
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  font-weight: 1000;
+  font-size: 14px;
+  color: #f09c14;
+}
 h2 {
   font-size: clamp(16px, 6vw, 25px);
   line-height: 1.08;
@@ -160,6 +169,10 @@ button {
   clip: rect(0 0 0 0);
 }
 @media (width >= 900px) {
+  h1 {
+    color: #f09c14;
+    font-size: 21px;
+  }
   h2 {
     font-size: clamp(20px, 6vw, 30px);
   }

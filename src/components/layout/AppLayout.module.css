@@ -12,7 +12,7 @@
   z-index: 20;
   height: 64px;
 
-  padding: 10px 12px;
+  padding: 10px 14px;
   align-items: center;
   justify-content: space-between;
   background: var(--header-bg);
@@ -22,19 +22,10 @@
 }
 
 .mobileBrand {
+  font-weight: 700;
   display: flex;
   align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 0;
-}
-
-.mobileBrand span {
-  color: var(--mobile-brand);
-  font-size: 27px;
-  line-height: 1;
+  margin-left: 5px;
 }
 
 .menuButton {
@@ -72,15 +63,14 @@
 .brand {
   font-size: 21px;
   font-weight: 700;
-  margin: 0 11px 48px;
+  margin: 0 0px 48px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: baseline;
+  min-height: 60px;
+  margin-left: 13px;
 }
-
-.brand span {
-  font-size: 30px;
-  color: var(--brand-accent);
+.logo {
+  margin-right: -5px;
 }
 
 .mobileNav {

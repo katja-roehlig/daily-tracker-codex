@@ -122,7 +122,9 @@
 
 .trackerGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 345px));
+  justify-content: start;
   gap: 8px;
   margin-top: 12px;
 }
@@ -154,6 +156,7 @@
   border-radius: 15px;
   background: var(--card-bg);
   margin-bottom: 8px;
+  max-width: 100%;
 }
 
 .categoryCardHead {
@@ -177,10 +180,6 @@
 }
 
 @media (width >= 768px) {
-  .trackerGrid {
-    gap: 12px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  }
   .round {
     width: 40px;
     height: 40px;

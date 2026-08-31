@@ -97,6 +97,7 @@
   overflow: hidden;
   align-items: flex-start;
   gap: 8px;
+  width: fit-content;
 }
 
 .hero cite {
@@ -104,15 +105,6 @@
   color: var(--hero-cite);
   font-style: normal;
 }
-
-/* .heroIcon {
-  font-size: 43px;
-  align-self: flex-end;
-  transform: rotate(9deg);
-  margin-right: 28px;
-  margin: 0;
-  flex: none;
-} */
 
 .linkBtn {
   color: var(--link-accent);
@@ -123,7 +115,7 @@
 
 .goals {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
 }
 
@@ -136,6 +128,7 @@
   gap: 13px;
   min-height: 106px;
   box-shadow: var(--shadow-s);
+  max-width: 400px;
 }
 
 .goalBody {
@@ -153,7 +146,6 @@
 
 .goalProgressNumber {
   font-size: 22px;
-  /* color: var(--accent); */
   color: var(--text-secondary);
 }
 
@@ -278,10 +270,6 @@
     padding: 30px 34px;
   }
 
-  .goals {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .goalBody small {
     font-size: 12px;
   }
@@ -321,9 +309,6 @@
 
   .homeContainer {
     margin-top: -10px;
-  }
-  .goals {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .quick {
