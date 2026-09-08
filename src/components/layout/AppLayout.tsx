@@ -20,7 +20,7 @@ export function AppLayout() {
           <div>
             <LogoMob className={styles.logo} />
           </div>
-          <h1>Gedöhns</h1>
+          <h1>Tageskram</h1>
         </div>
         <button
           className={styles.menuButton}
@@ -40,7 +40,7 @@ export function AppLayout() {
           <div>
             <LogoDesk className={styles.logo} />
           </div>
-          <h1>Gedöhns</h1>
+          <h1>Tageskram</h1>
         </div>
         <Navigation />
       </aside>
