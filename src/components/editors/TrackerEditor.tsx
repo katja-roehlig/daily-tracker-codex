@@ -52,15 +52,18 @@ export function TrackerEditor({
           {value ? "Tracker bearbeiten" : "Neuer Unterpunkt"}
         </p>
         <h3>Was möchtest du tracken?</h3>
-        <label>
+        <label htmlFor="trackerName">
           Name
           <input
+            id="trackername"
+            name="trackername"
             autoFocus
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
+            className={styles.nameInput}
           />
         </label>
-        {count !== undefined && (
+        {/* {count !== undefined && (
           <label>
             Heute erfasst
             <input
@@ -72,13 +75,17 @@ export function TrackerEditor({
               }
             />
           </label>
-        )}
-        <label>
+        )} */}
+        <label htmlFor="color">
           Farbe
           <input
             type="color"
+            id="color"
+            name="color"
             value={form.color}
             onChange={(e) => setForm({ ...form, color: e.target.value })}
+            style={{ "--selected": form.color } as React.CSSProperties}
+            className={styles.colorInput}
           />
         </label>
         <label>
@@ -88,9 +95,11 @@ export function TrackerEditor({
             onChange={(icon) => setForm({ ...form, icon })}
           />
         </label>
-        <label className={styles.check}>
+        <label className={styles.check} htmlFor="gamification">
           <input
             type="checkbox"
+            id="gamification"
+            name="gamification"
             checked={form.gamification.enabled}
             onChange={(e) =>
               setForm({
@@ -106,10 +115,12 @@ export function TrackerEditor({
         </label>
         {form.gamification.enabled && (
           <div className={styles.goalFields}>
-            <label>
+            <label htmlFor="goal">
               Ziel
               <input
                 type="number"
+                id="goal"
+                name="goal"
                 min="1"
                 value={form.gamification.target}
                 onChange={(e) =>
@@ -123,9 +134,11 @@ export function TrackerEditor({
                 }
               />
             </label>
-            <label>
+            <label htmlFor="timeSpan">
               Zeitraum
               <select
+                id="timeSpan"
+                name="timeSpan"
                 value={form.gamification.period}
                 onChange={(e) =>
                   setForm({

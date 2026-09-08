@@ -66,11 +66,13 @@ export function IconPicker({
   return (
     <div className={styles.iconPicker}>
       <div className={styles.searchWrapper}>
-        <div className="searchContainer">
+        <div className={styles.searchContainer}>
           {!searchQuery && (
             <MagnifyingGlassIcon size={20} className={styles.searchIcon} />
           )}
+          <label htmlFor="searchEmoji" className="visually-hidden"></label>
           <input
+            id="searchEmoji"
             type="text"
             placeholder="Emojis durchsuchen..."
             value={searchQuery}

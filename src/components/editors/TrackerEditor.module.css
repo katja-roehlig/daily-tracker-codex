@@ -45,6 +45,46 @@
   padding: 14px 0 2px;
 }
 
+.colorInput {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--selected);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 50%; /* Oder deine Wunschbreite */
+  height: 40px;
+  border: 1px solid #ccc; /* Dein äußerer Rahmen */
+  border-radius: 6px;
+}
+
+.colorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.colorInput::-webkit-color-swatch {
+  border: none;
+  border-radius: 5px;
+}
+
+.colorInput::-moz-color-swatch {
+  border-radius: 5px;
+}
+
+.colorInput:focus {
+  transform: scale(1.05);
+}
+
+.nameInput {
+  border: 1px solid var(--input-border-dark);
+  width: 50px;
+  outline: none;
+}
+
+.nameInput:focus {
+  border-color: var(--brand-accent);
+  background: var(--card-bg);
+}
 .danger {
   color: var(--danger-strong);
   font-weight: 800;
@@ -64,3 +104,4 @@
   .goalFields {
     grid-template-columns: 1fr 2fr;
   }
+}

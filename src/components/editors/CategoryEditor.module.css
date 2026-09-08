@@ -27,7 +27,28 @@
   background: var(--card-bg);
   padding: 14px 0 2px;
 }
+.colorInput {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--selected);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 
+.colorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.colorInput::-webkit-color-swatch {
+  border: none;
+  border-radius: 5px;
+}
+
+.colorInput::-moz-color-swatch {
+  border: none;
+  border-radius: 5px;
+}
 .danger {
   color: var(--danger-strong);
   font-weight: 800;

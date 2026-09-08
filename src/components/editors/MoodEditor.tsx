@@ -48,6 +48,8 @@ export function MoodEditor({
             type="color"
             value={form.color}
             onChange={(e) => setForm({ ...form, color: e.target.value })}
+            style={{ "--selected": form.color } as React.CSSProperties}
+            className={styles.colorInput}
           />
         </label>
         <label>
