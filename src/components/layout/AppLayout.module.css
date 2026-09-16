@@ -7,10 +7,7 @@
 
 .mobileHeader {
   display: flex;
-
-  top: 0;
-  z-index: 20;
-  height: 64px;
+  height: 48px;
 
   padding: 10px 14px;
   align-items: center;
@@ -26,25 +23,6 @@
   display: flex;
   align-items: baseline;
   margin-left: 5px;
-}
-
-.menuButton {
-  width: 44px;
-  min-height: 44px;
-  display: grid;
-  place-content: center;
-  gap: 5px;
-  border-radius: 10px;
-  background: var(--mobile-menu-bg);
-  flex: none;
-}
-
-.menuButton i {
-  display: block;
-  width: 21px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--sidebar-bg);
 }
 
 .sidebar {
@@ -76,82 +54,25 @@
 .mobileNav {
   display: block;
   position: fixed;
-  bottom: auto;
-  left: 12px;
-  right: 12px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: var(--card-bg);
   z-index: 19;
-  padding: 10px;
+  padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
   box-shadow: 0 14px 32px var(--mobile-shadow-soft);
-  padding-bottom: calc(6px + env(safe-area-inset-bottom));
-  top: 74px;
   border: 1px solid var(--mobile-panel-border);
-  border-radius: 14px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition:
-    opacity 0.18s ease,
-    transform 0.18s ease,
-    visibility 0.18s;
+  border-radius: 0;
   flex: none;
-}
-
-.mobileNav .nav {
-  display: grid;
-  justify-content: space-around;
-  gap: 4px;
-}
-
-.mobileNav .nav button {
-  padding: 10px 12px;
-  font-size: 16px;
-  display: flex;
-  gap: 13px;
-  min-width: 0;
-  min-height: 48px;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  color: var(--text-dark-green);
-  text-align: left;
-}
-
-.mobileNav .nav button span {
-  font-size: 20px;
-  width: 24px;
-  flex: none;
-}
-
-.mobileNavOpen {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.mobileNav .nav button.active {
-  color: var(--card-bg);
 }
 
 .main {
-  padding-bottom: 44px;
+  padding-bottom: 92px;
   flex: 1;
   overflow: visible;
 }
 
 /* Responsive Breakpoints */
-
-@media (width >= 390px) {
-  .mobileNav .nav button {
-    min-width: 66px;
-  }
-}
-
-@media (width >= 768px) {
-  .mobileNav .nav button {
-    min-width: 66px;
-  }
-}
 
 @media (width >= 900px) {
   .app {
