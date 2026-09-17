@@ -27,8 +27,8 @@ export function HomePage({
       <section className={styles.hero}>
         <div className={styles.quoteContainer}>
           <p className={styles.eyebrow}>Zitat des Tages</p>
-          <blockquote>{quote.text}</blockquote>
-          <cite>{quote.author}</cite>
+          <blockquote className={styles.quote}>{quote.text}</blockquote>
+          <cite className={styles.quoteAuthor}>{quote.author}</cite>
         </div>
       </section>
       <section className={styles.sectionHead}>
@@ -78,26 +78,6 @@ export function HomePage({
       {!active.length && (
         <p className={styles.empty}>Noch keine Ziele angelegt.</p>
       )}
-      <section className={styles.quick}>
-        <div className={styles.heading}>
-          <h3>Direkt loslegen</h3>
-          <p>Was möchtest du heute festhalten?</p>
-        </div>
-        <div className={styles.quickActions}>
-          <button onClick={onEntry}>
-            <b>＋</b>
-            <span>
-              Eintrag erfassen<small>Aktivität oder Stimmung</small>
-            </span>
-          </button>
-          <button onClick={onCalendar}>
-            <b>▦</b>
-            <span>
-              Kalender ansehen<small>Deinen Verlauf entdecken</small>
-            </span>
-          </button>
-        </div>
-      </section>
     </div>
   );
 }

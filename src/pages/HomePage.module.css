@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 
-.hero blockquote {
+.quote {
   font-family: "Bubblegum Sans";
   font-weight: 500;
   max-width: 90ch;
@@ -100,7 +100,7 @@
   width: fit-content;
 }
 
-.hero cite {
+.quoteAuthor {
   font-size: 12px;
   color: var(--hero-cite);
   font-style: normal;
@@ -155,71 +155,6 @@
   font-weight: 500;
 }
 
-.goalBody em {
-  font-size: 14px;
-  font-style: normal;
-  color: var(--success);
-}
-
-.goalBody span {
-  font-size: 14px;
-  font-style: normal;
-  color: var(--text-tertiary);
-}
-
-.quick {
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border-divider);
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.quickActions {
-  display: grid;
-  gap: 10px;
-  margin-top: 18px;
-  grid-template-columns: 1fr;
-}
-
-.quick p {
-  color: var(--text-secondary);
-  margin-top: -8px;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.quickActions button {
-  background: var(--card-bg);
-  border: 1px solid var(--border-card);
-  border-radius: 13px;
-  padding: 16px;
-  display: flex;
-  gap: 12px;
-  text-align: left;
-  box-shadow: 0 2px 5px var(--shadow-soft);
-  width: 100%;
-  min-height: 72px;
-  align-items: center;
-}
-
-.quickActions b {
-  font-size: 24px;
-  color: var(--accent-green);
-}
-
-.quickActions small {
-  display: block;
-  color: var(--text-caption);
-  font-size: 12px;
-  margin-top: 2px;
-}
-
-.sectionHead > div {
-  min-width: 0;
-}
-
 @media (width >= 390px) {
   .hero {
     padding: 24px 20px;
@@ -243,18 +178,6 @@
   .goalCard:last-child:nth-child(odd) {
     grid-column: span 2;
   }
-  .quick {
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  .quickActions {
-    flex: 1;
-  }
-
-  .quickActions button {
-    flex: 1;
-  }
 }
 
 @media (width >= 900px) {
@@ -270,31 +193,8 @@
     padding: 30px 34px;
   }
 
-  .goalBody small {
+  .goalPeriod {
     font-size: 12px;
-  }
-
-  .goalBody em {
-    font-size: 12px;
-  }
-
-  .goalBody span {
-    font-size: 12px;
-  }
-
-  .quick {
-    margin-top: 48px;
-    padding-top: 34px;
-    display: flex;
-  }
-
-  .quickActions {
-    display: flex;
-    gap: 12px;
-  }
-
-  .quickActions button {
-    padding: 14px 20px;
   }
 }
 
@@ -309,13 +209,5 @@
 
   .homeContainer {
     margin-top: -10px;
-  }
-
-  .quick {
-    align-items: center;
-  }
-
-  .quickActions button {
-    min-height: 64px;
   }
 }

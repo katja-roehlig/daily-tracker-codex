@@ -67,14 +67,14 @@ export function EntryPage({
         <div className={styles.dateClicker}>
           <button
             onClick={() => onDate(addDays(date, -1))}
-            className="centerElement"
+            className={`centerElement ${styles.dateButton}`}
           >
             <ArrowLeftIcon size={22} />
           </button>
-          <h2>{formatDate(date)}</h2>
+          <h2 className={styles.date}>{formatDate(date)}</h2>
           <button
             onClick={() => onDate(addDays(date, 1))}
-            className="centerElement"
+            className={`centerElement ${styles.dateButton}`}
           >
             <ArrowRightIcon size={22} />
           </button>
@@ -129,13 +129,9 @@ export function EntryPage({
           {moods.map((mood) => (
             <button
               key={mood.id}
-              className={entry.mood === mood.id ? styles.moodSelected : ""}
-              style={
-                {
-                  "--mood": mood.color,
-                  background: `color-mix(in srgb, ${mood.color} 16%, white)`,
-                } as React.CSSProperties
-              }
+              // className={entry.mood === mood.id ? styles.moodSelected : ""}
+              className={`${styles.moodButton} ${entry.mood === mood.id ? styles.moodSelected : ""}`}
+              style={{ "--mood": mood.color } as React.CSSProperties}
               onClick={() => {
                 if (!isEdithMode) toggleMood(date, mood.id);
               }}
@@ -153,6 +149,7 @@ export function EntryPage({
         <h3 className={styles.sectionHeading}>Was war heute wichtig?</h3>
         <textarea
           value={entry.note ?? ""}
+          className={styles.noteText}
           onChange={(event) => setNote(date, event.target.value)}
           placeholder="Schreib etwas."
           id="note"
