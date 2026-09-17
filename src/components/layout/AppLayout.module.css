@@ -57,7 +57,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--card-bg);
+  background: var(--sidebar-bg);
   z-index: 19;
   padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
   box-shadow: 0 14px 32px var(--mobile-shadow-soft);
@@ -71,8 +71,6 @@
   flex: 1;
   overflow: visible;
 }
-
-/* Responsive Breakpoints */
 
 @media (width >= 900px) {
   .app {
