@@ -16,6 +16,7 @@ import {
   CaretUpIcon,
   PencilLineIcon,
   PlusIcon,
+  TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
 type Editor =
@@ -109,7 +110,7 @@ export function EntryPage({
                   aria-label="Stimmungen löschen"
                   onClick={() => setEditor({ kind: "mood-delete" })}
                 >
-                  <PencilLineIcon size={22} />
+                  <TrashIcon size={22} />
                 </button>
                 <button
                   className={styles.actionButton}
@@ -129,7 +130,6 @@ export function EntryPage({
           {moods.map((mood) => (
             <button
               key={mood.id}
-              // className={entry.mood === mood.id ? styles.moodSelected : ""}
               className={`${styles.moodButton} ${entry.mood === mood.id ? styles.moodSelected : ""}`}
               style={{ "--mood": mood.color } as React.CSSProperties}
               onClick={() => {

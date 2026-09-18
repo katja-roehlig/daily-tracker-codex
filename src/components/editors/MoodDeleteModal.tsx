@@ -1,6 +1,7 @@
 import { Modal } from "../ui/Modal";
 import type { Mood } from "../../types";
 import styles from "./MoodDeleteModal.module.css";
+import { TrashIcon } from "@phosphor-icons/react";
 
 export function MoodDeleteModal({
   moods,
@@ -14,7 +15,7 @@ export function MoodDeleteModal({
   return (
     <Modal onClose={onClose}>
       <p className={styles.eyebrow}>Stimmungskatalog</p>
-      <h3>Stimmungen löschen</h3>
+      <h3 className={styles.modalHeading}>Stimmungen löschen</h3>
       <p className={styles.modalHint}>
         Entferne Stimmungen, die du nicht mehr verwendest.
       </p>
@@ -23,14 +24,16 @@ export function MoodDeleteModal({
           <div
             key={mood.id}
             className={styles.moodDeleteItem}
-            style={{
-              background: `color-mix(in srgb, ${mood.color} 16%, white)`,
-            }}
+            style={{ "--moodColor": mood.color } as React.CSSProperties}
           >
-            <span>{mood.icon}</span>
+            <span className={styles.moodIcon}>{mood.icon}</span>
             <b>{mood.label}</b>
-            <button type="button" onClick={() => onDelete(mood.id)}>
-              Löschen
+            <button
+              type="button"
+              className={`centerElement ${styles.deleteButton}`}
+              onClick={() => onDelete(mood.id)}
+            >
+              <TrashIcon size={24} weight="bold" />
             </button>
           </div>
         ))}

@@ -1,28 +1,16 @@
-.modal .check {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.modal .cancel {
-  min-height: 40px;
-  padding: 8px 0;
-  color: var(--action-muted);
-  font-weight: 800;
-}
-
 .modalWrap {
   position: fixed;
   inset: 0;
   background: var(--modal-overlay);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px;
-  z-index: 5;
-  align-items: stretch;
+  z-index: 15;
+  overflow: hidden;
 }
 
-.modal {
+.modalBox {
   position: relative;
   background: var(--card-bg);
   border-radius: 18px;
@@ -30,54 +18,26 @@
   width: 100%;
   display: grid;
   gap: 14px;
-  max-height: calc(100dvh - 24px);
-  overflow: auto;
-  overflow-y: auto;
   max-width: 680px;
-  min-height: calc(100dvh - 24px);
-  margin: auto;
-  z-index: 10000;
+  z-index: 100;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
-.modal h3 {
-  font-size: 24px;
-  margin-bottom: 4px;
-}
-
-.modal label {
-  display: grid;
-  gap: 6px;
-  font-size: 15px;
-  font-weight: 700;
-  margin-top: 13px;
-}
-
-.modal input {
-  border: 1px solid var(--input-border-dark);
-  border-radius: 8px;
-  padding: 10px;
-  width: 100%;
-  min-height: 46px;
-  font-size: 16px;
-}
-
-.modal select {
-  border: 1px solid var(--input-border-dark);
-  border-radius: 8px;
-  padding: 10px;
-  width: 100%;
-  min-height: 46px;
-  font-size: 16px;
-}
-
-.close {
+.closeButton {
   position: absolute;
   right: 15px;
   top: 10px;
-  font-size: 26px;
   color: var(--close-text);
   min-width: 40px;
   min-height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (width >= 900px) {
@@ -85,17 +45,10 @@
     padding: 20px;
   }
 
-  .modal {
+  .modalBox {
     border-radius: 16px;
     padding: 30px;
     width: min(480px, 100%);
-  }
-
-  .modal h3 {
-    font-size: 27px;
-  }
-
-  .modal label {
-    font-size: 13px;
+    min-height: auto;
   }
 }

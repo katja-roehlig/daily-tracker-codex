@@ -7,14 +7,31 @@
   margin-bottom: 7px;
 }
 
-.primary {
-  background: var(--primary-bg) !important;
+.saveButton {
+  background: var(--sidebar-bg);
   color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border-radius: 8px;
-  padding: 9px 12px;
-  margin-left: auto;
+  padding: 9px 14px;
   min-height: 44px;
   font-size: 16px;
+  cursor: pointer;
+}
+.modalHeading {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.modalLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 13px;
 }
 
 .modalActions {
@@ -25,8 +42,24 @@
   position: sticky;
   bottom: -28px;
   background: var(--card-bg);
-  padding: 14px 0 2px;
+  padding: 28px 0 2px;
 }
+.buttonContainer {
+  display: flex;
+  justify-content: start;
+  gap: 12px;
+  flex: 1;
+}
+
+.modalInput {
+  border: 1px solid var(--input-border-dark);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  min-height: 46px;
+  font-size: 16px;
+}
+
 .colorInput {
   appearance: none;
   -webkit-appearance: none;
@@ -49,17 +82,46 @@
   border: none;
   border-radius: 5px;
 }
-.danger {
+.deleteButton {
   color: var(--danger-strong);
   font-weight: 800;
-  padding: 9px 0;
+  padding: 9px 10px 9px 10px;
   min-height: 44px;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* gap: 4px; */
+  border: 1px solid var(--input-border-dark);
+  cursor: pointer;
+  border-radius: 8px;
 }
 
-.modal .cancel {
-  min-height: 40px;
-  padding: 8px 0;
+.desktopText {
+  display: none;
+}
+
+.cancelButton {
+  min-height: 44px;
+  padding: 9px 10px 9px 10px;
   color: var(--action-muted);
   font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--input-border-dark);
+}
+@media (width >= 900px) {
+  .modalHeading {
+    font-size: 27px;
+  }
+  .desktopText {
+    display: inline;
+  }
+  .deleteButton,
+  .cancelButton {
+    gap: 4px;
+  }
 }

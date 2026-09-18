@@ -10,11 +10,11 @@ export function Modal({
 }) {
   return (
     <div className={styles.modalWrap} role="dialog" aria-modal="true">
-      <div className={styles.modal}>
+      <div className={styles.modalBox}>
         <button
           type="button"
           aria-label="Schließen"
-          className={styles.close}
+          className={styles.closeButton}
           onClick={onClose}
         >
           <XIcon size={22} weight="bold" />

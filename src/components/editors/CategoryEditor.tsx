@@ -2,7 +2,11 @@ import { FormEvent, useState } from "react";
 import { Modal } from "../ui/Modal";
 import type { Category } from "../../types";
 import styles from "./CategoryEditor.module.css";
-import { TrashIcon } from "@phosphor-icons/react";
+import {
+  ArrowLeftIcon,
+  DownloadSimpleIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 export function CategoryEditor({
   value,
   onSave,
@@ -27,35 +31,51 @@ export function CategoryEditor({
         <p className={styles.eyebrow}>
           {value ? "Kategorie bearbeiten" : "Neue Kategorie"}
         </p>
-        <h3>Deine Kategorie</h3>
-        <label>
+        <h3 className={styles.modalHeading}>Deine Kategorie</h3>
+        <label className={styles.modalLabel}>
           Name
           <input
             autoFocus
+            className={styles.modalInput}
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
         </label>
-        <label>
+        <label className={styles.modalLabel}>
           Farbe
           <input
             type="color"
             value={form.color}
             onChange={(e) => setForm({ ...form, color: e.target.value })}
             style={{ "--selected": form.color } as React.CSSProperties}
-            className={styles.colorInput}
+            className={`${styles.modalInput} ${styles.colorInput}`}
           />
         </label>
         <div className={styles.modalActions}>
-          <button type="button" className={styles.cancel} onClick={onClose}>
-            ← Abbrechen
-          </button>
-          {onDelete && (
-            <button type="button" className={styles.danger} onClick={onDelete}>
-              <TrashIcon size={22} />
+          <div className={styles.buttonContainer}>
+            <button
+              type="button"
+              className={styles.cancelButton}
+              onClick={onClose}
+            >
+              <ArrowLeftIcon size={20} />
+              <div className={styles.desktopText}>Abbrechen</div>
             </button>
-          )}
-          <button className={styles.primary}>Speichern</button>
+            {onDelete && (
+              <button
+                type="button"
+                className={styles.deleteButton}
+                onClick={onDelete}
+              >
+                <TrashIcon size={22} />
+                <div className={styles.desktopText}>Löschen</div>
+              </button>
+            )}
+          </div>
+          <button className={styles.saveButton}>
+            <DownloadSimpleIcon size={20} />
+            Speichern
+          </button>
         </div>
       </form>
     </Modal>

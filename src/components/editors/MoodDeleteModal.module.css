@@ -46,10 +46,12 @@
   align-items: center;
   padding: 9px;
   border-radius: 10px;
+  background: color-mix(in srgb, var(--moodColor) 16%, white);
+  border: 1px solid color-mix(in srgb, var(--moodColor) 40%, var(--card-bg));
 }
 
-.moodDeleteItem span {
-  font-size: 21px;
+.moodIcon {
+  font-size: 25px;
 }
 
 .moodDeleteItem b {
@@ -58,7 +60,7 @@
   white-space: nowrap;
 }
 
-.moodDeleteItem button {
+.deleteButton {
   min-height: 34px;
   padding: 5px 8px;
   border-radius: 7px;
@@ -66,10 +68,18 @@
   color: var(--danger);
   font-size: 13px;
   font-weight: 800;
+  box-shadow: 1px 2px 4px #00000010;
+}
+.modalHeading {
+  font-size: 24px;
+  margin-bottom: 4px;
 }
 
-@media (width >= 901px) {
+@media (width >= 900px) {
   .moodDeleteList {
     max-height: 48vh;
+  }
+  .modalHeading {
+    font-size: 27px;
   }
 }

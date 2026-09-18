@@ -7,11 +7,15 @@
   margin-bottom: 7px;
 }
 
-.primary {
-  background: var(--primary-bg) !important;
+.saveButton {
+  background: var(--sidebar-bg);
   color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border-radius: 8px;
-  padding: 9px 12px;
+  padding: 9px 14px;
   margin-left: auto;
   min-height: 44px;
   font-size: 16px;
@@ -25,7 +29,8 @@
   position: sticky;
   bottom: -28px;
   background: var(--card-bg);
-  padding: 14px 0 2px;
+  padding: 12px 0 2px;
+  margin-bottom: 24px;
 }
 .colorInput {
   appearance: none;
@@ -50,17 +55,42 @@
   border-radius: 5px;
 }
 
-.danger {
-  color: var(--danger-strong);
-  font-weight: 800;
-  padding: 9px 0;
-  min-height: 44px;
-  font-size: 16px;
-}
-
-.modal .cancel {
+.cancelButton {
   min-height: 40px;
   padding: 8px 0;
   color: var(--action-muted);
   font-weight: 800;
+}
+
+.modalHeading {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.modalLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 13px;
+}
+
+.modalInput {
+  border: 1px solid var(--input-border-dark);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  min-height: 46px;
+  font-size: 16px;
+}
+
+@media (width >= 900px) {
+  .modalHeading {
+    font-size: 27px;
+  }
+
+  .modalLabel {
+    font-size: 13px;
+  }
 }

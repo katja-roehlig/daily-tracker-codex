@@ -137,7 +137,7 @@ export function IconPicker({
                   <button
                     type="button"
                     aria-label={`Emoji ${item.label}`}
-                    className={value === item.emoji ? styles.iconChosen : ""}
+                    className={`${styles.emojiIcon} ${value === item.emoji ? styles.iconChosen : ""}`}
                     onClick={() => onChange(item.emoji)}
                     key={item.emoji}
                   >
