@@ -2,14 +2,15 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--text-muted);
+  color: var(--text-eyebrow);
   font-weight: 700;
   margin-bottom: 7px;
+  padding-inline: 20px;
 }
 
 .saveButton {
-  background: var(--sidebar-bg);
-  color: var(--card-bg);
+  background: var(--primary-80);
+  color: var(--bg-surface-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,9 +29,11 @@
   margin-top: 22px;
   position: sticky;
   bottom: -28px;
-  background: var(--card-bg);
-  padding: 12px 0 2px;
-  margin-bottom: 24px;
+  background: var(--bg-surface-1);
+  /* padding: 12px 0 2px;
+  margin-bottom: 24px; */
+  padding: 20px;
+  background-color: var(--bg-surface-3);
 }
 .colorInput {
   appearance: none;
@@ -56,15 +59,24 @@
 }
 
 .cancelButton {
-  min-height: 40px;
-  padding: 8px 0;
-  color: var(--action-muted);
+  min-height: 44px;
+  padding: 9px 10px 9px 10px;
+  color: var(--text-p-60);
   font-weight: 800;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background-color: var(--bg-surface-1);
 }
 
 .modalHeading {
   font-size: 24px;
   margin-bottom: 4px;
+  padding-inline: 20px;
 }
 
 .modalLabel {
@@ -74,10 +86,11 @@
   font-size: 15px;
   font-weight: 700;
   margin-top: 13px;
+  padding-inline: 20px;
 }
 
 .modalInput {
-  border: 1px solid var(--input-border-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 10px;
   width: 100%;

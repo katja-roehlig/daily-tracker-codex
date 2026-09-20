@@ -2,16 +2,24 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--text-muted);
+  color: var(--text-eyebrow);
   font-weight: 700;
   margin-bottom: 7px;
+  padding-inline: 20px;
 }
+
+.modalHeading {
+  padding-inline: 20px 20px;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
 .desktopText {
   display: none;
 }
 .saveButton {
-  background: var(--sidebar-bg);
-  color: var(--card-bg);
+  background: var(--primary-80);
+  color: var(--bg-surface-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,10 +38,11 @@
   font-size: 15px;
   font-weight: 700;
   margin-top: 13px;
+  padding-inline: 20px;
 }
 
 .modalInput {
-  border: 1px solid var(--input-border-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 10px;
   width: 100%;
@@ -43,7 +52,7 @@
 }
 
 .modalSelect {
-  border: 1px solid var(--input-border-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 10px;
   width: 100%;
@@ -57,7 +66,10 @@
   gap: 8px;
   font-size: 16px;
   font-weight: 700;
-  margin-top: 20px;
+  margin: 10px 20px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-light);
 }
 
 .checkIcon {
@@ -78,9 +90,8 @@
   margin-top: 22px;
   position: sticky;
   bottom: -28px;
-  background: var(--card-bg);
-  padding: 28px 0 2px;
-  margin-bottom: 30px;
+  padding: 28px 20px 30px;
+  background-color: var(--bg-surface-3);
 }
 .buttonContainer {
   display: flex;
@@ -119,17 +130,17 @@
 }
 
 .nameInput {
-  border: 1px solid var(--input-border-dark);
+  border: 2px solid var(--border-dark);
   width: 100%;
   outline: none;
 }
 
 .nameInput:focus {
-  border-color: var(--brand-accent);
-  background: var(--card-bg);
+  border-color: var(--border-active);
+  background: var(--bg-surface-1);
 }
 .deleteButton {
-  color: var(--danger-strong);
+  color: var(--color-attention);
   font-weight: 800;
   padding: 9px 10px 9px 10px;
   min-height: 44px;
@@ -137,22 +148,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--input-border-dark);
+  border: 1px solid var(--border-dark);
   cursor: pointer;
   border-radius: 8px;
+  background-color: var(--bg-surface-1);
 }
 
 .cancelButton {
   min-height: 44px;
   padding: 9px 10px 9px 10px;
-  color: var(--action-muted);
+  color: var(--text-p-60);
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border-radius: 8px;
-  border: 1px solid var(--input-border-dark);
+  border: 1px solid var(--border-dark);
+  background-color: var(--bg-surface-1);
 }
 
 @media (width >= 900px) {

@@ -36,7 +36,7 @@ export function CategoryEditor({
           Name
           <input
             autoFocus
-            className={styles.modalInput}
+            className={`${styles.modalInput} ${styles.nameInput}`}
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />

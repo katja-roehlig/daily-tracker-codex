@@ -49,11 +49,11 @@ export function TrackerEditor({
   };
   return (
     <Modal onClose={onClose}>
-      <form onSubmit={submit}>
+      <form className={styles.formContainer} onSubmit={submit}>
         <p className={styles.eyebrow}>
           {value ? "Tracker bearbeiten" : "Neuer Unterpunkt"}
         </p>
-        <h3>Was möchtest du tracken?</h3>
+        <h3 className={styles.modalHeading}>Was möchtest du tracken?</h3>
         <label htmlFor="trackername" className={styles.modalLabel}>
           Name
           <input

@@ -12,8 +12,8 @@
   padding: 10px 14px;
   align-items: center;
   justify-content: space-between;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--mobile-header-border);
+  background: var(--bg-surface-1);
+  border-bottom: 1px solid var(--border-dark);
   backdrop-filter: blur(14px);
   flex: none;
 }
@@ -30,8 +30,8 @@
   position: static;
   /* inset: 0 auto 0 0; */
   width: 240px;
-  background: var(--sidebar-bg);
-  color: var(--sidebar-text);
+  background: var(--primary-80);
+  color: var(--text-nav);
   padding: 34px 18px;
   overflow-y: auto;
   z-index: 10;
@@ -57,11 +57,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--sidebar-bg);
+  background: var(--primary-80);
   z-index: 19;
   padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
-  box-shadow: 0 14px 32px var(--mobile-shadow-soft);
-  border: 1px solid var(--mobile-panel-border);
+  box-shadow: 0 14px 32px var(--shadow-soft);
   border-radius: 0;
   flex: none;
 }

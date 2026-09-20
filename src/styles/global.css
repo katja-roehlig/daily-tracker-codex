@@ -1,96 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 :root {
+  /* background-colors */
   --bg-main: #fef7e6;
   --bg-main-mid: #e8f3f9;
   --bg-main-end: #fcebf4;
-  --text-primary: #29384b;
-  /* --sidebar-bg: #244436; */
-  --sidebar-bg: #02585e;
-  --sidebar-text: #eaf3df;
-  --brand-accent: #d6b870;
-  --nav-text: #bdcec0;
-  /* --nav-active-bg: #3b5e4e; */
-  --nav-active-bg: #02868f;
-  --text-muted: #79847b;
-  --avatar-bg: #d8b464;
-  --hero-bg: #e9e1ca;
 
-  --hero-cite: #6f6756;
-  --text-secondary: #788178;
-  --link-accent: #356b54;
-  --card-bg: #fff;
-  --border-subtle: #eceee9;
-  --text-small: #6e786e;
-  --track-bg: #edf0ec;
-  --success: #5b9368;
-  --text-tertiary: #7c827c;
-  --border-divider: #e0e4de;
-  --border-card: #e4e8e2;
-  --shadow-soft: #263c2b08;
-  --accent-green: #4b8e69;
-  --text-caption: #7b837d;
-  --border-control: #e3e7e0;
-  --border-light: #e7eae5;
-  --calendar-border: #e1e5df;
-  --calendar-cell-border: #e8ebe6;
-  --calendar-muted-bg: #fafbf9;
-  --calendar-muted-text: #b0b7ae;
-  --text-detail: #7d867e;
-  --panel-border: #e3e7e1;
-  --category-meta: #698274;
-  --action-green: #3a775d;
-  --input-border: #dce2da;
-  --primary-bg: #346a52;
-  --modal-overlay: #060b09a6;
-  --input-border-dark: #d9dfd8;
-  --close-text: #7c857d;
-  --empty-text: #737d74;
-  --mobile-shadow: #17312444;
-  --mobile-header-border: #e4eae4;
-  --mobile-menu-bg: #edf5ee;
-  --mobile-panel-border: #dce7de;
-  --mobile-shadow-soft: #1e362522;
-  --tooltip-border: #9ab2a0;
-  --tooltip-text: #4b7458;
-  --tooltip-bg: #edf6ef;
-  --category-bg: #e8f3e9;
-  --danger: #ba4d5a;
+  --bg-surface-1: #fff;
+  --bg-surface-2: #fafbf9;
+  --bg-surface-3: #edf0ec;
+  --bg-surface-4: #e9e1ca;
+  --bg-active: var(--primary-06);
+
   --insight-start: #ffe2ad;
   --insight-mid: #fbd1dc;
   --insight-end: #ccecf3;
-  --relation-bg: #f8faf7;
-  --icon-picker-border: #dce4dc;
-  --icon-picker-bg: #fbfcfa;
-  --icon-selected-bg: #ffe4ac;
-  --danger-strong: #c74e59;
-  --add-start: #ffba58;
-  --add-end: #ef6d9a;
-  --add-shadow: #e88c7655;
-  --focus-green: #52896c;
-  --text-dark-green: #385144;
-  --accent-blue: #456c55;
-  --action-dark: #426551;
-  --action-muted: #50685a;
-  --text-faint: #768078;
-  --text-dim: #778177;
-  --text-soft: #788279;
-  --text-calendar: #7f8880;
-  --tooltip-active: #4b7458;
-  --mobile-brand: #db9b45;
-  --category-action: #497e62;
-  --count-bg: color-mix(in srgb, var(--accent) 18%, white);
-  --shadow-control: #273d2b18;
-  --switch-bg: #e9ede7;
-  --header-bg: rgba(255, 255, 255);
-  --text-edit: #718078;
-  --text-modal: #68766d;
-  --text-result: #7a847d;
-  --mood-action-bg: #eaf3ec;
 
-  /* Shadows */
-  --shadow-s: 0px 2px 6px #7a847d70;
+  --modal-overlay: #060b09a6;
+
+  /* text */
+  --text-basic: var(--primary-90);
+  --text-p-60: var(--primary-60);
+  --text-p-50: var(--primary-50);
+  --text-nav: #eaf3df;
+  --text-eyebrow: var(--primary-70);
+  --text-muted: #969895;
+  --text-olive: #6c7374;
+
+  /* border */
+  --border-light: #dee7de;
+  --border-dark: #d9dfd8;
+  --border-active: #d6b870;
+
+  /* colors */
+  --primary-90: #2c4143;
+  --primary-80: #02585e;
+  --primary-70: #02838d;
+  --primary-60: #547278;
+  --primary-50: #5d7c81;
+  --primary-06: #e0f2fe;
+
+  --color-brand-1: #f09c14;
+  --color-brand-2: #fdec78;
+  --color-accent: #356b54;
+  --color-attention: #c74e59;
+
+  --shadow-soft: #1e362522;
+  --shadow-dark: #7a847d70;
+
+  --shadow-s: 0px 2px 6px var(--shadow-dark);
 }
+
 html {
   min-width: 320px;
 }
@@ -110,7 +70,7 @@ body {
     var(--bg-main-end) 90%
   );
   background-repeat: no-repeat;
-  color: var(--text-primary);
+  color: var(--text-basic);
   font-family: Nunito, system-ui, sans-serif;
 }
 button,
@@ -142,7 +102,7 @@ h1 {
   color: var(--text-muted);
   font-weight: 1000;
   font-size: 14px;
-  color: #f09c14;
+  color: var(--color-brand-1);
 }
 h2 {
   font-size: clamp(16px, 6vw, 25px);
@@ -170,7 +130,6 @@ button {
 }
 @media (width >= 900px) {
   h1 {
-    color: #f09c14;
     font-size: 21px;
   }
   h2 {

@@ -1,7 +1,7 @@
 import { Modal } from "../ui/Modal";
 import type { Mood } from "../../types";
 import styles from "./MoodDeleteModal.module.css";
-import { TrashIcon } from "@phosphor-icons/react";
+import { ArrowLeftIcon, TrashIcon } from "@phosphor-icons/react";
 
 export function MoodDeleteModal({
   moods,
@@ -39,8 +39,9 @@ export function MoodDeleteModal({
         ))}
       </div>
       <div className={styles.modalActions}>
-        <button type="button" className={styles.cancel} onClick={onClose}>
-          ← Abbrechen
+        <button type="button" className={styles.cancelButton} onClick={onClose}>
+          <ArrowLeftIcon size={20} />
+          <div>Abbrechen</div>
         </button>
       </div>
     </Modal>

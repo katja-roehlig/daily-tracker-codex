@@ -13,7 +13,7 @@
   min-width: 0;
   min-height: 46px;
   padding: 4px 4px;
-  color: var(--sidebar-text);
+  color: var(--text-nav);
   font-weight: 500;
   background: transparent;
   border: none;
@@ -53,15 +53,15 @@
     text-align: left;
     padding: 13px;
     border-radius: 10px;
-    color: var(--sidebar-text);
+    color: var(--text-nav);
     width: 100%;
     min-height: auto;
   }
 
   .navButtonActive,
   .navButton:hover {
-    background: var(--nav-active-bg);
-    color: var(--card-bg);
+    background: var(--primary-70);
+    color: var(--bg-surface-1);
   }
 
   .iconWrapper {

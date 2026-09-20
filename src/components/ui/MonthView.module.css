@@ -4,19 +4,20 @@
 }
 
 .weekday {
-  text-align: center;
+  text-align: start;
   font-size: 10px;
-  color: var(--text-calendar);
+  color: var(--text-p-60);
   font-weight: 700;
+  padding-left: 5px;
   padding-bottom: 6px;
 }
 
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  border: 1px solid var(--calendar-border);
+  border: 1px solid var(--border-dark);
   border-radius: 9px;
-  background: var(--card-bg);
+  background: var(--bg-surface-1);
   width: 100%;
 }
 
@@ -24,8 +25,8 @@
   min-width: 0;
   min-height: 70px;
   padding: 6px 4px;
-  border-right: 1px solid var(--calendar-cell-border);
-  border-bottom: 1px solid var(--calendar-cell-border);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
   background: var(--local-mood-color, white);
   cursor: pointer;
   display: flex;
@@ -39,12 +40,12 @@
 }
 
 .muted {
-  background: var(--calendar-muted-bg);
-  color: var(--calendar-muted-text);
+  background: var(--bg-surface-2);
+  color: var(--text-muted);
 }
 
 .daySelected {
-  box-shadow: inset 0 0 0 2px var(--focus-green);
+  box-shadow: inset 0 0 0 2px var(--border-active);
 }
 
 .dayTop {
@@ -82,14 +83,14 @@
   padding: 0;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid gold;
+  border: 1px solid var(--border-active);
   width: 100%;
   aspect-ratio: 1;
   background: color-mix(in srgb, var(--item-color) 16%, white);
 }
 
 .calendarEventIcon {
-  font-size: clamp(14px, 2.2vw, 20px);
+  font-size: clamp(14px, 2vw, 18px);
   line-height: 1;
   display: flex;
   align-items: center;
@@ -99,7 +100,7 @@
 @media (width >= 768px) {
   .calendar {
     grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: 140px !important;
+    grid-auto-rows: 140px;
   }
 
   .monthDay {
@@ -108,14 +109,14 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 8px;
-    height: 140px !important;
-    min-height: 140px !important;
-    max-height: 140px !important;
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
     box-sizing: border-box;
   }
 
   .dayTop {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -151,7 +152,7 @@
     gap: 6px;
     width: 100%;
     flex: 1;
-    max-height: 90px;
+    max-height: 100px;
     overflow: hidden;
   }
 }
@@ -171,6 +172,14 @@
     height: 25px;
     font-size: 14px;
     flex-basis: 25px;
+  }
+  .calendarEvents {
+    gap: 4px;
+    grid-template-columns: repeat(3, minmax(0, 28px));
+  }
+
+  .calendarEventIcon {
+    font-size: clamp(10px, 1.3vw, 18px);
   }
 }
 

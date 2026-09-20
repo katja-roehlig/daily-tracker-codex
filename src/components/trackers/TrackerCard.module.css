@@ -17,7 +17,7 @@
   transition:
     transform 0.15s ease,
     border-color 0.15s ease;
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--card-bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--bg-surface-1));
 }
 
 .trackerEditClickable:hover {
@@ -63,7 +63,7 @@
   color: color-mix(in srgb, var(--accent) 95%, black);
 }
 .iconEditTracker {
-  color: var(--action-dark);
+  color: var(--primary-80);
 }
 .controlsBlock {
   display: flex;
@@ -90,7 +90,7 @@
 }
 .buttonDec svg,
 .buttonInc svg {
-  stroke: var(--text-primary);
+  stroke: var(--text-basic);
   stroke-width: 16px;
 }
 .buttonDec:hover,

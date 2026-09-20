@@ -2,9 +2,10 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--text-muted);
+  color: var(--text-eyebrow);
   font-weight: 700;
   margin-bottom: 7px;
+  padding-inline: 20px;
 }
 
 .modalActions {
@@ -14,21 +15,30 @@
   margin-top: 22px;
   position: sticky;
   bottom: -28px;
-  background: var(--card-bg);
-  padding: 14px 0 2px;
+  background: var(--bg-surface-3);
+  padding: 20px;
 }
 
-.modal .cancel {
-  min-height: 40px;
-  padding: 8px 0;
-  color: var(--action-muted);
+.cancelButton {
+  min-height: 44px;
+  padding: 9px 10px 9px 10px;
+  color: var(--text-p-60);
   font-weight: 800;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background-color: var(--bg-surface-1);
 }
 
 .modalHint {
   margin: 8px 0 16px;
-  color: var(--text-modal);
+  color: var(--text-secondary);
   font-size: 14px;
+  padding-inline: 20px;
 }
 
 .moodDeleteList {
@@ -37,6 +47,8 @@
   max-height: none;
   overflow-y: auto;
   overflow: visible;
+  padding-inline: 20px;
+  margin-top: 13px;
 }
 
 .moodDeleteItem {
@@ -47,32 +59,35 @@
   padding: 9px;
   border-radius: 10px;
   background: color-mix(in srgb, var(--moodColor) 16%, white);
-  border: 1px solid color-mix(in srgb, var(--moodColor) 40%, var(--card-bg));
+  border: 1px solid
+    color-mix(in srgb, var(--moodColor) 40%, var(--bg-surface-1));
 }
 
 .moodIcon {
   font-size: 25px;
 }
 
-.moodDeleteItem b {
+/* .moodDeleteItem b {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
+} */
 
 .deleteButton {
   min-height: 34px;
   padding: 5px 8px;
   border-radius: 7px;
-  background: var(--card-bg);
-  color: var(--danger);
+  background: var(--bg-surface-1);
+  color: var(--color-attention);
   font-size: 13px;
   font-weight: 800;
   box-shadow: 1px 2px 4px #00000010;
+  border: 1px solid var(--border-dark);
 }
 .modalHeading {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 4px;
+  padding-inline: 20px;
 }
 
 @media (width >= 900px) {

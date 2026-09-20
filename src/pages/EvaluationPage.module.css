@@ -1,11 +1,13 @@
 .evaluationContainer {
-  padding: 26px 12px;
+  padding-inline: 12px;
+  margin-top: 26px;
+  flex-shrink: 0;
 }
 .eyebrow {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--text-muted);
+  color: var(--text-eyebrow);
   font-weight: 700;
   margin-bottom: 7px;
 }
@@ -23,15 +25,15 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--card-bg);
-  border: 1px solid var(--border-control);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-dark);
   font-size: 20px;
   min-width: 40px;
   min-height: 44px;
 }
 
 .switch {
-  background: var(--switch-bg);
+  background: var(--bg-surface-3);
   padding: 3px;
   border-radius: 9px;
   flex: none;
@@ -45,8 +47,8 @@
 }
 
 .switch .selected {
-  background: var(--card-bg);
-  box-shadow: 0 1px 4px var(--shadow-control);
+  background: var(--bg-surface-1);
+  box-shadow: 0 1px 4px var(--shadow-soft);
 }
 
 .monthControl {
@@ -65,7 +67,7 @@
 }
 
 .intro {
-  color: var(--text-secondary);
+  color: var(--text-p-50);
   margin-top: 5px;
   font-size: 15px;
   line-height: 1.4;
@@ -82,7 +84,7 @@
 
 .progress {
   height: 6px;
-  background: var(--track-bg);
+  background: var(--bg-surface-3);
   border-radius: 99px;
   margin: 9px 0 7px;
   overflow: hidden;
@@ -96,7 +98,7 @@
 }
 
 .empty {
-  color: var(--empty-text);
+  color: var(--text-p-50);
 }
 
 .insight {
@@ -130,15 +132,15 @@
 }
 
 .evalCard {
-  background: var(--card-bg);
-  border: 1px solid var(--border-card);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-dark);
   border-radius: 15px;
   padding: 18px;
 }
 
 .evalCard > p {
   font-size: 15px;
-  color: var(--text-faint);
+  color: var(--text-oliv);
   margin: 5px 0 17px;
 }
 
@@ -161,7 +163,7 @@
 .evalRow small {
   display: block;
   font-size: 14px;
-  color: var(--text-result);
+  color: var(--text-oliv);
   margin: 2px 0;
 }
 
@@ -180,7 +182,7 @@
 }
 
 .moodResult small {
-  color: var(--text-soft);
+  color: var(--text-p-50);
   font-size: 14px;
 }
 
@@ -192,7 +194,7 @@
 .relation {
   padding: 14px;
   border-radius: 10px;
-  background: var(--relation-bg);
+  background: var(--bg-surface-2);
   overflow-wrap: anywhere;
 }
 
@@ -215,7 +217,7 @@
 }
 
 .relation small {
-  color: var(--text-dim);
+  color: var(--text-oliv);
   font-size: 14px;
 }
 
