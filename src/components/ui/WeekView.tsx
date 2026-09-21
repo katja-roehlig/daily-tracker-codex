@@ -4,23 +4,23 @@ import styles from "./WeekView.module.css";
 
 interface WeekViewProps {
   days: Array<{ key: string }>;
-  detailDay: string;
-  setDetailDay: (key: string) => void;
+  detailDays: string[];
+  setDetailDays: (keys: string[]) => void;
   renderDetailsContent: (key: string) => React.ReactNode;
   dayMood: (key: string) => any;
 }
 
 export function WeekView({
   days,
-  detailDay,
-  setDetailDay,
+  detailDays = [],
+  setDetailDays,
   renderDetailsContent,
   dayMood,
 }: WeekViewProps) {
   return (
     <div className={styles.weekCalendar}>
       {days.map((day) => {
-        const isAccordionOpen = detailDay === day.key;
+        const isAccordionOpen = detailDays.includes(day.key);
         const mood = dayMood(day.key);
 
         return (
@@ -28,10 +28,15 @@ export function WeekView({
             key={day.key}
             className={`${styles.weekDay} ${isAccordionOpen ? styles.daySelected : ""}`}
           >
-            {/* Die Kopfzeile des Riegels */}
             <div
               className={styles.weekDayHeaderRow}
-              onClick={() => setDetailDay(isAccordionOpen ? "" : day.key)}
+              onClick={() => {
+                if (!isAccordionOpen) {
+                  setDetailDays([...detailDays, day.key]);
+                } else {
+                  setDetailDays(detailDays.filter((key) => key !== day.key));
+                }
+              }}
             >
               <span className={styles.weekDayLabel}>
                 <span className={styles.weekDayNumber}>

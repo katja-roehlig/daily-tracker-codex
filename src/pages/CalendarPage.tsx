@@ -21,13 +21,17 @@ export function CalendarPage({ selected }: { selected: string }) {
   const [month, setMonth] = useState(selected);
   const [view, setView] = useState<View>("month");
   const [detailDay, setDetailDay] = useState(selected);
+  const [detailDays, setDetailDays] = useState<string[]>([]);
 
   useEffect(() => {
     setDetailDay(selected);
   }, [selected]);
 
   useEffect(() => {
-    if (view === "week") setDetailDay(selected);
+    if (view === "week") {
+      setDetailDay(selected);
+      setDetailDays([selected]);
+    }
   }, [view, selected]);
 
   // Berechnet die Tage für Monat oder Woche
@@ -182,8 +186,8 @@ export function CalendarPage({ selected }: { selected: string }) {
       ) : (
         <WeekView
           days={days}
-          detailDay={detailDay}
-          setDetailDay={setDetailDay}
+          detailDays={detailDays}
+          setDetailDays={setDetailDays}
           renderDetailsContent={renderDetailsContent}
           dayMood={getMood}
         />
