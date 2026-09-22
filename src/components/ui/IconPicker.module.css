@@ -1,15 +1,15 @@
 .iconPicker {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  height: min(400px, calc(100dvh - 300px));
+  gap: 1.6rem;
+  height: min(40.0rem, calc(100dvh - 30.0rem));
   min-height: 0;
   width: 100%;
   overflow: hidden;
 }
 
 .searchWrapper {
-  padding: 4px 0;
+  padding: 0.4rem 0;
   width: 100%;
   flex: none;
 }
@@ -29,8 +29,8 @@
 
 .searchInput {
   width: 100%;
-  padding: 10px 14px;
-  font-size: 14px;
+  padding: 1.0rem 1.4rem;
+  font-size: 1.4rem;
   border: 2px solid var(--border-light);
   border-radius: 10px;
   background: var(--bg-hover);
@@ -46,11 +46,11 @@
   background: var(--bg-surface-1);
 }
 .searchInput::placeholder {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--text-p-50, #999);
   opacity: 1;
-  padding-left: 25px;
+  padding-left: 2.5rem;
 }
 
 .tabBar {
@@ -58,14 +58,14 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-light, #eee);
-  padding-bottom: 8px;
+  padding-bottom: 0.8rem;
   width: 100%;
 }
 
 .tabButton {
   background: transparent;
   border: none;
-  padding: 6px;
+  padding: 0.6rem;
   cursor: pointer;
   flex: 1;
   display: grid;
@@ -85,25 +85,25 @@
 .scrollContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   width: 100%;
-  padding-right: 4px;
+  padding-right: 0.4rem;
 }
 
 /* Eine einzelne Sektion (z.B. Essen & Trinken) */
 .categorySection {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.0rem;
   width: 100%;
 }
 
 .categoryTitle {
   margin: 0;
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--text-basic);
   font-weight: 600;
   text-transform: uppercase;
@@ -112,16 +112,16 @@
 
 .emojiGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(3.8rem, 1fr));
+  gap: 0.6rem;
   width: 100%;
   background-color: var(--bg-surface-2);
 }
 
 .emojiIcon {
-  font-size: 24px;
-  height: 40px;
-  width: 40px;
+  font-size: 2.4rem;
+  height: 4.0rem;
+  width: 4.0rem;
   display: inline-grid;
   place-content: center;
   border-radius: 8px;

@@ -1,49 +1,49 @@
 .evaluationContainer {
-  padding-inline: 12px;
-  margin-top: 26px;
+  padding-inline: 1.2rem;
+  margin-top: 2.6rem;
   flex-shrink: 0;
 }
 .eyebrow {
-  font-size: 12px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--text-eyebrow);
   font-weight: 700;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
 }
 
 .calendarHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
-  gap: 14px;
+  margin-bottom: 2.4rem;
+  gap: 1.4rem;
   flex-direction: column;
 }
 
 .monthControl > button {
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
-  font-size: 20px;
-  min-width: 40px;
-  min-height: 44px;
+  font-size: 2.0rem;
+  min-width: 4.0rem;
+  min-height: 4.4rem;
 }
 
 .switch {
   background: var(--bg-surface-3);
-  padding: 3px;
+  padding: 0.3rem;
   border-radius: 9px;
   flex: none;
 }
 
 .switch button {
-  padding: 7px 11px;
+  padding: 0.7rem 1.1rem;
   border-radius: 7px;
-  font-size: 13px;
-  min-height: 34px;
+  font-size: 1.3rem;
+  min-height: 3.4rem;
 }
 
 .switch .selected {
@@ -55,38 +55,38 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin: 4px 0 18px;
+  gap: 1.0rem;
+  margin: 0.4rem 0 1.8rem;
 }
 
 .monthControl h3 {
   text-transform: capitalize;
-  font-size: 19px;
+  font-size: 1.9rem;
   text-align: center;
   flex: 1;
 }
 
 .intro {
   color: var(--text-p-50);
-  margin-top: 5px;
-  font-size: 15px;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
   line-height: 1.4;
 }
 
 .itemIcon {
-  width: 42px;
-  height: 42px;
+  width: 4.2rem;
+  height: 4.2rem;
   border-radius: 10px;
   display: grid;
   place-items: center;
-  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 .progress {
-  height: 6px;
+  height: 0.6rem;
   background: var(--bg-surface-3);
   border-radius: 99px;
-  margin: 9px 0 7px;
+  margin: 0.9rem 0 0.7rem;
   overflow: hidden;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .insight {
-  padding: 18px;
+  padding: 1.8rem;
   background: linear-gradient(
     115deg,
     var(--insight-start),
@@ -111,43 +111,43 @@
   );
   border-radius: 16px;
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
   align-items: flex-start;
-  margin: 18px 0;
+  margin: 1.8rem 0;
 }
 
 .insight > span {
-  font-size: 29px;
+  font-size: 2.9rem;
 }
 
 .insight h3 {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 .evalGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
-  margin-bottom: 18px;
+  gap: 1.8rem;
+  margin-bottom: 1.8rem;
 }
 
 .evalCard {
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
   border-radius: 15px;
-  padding: 18px;
+  padding: 1.8rem;
 }
 
 .evalCard > p {
-  font-size: 15px;
+  font-size: 1.5rem;
   color: var(--text-oliv);
-  margin: 5px 0 17px;
+  margin: 0.5rem 0 1.7rem;
 }
 
 .evalRow {
   display: flex;
-  gap: 10px;
-  margin: 15px 0;
+  gap: 1.0rem;
+  margin: 1.5rem 0;
   align-items: flex-start;
 }
 
@@ -157,42 +157,42 @@
 
 .evalRow b {
   display: block;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .evalRow small {
   display: block;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--text-oliv);
-  margin: 2px 0;
+  margin: 0.2rem 0;
 }
 
 .moodResult {
   display: grid;
   grid-template-columns: 35px 1fr auto;
   align-items: center;
-  gap: 9px;
-  margin: 12px 0;
+  gap: 0.9rem;
+  margin: 1.2rem 0;
 }
 
 .moodResult span {
-  padding: 6px;
+  padding: 0.6rem;
   border-radius: 8px;
   text-align: center;
 }
 
 .moodResult small {
   color: var(--text-p-50);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .relations {
   display: grid;
-  gap: 10px;
+  gap: 1.0rem;
 }
 
 .relation {
-  padding: 14px;
+  padding: 1.4rem;
   border-radius: 10px;
   background: var(--bg-surface-2);
   overflow-wrap: anywhere;
@@ -200,29 +200,29 @@
 
 .relation > b {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
 }
 
 .relation > span {
   display: flex;
-  gap: 6px;
+  gap: 0.6rem;
   flex-wrap: wrap;
 }
 
 .relation em {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-style: normal;
-  padding: 5px 7px;
+  padding: 0.5rem 0.7rem;
   border-radius: 6px;
 }
 
 .relation small {
   color: var(--text-oliv);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .calendarHeader h2 {
-  font-size: clamp(28px, 8vw, 34px);
+  font-size: clamp(2.8rem, 8vw, 3.4rem);
 }
 
 .calendarHeader .intro {
@@ -236,24 +236,24 @@
 
 .calendarHeader .switch button {
   flex: 1;
-  min-height: 42px;
-  font-size: 16px;
+  min-height: 4.2rem;
+  font-size: 1.6rem;
 }
 
 .evalCard h3 {
-  font-size: 21px;
+  font-size: 2.1rem;
 }
 
 @media (width >= 768px) {
   .insight > span {
-    font-size: 35px;
+    font-size: 3.5rem;
   }
   .calendarHeader {
-    gap: 24px;
+    gap: 2.4rem;
   }
 }
 .evaluationContainer {
-  padding-inline: 24px;
+  padding-inline: 2.4rem;
 }
 
 @media (width >= 900px) {
@@ -261,32 +261,32 @@
     padding: 0;
   }
   .calendarHeader {
-    margin-bottom: 30px;
+    margin-bottom: 3.0rem;
   }
 
   .monthControl > button {
-    width: 39px;
-    height: 39px;
+    width: 3.9rem;
+    height: 3.9rem;
   }
 
   .monthControl {
     justify-content: center;
-    gap: 30px;
-    margin: 10px 0 23px;
+    gap: 3.0rem;
+    margin: 1.0rem 0 2.3rem;
   }
 
   .monthControl h3 {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   .insight {
-    padding: 23px;
+    padding: 2.3rem;
     align-items: center;
-    margin: 25px 0;
+    margin: 2.5rem 0;
   }
 
   .insight h3 {
-    font-size: 20px;
+    font-size: 2.0rem;
   }
 
   .evalGrid {
@@ -294,35 +294,35 @@
   }
 
   .evalCard {
-    padding: 22px;
+    padding: 2.2rem;
   }
 
   .evalCard > p {
-    font-size: 13px;
+    font-size: 1.3rem;
   }
 
   .evalRow b {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   .evalRow small {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 
   .moodResult small {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 
   .relation {
-    padding: 12px;
+    padding: 1.2rem;
   }
 
   .relation em {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 
   .relation small {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
 

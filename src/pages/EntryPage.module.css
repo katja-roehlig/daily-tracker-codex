@@ -1,14 +1,14 @@
 .eyebrow {
-  font-size: 12px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--text-eyebrow);
   font-weight: 700;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
   text-align: center;
 }
 .sectionHeading {
-  padding-left: 5px;
+  padding-left: 0.5rem;
 }
 
 .entryHeader {
@@ -17,21 +17,21 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding-top: 26px;
+  padding-top: 2.6rem;
 }
 .dateClicker {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 900px;
-  gap: 8px;
-  padding-inline: 5px;
+  max-width: 90.0rem;
+  gap: 0.8rem;
+  padding-inline: 0.5rem;
   container-type: inline-size;
 }
 .section {
-  padding-inline: 12px;
-  margin-top: 30px;
+  padding-inline: 1.2rem;
+  margin-top: 3.0rem;
 }
 
 .sectionHead {
@@ -43,15 +43,15 @@
 .sectionActions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   flex: none;
 }
 .dateButton {
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
-  font-size: 20px;
+  font-size: 2.0rem;
   border: 1px solid var(--border-dark);
   flex-shrink: 0;
 }
@@ -59,7 +59,7 @@
 .editModeToggle {
   color: var(--text-basic);
   background: var(--bg-surface-1);
-  padding: 10px 12px 5px;
+  padding: 1.0rem 1.2rem 0.5rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -72,8 +72,8 @@
 .moods {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 2px 2px 0px;
+  gap: 0.8rem;
+  padding: 0.2rem 0.2rem 0.0rem;
 }
 
 .moodButton {
@@ -81,19 +81,19 @@
   border: 1px solid color-mix(in srgb, var(--mood) 40%, var(--bg-surface-1));
   background: color-mix(in srgb, var(--mood) 16%, white);
   border-radius: 10px;
-  padding: 7px 9px;
+  padding: 0.7rem 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.8rem;
   font-weight: 600;
-  font-size: 13px;
-  min-height: 44px;
+  font-size: 1.3rem;
+  min-height: 4.4rem;
   width: auto;
 }
 
 .iconMood {
-  font-size: 20px;
+  font-size: 2.0rem;
 }
 
 .moodSelected {
@@ -102,14 +102,14 @@
 }
 
 .noteField {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .noteText {
   width: 100%;
-  min-height: 80px;
+  min-height: 8.0rem;
   resize: vertical;
-  padding: 10px 12px;
+  padding: 1.0rem 1.2rem;
   border: 1px solid var(--border-dark);
   border-radius: 10px;
   background: var(--bg-surface-1);
@@ -120,27 +120,27 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
+  gap: 0.6rem;
   color: var(--accent);
 }
 
 .trackerGrid {
   display: grid;
   max-width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 345px));
+  grid-template-columns: repeat(auto-fill, minmax(29.0rem, 34.5rem));
   justify-content: start;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
 }
 
 .actionButton {
-  width: 35px;
-  height: 35px;
-  padding: 5px 5px 1px 5px;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.5rem 0.5rem 0.1rem 0.5rem;
   border-radius: 12px;
   background-color: var(--bg-surface-1);
   color: var(--primary-60);
-  font-size: 25px;
+  font-size: 2.5rem;
   line-height: 1;
   border: 1px solid var(--border-dark);
   flex: none;
@@ -155,11 +155,11 @@
 }
 
 .categoryCard {
-  padding: 12px;
+  padding: 1.2rem;
   border: 1px solid var(--border-dark);
   border-radius: 15px;
   background: var(--bg-surface-1);
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   max-width: 100%;
 }
 
@@ -167,7 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .date {
@@ -175,31 +175,31 @@
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  font-size: clamp(15px, 5.3vw, 24px);
+  font-size: clamp(1.5rem, 5.3vw, 2.4rem);
   line-height: 1.15;
 }
 
 @media (width >= 390px) {
   .moodButton {
-    padding: 8px 11px;
-    font-size: 14px;
+    padding: 0.8rem 1.1rem;
+    font-size: 1.4rem;
   }
 }
 
 @media (width >= 768px) {
   .round {
-    width: 40px;
-    height: 40px;
-    padding: 8px 8px 5px 8px;
+    width: 4.0rem;
+    height: 4.0rem;
+    padding: 0.8rem 0.8rem 0.5rem 0.8rem;
   }
   .section {
-    padding-inline: 24px;
+    padding-inline: 2.4rem;
   }
 }
 
 @media (width >= 900px) {
   .section {
-    margin-top: 50px;
+    margin-top: 5.0rem;
     padding-inline: 0;
   }
   .editModeToggle {
@@ -207,38 +207,38 @@
     border: 1px solid var(--border-dark);
   }
   .noteText {
-    min-height: 120px;
+    min-height: 12.0rem;
   }
 
   .entryHeader {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 3.0rem;
   }
 
   .date {
-    font-size: clamp(20px, 6vw, 30px);
+    font-size: clamp(2.0rem, 6vw, 3.0rem);
   }
 
   .dateButton {
-    width: 40px;
-    height: 40px;
+    width: 4.0rem;
+    height: 4.0rem;
   }
 
   .moods {
-    gap: 10px;
+    gap: 1.0rem;
   }
 
   .moodButton {
     border-radius: 12px;
-    padding: 11px 14px;
+    padding: 1.1rem 1.4rem;
   }
 
   .iconMood {
-    font-size: 22px;
+    font-size: 2.2rem;
   }
 
   .categoryCard {
-    padding: 18px;
+    padding: 1.8rem;
   }
 }

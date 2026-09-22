@@ -5,59 +5,59 @@
   font-weight: 500;
   max-width: 90ch;
   box-sizing: border-box;
-  margin: 0 0 6px;
-  font-size: 19px;
+  margin: 0 0 0.6rem;
+  font-size: 1.9rem;
 }
 .quoteContainer {
   width: fit-content;
 }
 
 .homeContainer {
-  padding: 26px 12px;
+  padding: 2.6rem 1.2rem;
 }
 .heading {
-  padding-left: 5px;
+  padding-left: 0.5rem;
 }
 .eyebrow {
-  font-size: 12px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--text-eyebrow);
   font-weight: 700;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
 }
 
 .sectionHead {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 32px 0 16px;
-  margin-top: 32px;
-  gap: 14px;
+  margin: 3.2rem 0 1.6rem;
+  margin-top: 3.2rem;
+  gap: 1.4rem;
 }
 
 .sectionHead p {
   color: var(--text-p-50);
-  margin-top: -8px;
-  font-size: 14px;
+  margin-top: -0.8rem;
+  font-size: 1.4rem;
   line-height: 1.4;
 }
 
 .itemIcon {
-  width: 42px;
-  height: 42px;
-  padding: 2px 5px 0px;
+  width: 4.2rem;
+  height: 4.2rem;
+  padding: 0.2rem 0.5rem 0.0rem;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: 2.2rem;
   background-color: color-mix(in srgb, var(--accent) 16%, var(--bg-surface-1));
   border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--bg-surface-1));
 }
 
 .progress {
-  height: 6px;
+  height: 0.6rem;
   background: var(--bg-surface-3);
   border-radius: 99px;
-  margin: 9px 0 7px;
+  margin: 0.9rem 0 0.7rem;
   overflow: hidden;
 }
 
@@ -76,12 +76,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 8px;
-  gap: 40px;
+  margin-bottom: 0.8rem;
+  gap: 4.0rem;
 }
 
 .avatar {
-  font-size: 50px;
+  font-size: 5.0rem;
   align-self: flex-end;
   transform: rotate(9deg);
   flex: none;
@@ -90,18 +90,18 @@
 .hero {
   background: var(--bg-surface-5);
   border-radius: 16px;
-  padding: 20px 16px;
+  padding: 2.0rem 1.6rem;
   display: flex;
   justify-content: space-between;
   min-height: auto;
   overflow: hidden;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.8rem;
   width: fit-content;
 }
 
 .quoteAuthor {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--text-p-60);
   font-style: normal;
 }
@@ -110,25 +110,25 @@
   color: var(--color-accent);
   font-weight: 700;
   white-space: nowrap;
-  font-size: 13px;
+  font-size: 1.3rem;
 }
 
 .goals {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr));
+  gap: 1.4rem;
 }
 
 .goalCard {
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
   border-radius: 12px;
-  padding: 17px;
+  padding: 1.7rem;
   display: flex;
-  gap: 13px;
-  min-height: 106px;
+  gap: 1.3rem;
+  min-height: 10.6rem;
   box-shadow: var(--shadow-s);
-  max-width: 400px;
+  max-width: 40.0rem;
 }
 
 .goalBody {
@@ -136,28 +136,28 @@
 }
 
 .goalName {
-  font-size: 12px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
 }
 
 .goalProgressNumber {
-  font-size: 22px;
+  font-size: 2.2rem;
   color: var(--text-p-50);
 }
 
 .goalPeriod {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--text-p-50);
   font-weight: 500;
 }
 
 @media (width >= 390px) {
   .hero {
-    padding: 24px 20px;
+    padding: 2.4rem 2.0rem;
   }
 }
 
@@ -167,11 +167,11 @@
   }
 
   .avatar {
-    font-size: 70px;
+    font-size: 7.0rem;
   }
 
   .homeContainer {
-    padding-inline: 24px;
+    padding-inline: 2.4rem;
     padding-top: 0;
   }
 
@@ -186,28 +186,28 @@
   }
   .sectionHead {
     align-items: end;
-    margin: 42px 0 18px;
+    margin: 4.2rem 0 1.8rem;
   }
 
   .hero {
-    padding: 30px 34px;
+    padding: 3.0rem 3.4rem;
   }
 
   .goalPeriod {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
 
 @media (width >= 1080px) {
   .hero {
-    padding: 32px 38px;
+    padding: 3.2rem 3.8rem;
   }
 
   .avatar {
-    font-size: 90px;
+    font-size: 9.0rem;
   }
 
   .homeContainer {
-    margin-top: -10px;
+    margin-top: -1.0rem;
   }
 }

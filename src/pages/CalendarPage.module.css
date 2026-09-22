@@ -1,48 +1,48 @@
 .calendarContainer {
-  padding-inline: 12px;
-  margin-top: 26px;
+  padding-inline: 1.2rem;
+  margin-top: 2.6rem;
   flex-shrink: 0;
 }
 
 .eyebrow {
-  font-size: 12px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--text-eyebrow);
   font-weight: 700;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
 }
 
 .calendarHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
-  gap: 14px;
+  margin-bottom: 2.4rem;
+  gap: 1.4rem;
   flex-direction: column;
 }
 
 .calendarTitle {
-  font-size: clamp(28px, 8vw, 34px);
+  font-size: clamp(2.8rem, 8vw, 3.4rem);
 }
 
 .monthControl {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin: 4px 0 18px;
+  gap: 1.0rem;
+  margin: 0.4rem 0 1.8rem;
 }
 
 .monthButton {
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
-  font-size: 20px;
-  min-width: 40px;
-  min-height: 44px;
+  font-size: 2.0rem;
+  min-width: 4.0rem;
+  min-height: 4.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,24 +50,24 @@
 
 .monthTitle {
   text-transform: capitalize;
-  font-size: 19px;
+  font-size: 1.9rem;
   text-align: center;
   flex: 1;
 }
 
 .switch {
   background: var(--bg-surface-3);
-  padding: 3px;
+  padding: 0.3rem;
   border-radius: 9px;
   flex: none;
   width: 100%;
 }
 
 .switchButton {
-  padding: 7px 11px;
+  padding: 0.7rem 1.1rem;
   border-radius: 7px;
-  font-size: 13px;
-  min-height: 34px;
+  font-size: 1.3rem;
+  min-height: 3.4rem;
   background: transparent;
   border: none;
   width: 50%;
@@ -81,15 +81,15 @@
 
 /* Gemeinsam genutzte Detailansicht unten drunter */
 .detail {
-  margin-top: 20px;
-  padding: 18px;
+  margin-top: 2.0rem;
+  padding: 1.8rem;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
   border-radius: 13px;
 }
 
 .detailTitle {
-  font-size: 21px;
+  font-size: 2.1rem;
 }
 
 .detailInnerContent {
@@ -100,25 +100,25 @@
 .detailMood {
   display: inline-block;
   border-radius: 8px;
-  padding: 7px 10px;
-  margin: 14px 0;
+  padding: 0.7rem 1.0rem;
+  margin: 1.4rem 0;
   background: color-mix(in srgb, var(--local-mood-color) 16%, white);
 }
 
 .eventList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
-  margin-top: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(22.0rem, 1fr));
+  gap: 1.0rem;
+  margin-top: 1.4rem;
 }
 
 .eventListItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
+  gap: 0.8rem;
+  padding: 1.0rem 1.4rem;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 1.5rem;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -134,12 +134,12 @@
 
 .eventListEmpty {
   color: var(--text-p-50);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .dayNote {
-  margin-top: 18px;
-  padding-top: 14px;
+  margin-top: 1.8rem;
+  padding-top: 1.4rem;
   border-top: 1px solid var(--border-dark);
   color: var(--text-basic);
   white-space: pre-wrap;
@@ -148,7 +148,7 @@
 
 @media (width >= 768px) {
   .calendarHeader {
-    gap: 20px;
+    gap: 2.0rem;
   }
 }
 
@@ -157,22 +157,22 @@
     padding: 0;
   }
   .calendarHeader {
-    margin-bottom: 30px;
+    margin-bottom: 3.0rem;
   }
   .monthButton {
-    width: 39px;
-    height: 39px;
+    width: 3.9rem;
+    height: 3.9rem;
   }
   .monthControl {
     justify-content: center;
-    gap: 30px;
-    margin: 10px 0 23px;
+    gap: 3.0rem;
+    margin: 1.0rem 0 2.3rem;
   }
   .monthTitle {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
   .detail {
-    margin-top: 26px;
-    padding: 23px;
+    margin-top: 2.6rem;
+    padding: 2.3rem;
   }
 }
