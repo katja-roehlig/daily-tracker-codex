@@ -68,13 +68,16 @@ body {
 }
 
 html {
+  font-size: 81.25%;
   min-width: 32rem;
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
-  width: 100vw;
+  width: 100%;
   margin: 0;
   min-width: 32rem;
   font-size: 1.6rem;
@@ -89,6 +92,7 @@ body {
   color: var(--text-basic);
   font-family: Nunito, system-ui, sans-serif;
 }
+
 button,
 input,
 select {
@@ -97,6 +101,9 @@ select {
 }
 button {
   cursor: pointer;
+  border: 0;
+  background: none;
+  color: inherit;
 }
 
 p {
@@ -117,7 +124,7 @@ h1 {
   letter-spacing: 1.2px;
   color: var(--text-muted);
   font-weight: 1000;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--color-brand-1);
 }
 h2 {
@@ -144,6 +151,23 @@ button {
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
+.centerElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (width >= 390px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+@media (width >= 768px) {
+  html {
+    font-size: 62.5%;
+  }
+}
 @media (width >= 900px) {
   h1 {
     font-size: 2.1rem;
@@ -158,14 +182,9 @@ button {
     font-size: 2rem;
   }
 }
-.centerElement {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* Netlify-Werbebanner unsichtbar machen */
-.nl-wrap,
+/* .nl-wrap,
 #nl-badge,
 .nl-badge,
 #nl-card,
@@ -176,4 +195,4 @@ button {
   pointer-events: none !important;
   position: absolute !important;
   left: -9999px !important;
-}
+} */
