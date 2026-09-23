@@ -9,29 +9,43 @@
 }
 .sectionHeading {
   padding-left: 0.5rem;
+  margin-bottom: 0;
 }
-
+.sectionHeading.noteHeading {
+  margin-bottom: 1.2rem;
+}
 .entryHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding-top: 2.6rem;
+  padding-top: 1.5rem;
+}
+.toggleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.8rem;
 }
 .dateClicker {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 90.0rem;
+  max-width: 90rem;
   gap: 0.8rem;
-  padding-inline: 0.5rem;
+  padding-inline: 1.5rem;
   container-type: inline-size;
 }
 .section {
-  padding-inline: 1.2rem;
-  margin-top: 3.0rem;
+  margin-inline: 1.5rem;
+  padding-top: 1.5rem;
+}
+.section + .section {
+  border-top: 1px solid var(--border-light);
+  margin-top: 2rem;
 }
 
 .sectionHead {
@@ -47,19 +61,21 @@
   flex: none;
 }
 .dateButton {
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
-  font-size: 2.0rem;
   border: 1px solid var(--border-dark);
   flex-shrink: 0;
 }
-
-.editModeToggle {
+.openEditButton {
   color: var(--text-basic);
-  background: var(--bg-surface-1);
-  padding: 1.0rem 1.2rem 0.5rem;
+  padding: 1rem 1.2rem 0.5rem;
+}
+.closeEditButton {
+  color: var(--text-nav);
+  background-color: var(--color-attention);
+  padding: 1rem 1.2rem 0.5rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -73,7 +89,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  padding: 0.2rem 0.2rem 0.0rem;
+  padding: 0.2rem 0.2rem 0rem;
 }
 
 .moodButton {
@@ -81,19 +97,18 @@
   border: 1px solid color-mix(in srgb, var(--mood) 40%, var(--bg-surface-1));
   background: color-mix(in srgb, var(--mood) 16%, white);
   border-radius: 10px;
-  padding: 0.7rem 0.9rem;
+  padding: 0rem 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
   font-weight: 600;
   font-size: 1.3rem;
-  min-height: 4.4rem;
   width: auto;
 }
 
 .iconMood {
-  font-size: 2.0rem;
+  font-size: 2.5rem;
 }
 
 .moodSelected {
@@ -107,9 +122,9 @@
 
 .noteText {
   width: 100%;
-  min-height: 8.0rem;
+  min-height: 8rem;
   resize: vertical;
-  padding: 1.0rem 1.2rem;
+  padding: 1rem 1.2rem;
   border: 1px solid var(--border-dark);
   border-radius: 10px;
   background: var(--bg-surface-1);
@@ -127,7 +142,7 @@
 .trackerGrid {
   display: grid;
   max-width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(29.0rem, 34.5rem));
+  grid-template-columns: repeat(auto-fill, minmax(29rem, 34.5rem));
   justify-content: start;
   gap: 0.8rem;
   margin-top: 1.2rem;
@@ -136,12 +151,9 @@
 .actionButton {
   width: 3.5rem;
   height: 3.5rem;
-  padding: 0.5rem 0.5rem 0.1rem 0.5rem;
   border-radius: 12px;
   background-color: var(--bg-surface-1);
   color: var(--primary-60);
-  font-size: 2.5rem;
-  line-height: 1;
   border: 1px solid var(--border-dark);
   flex: none;
 }
@@ -175,21 +187,12 @@
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  font-size: clamp(1.5rem, 5.3vw, 2.4rem);
-  line-height: 1.15;
-}
-
-@media (width >= 390px) {
-  .moodButton {
-    padding: 0.8rem 1.1rem;
-    font-size: 1.4rem;
-  }
 }
 
 @media (width >= 768px) {
   .round {
-    width: 4.0rem;
-    height: 4.0rem;
+    width: 4rem;
+    height: 4rem;
     padding: 0.8rem 0.8rem 0.5rem 0.8rem;
   }
   .section {
@@ -199,7 +202,7 @@
 
 @media (width >= 900px) {
   .section {
-    margin-top: 5.0rem;
+    margin-top: 5rem;
     padding-inline: 0;
   }
   .editModeToggle {
@@ -207,26 +210,27 @@
     border: 1px solid var(--border-dark);
   }
   .noteText {
-    min-height: 12.0rem;
+    min-height: 12rem;
   }
 
   .entryHeader {
     display: flex;
     flex-direction: column;
-    margin-bottom: 3.0rem;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
   }
 
-  .date {
-    font-size: clamp(2.0rem, 6vw, 3.0rem);
-  }
+  /* .date {
+    font-size: clamp(2rem, 6vw, 3rem);
+  } */
 
   .dateButton {
-    width: 4.0rem;
-    height: 4.0rem;
+    width: 4rem;
+    height: 4rem;
   }
 
   .moods {
-    gap: 1.0rem;
+    gap: 1rem;
   }
 
   .moodButton {

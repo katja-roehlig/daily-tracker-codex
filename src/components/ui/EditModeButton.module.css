@@ -1,0 +1,7 @@
+.editModeToggle {
+  color: var(--text-basic);
+  /* background: var(--bg-surface-1); */
+  padding: 1rem 1.2rem 0.5rem;
+  /* border: 1px solid var(--border-dark);
+  border-radius: 50%; */
+}

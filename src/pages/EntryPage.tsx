@@ -3,10 +3,10 @@ import { CategoryEditor } from "../components/editors/CategoryEditor";
 import { TrackerEditor } from "../components/editors/TrackerEditor";
 import { MoodEditor } from "../components/editors/MoodEditor";
 import { MoodDeleteModal } from "../components/editors/MoodDeleteModal";
-
 import { TrackerCard } from "../components/trackers/TrackerCard";
+import { EditModeButton } from "../components/ui/EditModeButton";
 import type { Category, Tracker } from "../types";
-import { addDays, formatDate } from "../utils/date";
+import { addDays, formatDateShort } from "../utils/date";
 import { useTracker } from "../app/TrackerProvider";
 import styles from "./EntryPage.module.css";
 import {
@@ -20,8 +20,8 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 type Editor =
-  | { kind: "category"; edithData?: Category }
-  | { kind: "tracker"; category: Category; edithData?: Tracker }
+  | { kind: "category"; editData?: Category }
+  | { kind: "tracker"; category: Category; editData?: Tracker }
   | { kind: "mood" }
   | { kind: "mood-delete" }
   | null;
@@ -32,14 +32,13 @@ export function EntryPage({
   date: string;
   onDate: (date: string) => void;
 }) {
-  const [isEdithMode, setIsEdithMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const {
     data,
     items,
     getEntry,
     increment,
     decrement,
-    setCount,
     setNote,
     toggleMood,
     createCategory,
@@ -54,9 +53,7 @@ export function EntryPage({
   const entry = getEntry(date);
   const moods = data.moods;
   const [editor, setEditor] = useState<Editor>(null);
-  const categories = [
-    ...new Map(items.map((item) => [item.category.id, item.category])).values(),
-  ];
+  const categories = data.categories || [];
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(
     () => (categories.length ? { [categories[0].id]: true } : {}),
   );
@@ -72,7 +69,7 @@ export function EntryPage({
           >
             <ArrowLeftIcon size={22} />
           </button>
-          <h2 className={styles.date}>{formatDate(date)}</h2>
+          <h2 className={styles.date}>{formatDateShort(date)}</h2>
           <button
             onClick={() => onDate(addDays(date, 1))}
             className={`centerElement ${styles.dateButton}`}
@@ -80,40 +77,41 @@ export function EntryPage({
             <ArrowRightIcon size={22} />
           </button>
         </div>
-        <button
-          className={styles.editModeToggle}
-          type="button"
-          aria-label={
-            isEdithMode
-              ? "Bearbeiten-Modus schließen"
-              : "Bearbeiten-Modus öffnen"
-          }
-          aria-pressed={isEdithMode}
-          onClick={() => setIsEdithMode((open) => !open)}
-        >
-          {isEdithMode ? (
+        {isEditMode && (
+          <button
+            className={styles.closeEditButton}
+            type="button"
+            onClick={() => setIsEditMode(false)}
+          >
             <XIcon size={22} weight="bold" className={styles.iconX} />
-          ) : (
-            <PencilLineIcon size={22} weight="bold" />
-          )}
-        </button>
+          </button>
+        )}
       </header>
       <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <h3 className={styles.sectionHeading}>Wie geht es dir?</h3>
-
+          <div className={styles.toggleContainer}>
+            <h3 className={styles.sectionHeading}>Wie geht es dir?</h3>
+            {!isEditMode && (
+              <button
+                className={styles.openEditButton}
+                onClick={() => setIsEditMode(true)}
+              >
+                <PencilLineIcon size={28} />
+              </button>
+            )}
+          </div>
           <div className={styles.sectionActions}>
-            {isEdithMode && (
+            {isEditMode && (
               <>
                 <button
-                  className={styles.actionButton}
+                  className={`centerElement ${styles.actionButton}`}
                   aria-label="Stimmungen löschen"
                   onClick={() => setEditor({ kind: "mood-delete" })}
                 >
                   <TrashIcon size={22} />
                 </button>
                 <button
-                  className={styles.actionButton}
+                  className={`centerElement ${styles.actionButton}`}
                   onClick={() => setEditor({ kind: "mood" })}
                 >
                   <PlusIcon
@@ -133,7 +131,7 @@ export function EntryPage({
               className={`${styles.moodButton} ${entry.mood === mood.id ? styles.moodSelected : ""}`}
               style={{ "--mood": mood.color } as React.CSSProperties}
               onClick={() => {
-                if (!isEdithMode) toggleMood(date, mood.id);
+                if (!isEditMode) toggleMood(date, mood.id);
               }}
             >
               <span className={styles.iconMood}>{mood.icon}</span>
@@ -146,7 +144,9 @@ export function EntryPage({
         <label id="note" className="visually-hidden">
           Platz für Notizen
         </label>
-        <h3 className={styles.sectionHeading}>Was war heute wichtig?</h3>
+        <h3 className={`${styles.sectionHeading} ${styles.noteHeading}`}>
+          Was war heute wichtig?
+        </h3>
         <textarea
           value={entry.note ?? ""}
           className={styles.noteText}
@@ -157,12 +157,20 @@ export function EntryPage({
         />
       </section>
       <section className={styles.section}>
-        <div className={styles.sectionHead}>
+        <div className={`${styles.sectionHead} ${styles.toggleContainer}`}>
           <h3 className={styles.sectionHeading}>Deine Aktivitäten</h3>
-
-          {isEdithMode && (
+          {!isEditMode && (
             <button
-              className={styles.actionButton}
+              className={styles.openEditButton}
+              onClick={() => setIsEditMode(true)}
+            >
+              <PencilLineIcon size={28} />
+            </button>
+          )}
+          {/* </div> */}
+          {isEditMode && (
+            <button
+              className={`centerElement ${styles.actionButton}`}
               onClick={() => setEditor({ kind: "category" })}
             >
               <PlusIcon size={18} weight="bold" className={styles.iconPlus} />
@@ -193,11 +201,11 @@ export function EntryPage({
                   <CaretUpIcon size={22} weight="fill" />
                 )}
               </button>
-              {isEdithMode && (
+              {isEditMode && (
                 <button
                   aria-label={`${category.name} bearbeiten`}
                   onClick={() =>
-                    setEditor({ kind: "category", edithData: category })
+                    setEditor({ kind: "category", editData: category })
                   }
                 >
                   <PencilLineIcon size={22} />
@@ -221,14 +229,14 @@ export function EntryPage({
                           setEditor({
                             kind: "tracker",
                             category,
-                            edithData: item,
+                            editData: item,
                           })
                         }
-                        isEdithMode={isEdithMode}
+                        isEditMode={isEditMode}
                       />
                     );
                   })}
-                {isEdithMode && (
+                {isEditMode && (
                   <button
                     className={styles.newTrackerButton}
                     onClick={() => setEditor({ kind: "tracker", category })}
@@ -243,10 +251,10 @@ export function EntryPage({
       </section>
       {editor?.kind === "category" && (
         <CategoryEditor
-          value={editor.edithData}
+          value={editor.editData}
           onClose={() => setEditor(null)}
           onSave={(category) => {
-            if (editor.edithData) {
+            if (editor.editData) {
               updateCategory(category);
             } else {
               createCategory(category);
@@ -254,10 +262,11 @@ export function EntryPage({
             setEditor(null);
           }}
           onDelete={
-            editor.edithData
+            editor.editData
               ? () => {
-                  deleteCategory(editor.edithData!.id);
+                  deleteCategory(editor.editData!.id);
                   setEditor(null);
+                  setIsEditMode(false);
                 }
               : undefined
           }
@@ -266,42 +275,34 @@ export function EntryPage({
       {editor?.kind === "tracker" && (
         <TrackerEditor
           category={editor.category}
-          value={editor.edithData}
+          value={editor.editData}
           onClose={() => setEditor(null)}
           onSave={(tracker) => {
-            if (editor.edithData) {
+            if (editor.editData) {
               updateTracker(editor.category.id, tracker);
             } else {
               createTracker(editor.category.id, tracker);
             }
             setEditor(null);
           }}
-          count={
-            editor.edithData
-              ? (entry.counts[editor.edithData.id] ?? 0)
-              : undefined
-          }
-          onCountSave={
-            editor.edithData
-              ? (count) => setCount(date, editor.edithData!.id, count)
-              : undefined
-          }
           onDelete={
-            editor.edithData
+            editor.editData
               ? () => {
-                  deleteTracker(editor.edithData!.id);
+                  deleteTracker(editor.editData!.id);
                   setEditor(null);
+                  setIsEditMode(false);
                 }
               : undefined
           }
         />
-      )}{" "}
+      )}
       {editor?.kind === "mood" && (
         <MoodEditor
           onClose={() => setEditor(null)}
           onSave={(mood) => {
             createMood(mood);
             setEditor(null);
+            setIsEditMode(false);
           }}
         />
       )}
@@ -309,7 +310,11 @@ export function EntryPage({
         <MoodDeleteModal
           moods={moods}
           onClose={() => setEditor(null)}
-          onDelete={deleteMood}
+          onDelete={(moodId) => {
+            deleteMood(moodId);
+            setEditor(null);
+            setIsEditMode(false);
+          }}
         />
       )}
     </>
