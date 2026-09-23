@@ -9,19 +9,20 @@ import {
   weekStart,
 } from "../utils/date";
 import styles from "./EvaluationPage.module.css";
-type Period = "week" | "month";
+import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
+type View = "week" | "month";
 export function EvaluationPage() {
   const { data, items } = useTracker();
-  const [period, setPeriod] = useState<Period>("week");
+  const [view, setView] = useState<View>("week");
   const [anchor, setAnchor] = useState(todayKey());
   const days = useMemo(
     () =>
-      period === "week"
+      view === "week"
         ? Array.from({ length: 7 }, (_, i) => addDays(weekStart(anchor), i))
         : monthDays(anchor)
             .filter((day) => day.current)
             .map((day) => day.key),
-    [period, anchor],
+    [view, anchor],
   );
   const activeDays = days.filter(
     (day) => Object.keys(data.entries[day]?.counts ?? {}).length > 0,
@@ -51,7 +52,7 @@ export function EvaluationPage() {
         : "Erfasse ein paar Tage, um erste Muster zu entdecken.";
   const move = (amount: number) => {
     const date = fromKey(anchor);
-    if (period === "week") date.setDate(date.getDate() + amount * 7);
+    if (view === "week") date.setDate(date.getDate() + amount * 7);
     else date.setMonth(date.getMonth() + amount);
     setAnchor(keyOf(date));
   };
@@ -61,30 +62,41 @@ export function EvaluationPage() {
         <div>
           <p className={styles.eyebrow}>Erkennen & verstehen</p>
           <h2>Auswertungen</h2>
-          <p className={styles.intro}>
-            Deine Aktivitäten und Stimmung im Zusammenhang.
-          </p>
         </div>
         <div className={styles.switch}>
           <button
-            className={period === "week" ? styles.selected : ""}
-            onClick={() => setPeriod("week")}
+            className={`${styles.switchButton} ${view === "week" ? styles.selected : ""}`}
+            onClick={() => setView("week")}
           >
             Woche
           </button>
           <button
-            className={period === "month" ? styles.selected : ""}
-            onClick={() => setPeriod("month")}
+            className={`${styles.switchButton} ${view === "month" ? styles.selected : ""}`}
+            onClick={() => setView("month")}
           >
             Monat
           </button>
         </div>
+        {/* <div className={styles.switch}>
+          <button
+            className={view === "week" ? styles.selected : ""}
+            onClick={() => setView("week")}
+          >
+            Woche
+          </button>
+          <button
+            className={view === "month" ? styles.selected : ""}
+            onClick={() => setView("month")}
+          >
+            Monat
+          </button>
+        </div> */}
       </header>
       <div className={styles.monthControl}>
         <button onClick={() => move(-1)}>←</button>
-        <h3>
-          {period === "week"
-            ? `Woche ab ${fromKey(days[0]).toLocaleDateString("de-DE", { day: "numeric", month: "short" })}`
+        <h3 className={styles.date}>
+          {view === "week"
+            ? `Woche vom ${fromKey(days[0]).toLocaleDateString("de-DE", { day: "numeric", month: "short" })}`
             : fromKey(anchor).toLocaleDateString("de-DE", {
                 month: "long",
                 year: "numeric",

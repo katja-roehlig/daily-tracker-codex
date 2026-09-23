@@ -14,6 +14,13 @@ export const formatDate = (key: string) =>
     month: "long",
   });
 
+export const formatDateShort = (key: string) =>
+  fromKey(key).toLocaleDateString("de-DE", {
+    weekday: "long",
+    day: "numeric",
+    month: "short",
+  });
+
 export const addDays = (key: string, amount: number) => {
   const d = fromKey(key);
   d.setDate(d.getDate() + amount);

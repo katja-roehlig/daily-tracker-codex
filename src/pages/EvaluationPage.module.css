@@ -1,7 +1,6 @@
 .evaluationContainer {
-  padding-inline: 1.2rem;
-  margin-top: 2.6rem;
-  flex-shrink: 0;
+  padding-inline: 1.5rem;
+  margin-top: 2rem;
 }
 .eyebrow {
   font-size: 1.2rem;
@@ -22,28 +21,33 @@
 }
 
 .monthControl > button {
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
-  font-size: 2.0rem;
-  min-width: 4.0rem;
-  min-height: 4.4rem;
+  font-size: 2rem;
 }
-
+.date {
+  margin-bottom: 0px;
+}
 .switch {
-  background: var(--bg-surface-3);
+  background: var(--bg-surface-4);
   padding: 0.3rem;
   border-radius: 9px;
   flex: none;
+  width: 100%;
 }
 
-.switch button {
+.switchButton {
   padding: 0.7rem 1.1rem;
   border-radius: 7px;
   font-size: 1.3rem;
   min-height: 3.4rem;
+  background: transparent;
+  border: none;
+  width: 50%;
+  cursor: pointer;
 }
 
 .switch .selected {
@@ -55,22 +59,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.0rem;
+  gap: 1rem;
   margin: 0.4rem 0 1.8rem;
 }
 
 .monthControl h3 {
   text-transform: capitalize;
-  font-size: 1.9rem;
   text-align: center;
   flex: 1;
-}
-
-.intro {
-  color: var(--text-p-50);
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-  line-height: 1.4;
 }
 
 .itemIcon {
@@ -146,7 +142,7 @@
 
 .evalRow {
   display: flex;
-  gap: 1.0rem;
+  gap: 1rem;
   margin: 1.5rem 0;
   align-items: flex-start;
 }
@@ -188,7 +184,7 @@
 
 .relations {
   display: grid;
-  gap: 1.0rem;
+  gap: 1rem;
 }
 
 .relation {
@@ -221,23 +217,8 @@
   font-size: 1.4rem;
 }
 
-.calendarHeader h2 {
-  font-size: clamp(2.8rem, 8vw, 3.4rem);
-}
-
 .calendarHeader .intro {
   display: block;
-}
-
-.calendarHeader .switch {
-  display: flex;
-  width: 100%;
-}
-
-.calendarHeader .switch button {
-  flex: 1;
-  min-height: 4.2rem;
-  font-size: 1.6rem;
 }
 
 .evalCard h3 {
@@ -252,16 +233,13 @@
     gap: 2.4rem;
   }
 }
-.evaluationContainer {
-  padding-inline: 2.4rem;
-}
 
 @media (width >= 900px) {
   .evaluationContainer {
     padding: 0;
   }
   .calendarHeader {
-    margin-bottom: 3.0rem;
+    margin-bottom: 3rem;
   }
 
   .monthControl > button {
@@ -271,8 +249,8 @@
 
   .monthControl {
     justify-content: center;
-    gap: 3.0rem;
-    margin: 1.0rem 0 2.3rem;
+    gap: 3rem;
+    margin: 1rem 0 2.3rem;
   }
 
   .monthControl h3 {
@@ -286,7 +264,7 @@
   }
 
   .insight h3 {
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 
   .evalGrid {

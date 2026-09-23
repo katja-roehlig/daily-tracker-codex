@@ -1,6 +1,6 @@
 .calendarContainer {
-  padding-inline: 1.2rem;
-  margin-top: 2.6rem;
+  padding-inline: 1.5rem;
+  margin-top: 2rem;
   flex-shrink: 0;
 }
 
@@ -22,27 +22,21 @@
   flex-direction: column;
 }
 
-.calendarTitle {
-  font-size: clamp(2.8rem, 8vw, 3.4rem);
-}
-
 .monthControl {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.0rem;
-  margin: 0.4rem 0 1.8rem;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
 .monthButton {
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
-  font-size: 2.0rem;
-  min-width: 4.0rem;
-  min-height: 4.4rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,13 +44,13 @@
 
 .monthTitle {
   text-transform: capitalize;
-  font-size: 1.9rem;
   text-align: center;
   flex: 1;
+  margin-bottom: 0;
 }
 
 .switch {
-  background: var(--bg-surface-3);
+  background: var(--bg-surface-4);
   padding: 0.3rem;
   border-radius: 9px;
   flex: none;
@@ -81,15 +75,11 @@
 
 /* Gemeinsam genutzte Detailansicht unten drunter */
 .detail {
-  margin-top: 2.0rem;
+  margin-top: 2rem;
   padding: 1.8rem;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-dark);
-  border-radius: 13px;
-}
-
-.detailTitle {
-  font-size: 2.1rem;
+  border-radius: 8px;
 }
 
 .detailInnerContent {
@@ -100,15 +90,15 @@
 .detailMood {
   display: inline-block;
   border-radius: 8px;
-  padding: 0.7rem 1.0rem;
+  padding: 0.7rem 1rem;
   margin: 1.4rem 0;
   background: color-mix(in srgb, var(--local-mood-color) 16%, white);
 }
 
 .eventList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(22.0rem, 1fr));
-  gap: 1.0rem;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  gap: 1rem;
   margin-top: 1.4rem;
 }
 
@@ -116,7 +106,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 1.0rem 1.4rem;
+  padding: 1rem 1.4rem;
   border-radius: 8px;
   font-size: 1.5rem;
   width: 100%;
@@ -148,7 +138,7 @@
 
 @media (width >= 768px) {
   .calendarHeader {
-    gap: 2.0rem;
+    gap: 2rem;
   }
 }
 
@@ -157,7 +147,7 @@
     padding: 0;
   }
   .calendarHeader {
-    margin-bottom: 3.0rem;
+    margin-bottom: 3rem;
   }
   .monthButton {
     width: 3.9rem;
@@ -165,12 +155,10 @@
   }
   .monthControl {
     justify-content: center;
-    gap: 3.0rem;
-    margin: 1.0rem 0 2.3rem;
+    gap: 3rem;
+    margin: 1rem 0 2.3rem;
   }
-  .monthTitle {
-    font-size: 2.4rem;
-  }
+
   .detail {
     margin-top: 2.6rem;
     padding: 2.3rem;

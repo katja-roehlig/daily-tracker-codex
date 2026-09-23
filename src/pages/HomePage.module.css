@@ -13,7 +13,7 @@
 }
 
 .homeContainer {
-  padding: 2.6rem 1.2rem;
+  padding: 1rem 1.2rem 2.6rem;
 }
 .heading {
   padding-left: 0.5rem;
@@ -46,7 +46,7 @@
 .itemIcon {
   width: 4.2rem;
   height: 4.2rem;
-  padding: 0.2rem 0.5rem 0.0rem;
+  padding: 0.2rem 0.5rem 0rem;
   border-radius: 8px;
   font-size: 2.2rem;
   background-color: color-mix(in srgb, var(--accent) 16%, var(--bg-surface-1));
@@ -77,11 +77,11 @@
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 0.8rem;
-  gap: 4.0rem;
+  gap: 4rem;
 }
 
 .avatar {
-  font-size: 5.0rem;
+  font-size: 5rem;
   align-self: flex-end;
   transform: rotate(9deg);
   flex: none;
@@ -90,7 +90,7 @@
 .hero {
   background: var(--bg-surface-5);
   border-radius: 16px;
-  padding: 2.0rem 1.6rem;
+  padding: 2rem 1.6rem;
   display: flex;
   justify-content: space-between;
   min-height: auto;
@@ -115,7 +115,7 @@
 
 .goals {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 1.4rem;
 }
 
@@ -128,7 +128,7 @@
   gap: 1.3rem;
   min-height: 10.6rem;
   box-shadow: var(--shadow-s);
-  max-width: 40.0rem;
+  max-width: 40rem;
 }
 
 .goalBody {
@@ -157,7 +157,7 @@
 
 @media (width >= 390px) {
   .hero {
-    padding: 2.4rem 2.0rem;
+    padding: 2.4rem 2rem;
   }
 }
 
@@ -167,7 +167,7 @@
   }
 
   .avatar {
-    font-size: 7.0rem;
+    font-size: 7rem;
   }
 
   .homeContainer {
@@ -190,7 +190,7 @@
   }
 
   .hero {
-    padding: 3.0rem 3.4rem;
+    padding: 3rem 3.4rem;
   }
 
   .goalPeriod {
@@ -204,10 +204,10 @@
   }
 
   .avatar {
-    font-size: 9.0rem;
+    font-size: 9rem;
   }
 
   .homeContainer {
-    margin-top: -1.0rem;
+    margin-top: -1rem;
   }
 }

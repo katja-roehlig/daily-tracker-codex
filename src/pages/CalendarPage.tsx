@@ -85,7 +85,7 @@ export function CalendarPage({ selected }: { selected: string }) {
             const endDate = fromKey(lastDayKey);
 
             if (startDate.getMonth() === endDate.getMonth()) {
-              return `${startDate.getDate()}. – ${endDate.getDate()}. ${endDate.toLocaleDateString("de-DE", { month: "long", year: "numeric" })}`;
+              return `${startDate.getDate()}. – ${endDate.getDate()}. ${endDate.toLocaleDateString("de-DE", { month: "short", year: "numeric" })}`;
             }
 
             // Wenn die Woche zwei Monate schneidet (z.B. "31. Aug. – 6. Sept. 2026")
