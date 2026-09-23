@@ -32,7 +32,7 @@ export function Navigation() {
             onClick={() => navigate(path)}
           >
             <span className={styles.iconWrapper}>
-              <IconComponent size={28} className={styles.icon} />
+              <IconComponent size={36} />
             </span>
             <span className={styles.label}>{label}</span>
           </button>
