@@ -29,7 +29,7 @@ export function AppLayout() {
       </main>
 
       <div className={styles.mobileNav}>
-        <Navigation mobile />
+        <Navigation />
       </div>
     </div>
   );

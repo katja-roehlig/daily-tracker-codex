@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rochester&display=swap");
 
 .quote {
-  font-family: "Bubblegum Sans";
+  font-family: "Rochester";
   font-weight: 500;
   max-width: 90ch;
   box-sizing: border-box;
   margin: 0 0 0.6rem;
   font-size: 1.9rem;
+  color: var(--text-quote);
 }
 .quoteContainer {
   width: fit-content;

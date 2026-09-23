@@ -8,26 +8,26 @@ export function TrackerCard({
   onIncrement,
   onDecrement,
   onEdit,
-  isEdithMode,
+  isEditMode,
 }: {
   item: TrackerWithCategory;
   count: number;
   onIncrement: () => void;
   onDecrement: () => void;
   onEdit: () => void;
-  isEdithMode: boolean;
+  isEditMode: boolean;
 }) {
   return (
     <div className={styles.trackerWrap}>
       <div
-        className={`${styles.tracker} ${isEdithMode ? styles.trackerEditClickable : ""}`}
-        role={isEdithMode ? "button" : undefined}
-        tabIndex={isEdithMode ? 0 : undefined}
+        className={`${styles.tracker} ${isEditMode ? styles.trackerEditClickable : ""}`}
+        role={isEditMode ? "button" : undefined}
+        tabIndex={isEditMode ? 0 : undefined}
         onClick={() => {
-          if (isEdithMode) onEdit();
+          if (isEditMode) onEdit();
         }}
         onKeyDown={(event) => {
-          if (isEdithMode && (event.key === "Enter" || event.key === " ")) {
+          if (isEditMode && (event.key === "Enter" || event.key === " ")) {
             event.preventDefault();
             onEdit();
           }
@@ -49,7 +49,7 @@ export function TrackerCard({
 
         <span className={styles.countNumber}>{count}</span>
 
-        {isEdithMode ? (
+        {isEditMode ? (
           <div className={styles.controlsBlock}>
             <PencilLineIcon size={18} className={styles.iconEditTracker} />
           </div>
